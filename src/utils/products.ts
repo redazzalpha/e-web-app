@@ -1,12 +1,23 @@
 import { Product } from "./types";
 
+import pepperoniImg from '@/assets/pepperoni.png';
+import spaghettiImg from '@/assets/spaghetti.png';
+import BiggerImg from '@/assets/bigger.png';
+import savoyardeImg from '@/assets/savoyarde.png';
+import rigatoniImg from '@/assets/rigatoni.png';
+import saladeImg from '@/assets/salade.png';
+import dessertImg from '@/assets/dessert.png';
+import ragoutImg from '@/assets/ragout.png';
+import tripleImg from '@/assets/triple.png';
+import donutsImg from '@/assets/donuts.png';
+
 const products: Array<Product> = [
     {
         label: "Pizza au pepperoni",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. \
         Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec,\
         ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, ",
-        img: "src/assets/pepperoni.png",
+        img: `${pepperoniImg}`,
         price: 19.99,
         score: 5
     },
@@ -15,7 +26,7 @@ const products: Array<Product> = [
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. \
         Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec,\
         ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, ",
-        img: "src/assets/spaghetti.png",
+        img: `${spaghettiImg}`,
         price: 14.24,
         score: 3
     },
@@ -24,7 +35,7 @@ const products: Array<Product> = [
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. \
         Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec,\
         ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, ",
-        img: "src/assets/bigger.png",
+        img: `${BiggerImg}`,
         price: 18.54,
         score: 6
     },
@@ -33,7 +44,7 @@ const products: Array<Product> = [
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. \
         Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec,\
         ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, ",
-        img: "src/assets/savoyarde.png",
+        img: `${savoyardeImg}`,
         price: 17.89,
         score: 4
     },
@@ -42,7 +53,7 @@ const products: Array<Product> = [
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. \
         Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec,\
         ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, ",
-        img: "src/assets/rigatoni.png",
+        img: `${rigatoniImg}`,
         price: 12.05,
         score: 3
     },
@@ -51,7 +62,7 @@ const products: Array<Product> = [
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. \
         Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec,\
         ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, ",
-        img: "src/assets/salade.png",
+        img: `${saladeImg}`,
         price: 10.79,
         score: 2
     },
@@ -60,7 +71,7 @@ const products: Array<Product> = [
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. \
         Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec,\
         ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, ",
-        img: "src/assets/dessert.png",
+        img: `${dessertImg}`,
         price: 28.34,
         score: 6
     },
@@ -69,7 +80,7 @@ const products: Array<Product> = [
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. \
         Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec,\
         ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, ",
-        img: "src/assets/ragout.png",
+        img: `${ragoutImg}`,
         price: 14.18,
         score: 3
     },
@@ -78,7 +89,7 @@ const products: Array<Product> = [
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. \
         Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec,\
         ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, ",
-        img: "src/assets/triple.png",
+        img: `${tripleImg}`,
         price: 27.35,
         score: 4
     },
@@ -87,7 +98,7 @@ const products: Array<Product> = [
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. \
         Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec,\
         ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, ",
-        img: "src/assets/donuts.png",
+        img: `${donutsImg}`,
         price: 17.15,
         score: 6
     },
