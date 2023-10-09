@@ -1,0 +1,35 @@
+import {reactive} from 'vue';
+
+// base colors
+export const black = '#000000';
+export const blackLight = '#404040';
+export const blackThin = 'rgba(0, 0, 0, .8)';
+export const white = '#ffffff';
+export const whiteDark = '#f5f5f5';
+export const orange = '#FB8C00';
+export const orangeLight = '#ffc407';
+export const red = '#ff0119';
+export const redDark = '#b90011';
+export const grey = '#817f7d72';
+export const greyLight = '#b0bec5';
+export const blue = '#448AFF';
+export const blueLight ='#80D8FF';
+export const blueDark = '#01579B';
+export const yellow = '#ffff00';
+export const yellowDark = '#dbdb02';
+
+
+// colors
+export const colors =  reactive({
+    textBase: black,
+    textAppBar: white,
+    textHeroTitle: white,
+    textHeroLink: blue,
+    textSearchBarLabel: blueDark,
+    bgAppBar: blueDark,
+    bgHeroTitle: redDark,
+    bgGroup: orange,
+    bgCaptionCard: '',
+    bgFooter: whiteDark,
+    itemGroup: yellow,
+});
