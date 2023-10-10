@@ -6,7 +6,7 @@
     :title-size="32"
     :title-color="colors.textHeroTitle"
     :title-bg-color="colors.bgHeroTitle"
-    link-text="Connectez-vous"
+    link-text="Connectez-vous."
     :link-text-color="colors.textHeroLink"
     link-src="/"
   >
@@ -15,11 +15,12 @@
         class="mt-10 mb-5"
         label-text="search flavour"
         :label-text-color="colors.textSearchBarLabel"
-        :bg-color="colors.bgGroup"
+        :bg-color="colors.bgSearchBar"
         icon="mdi-magnify"
         :size="320"
       />
     </template>
+    <template v-slot:before-link> <p>Déjà un compte ?</p> </template>
   </HeroBanner>
   <article>
     <h1 class="title text-center text-h3 font-weight-bold mt-10">

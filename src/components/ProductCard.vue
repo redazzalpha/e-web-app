@@ -1,6 +1,11 @@
 <template>
   <figure class="product-card elevation-15">
-    <img class="product-card_img" :src="props.imgSrc" draggable="false" />
+    <VImg
+      class="product-card_img"
+      :src="props.imgSrc"
+      cover
+      draggable="false"
+    />
     <figcaption class="product-card_caption">
       <div class="d-flex">
         <span class="flex-grow-1">
@@ -63,7 +68,7 @@ const props = withDefaults(defineProps<Props>(), {
   height: 400px;
   &_img {
     border-radius: 15px 15px 0 0;
-    object-fit: cover;
+    object-fit: none !important;
     width: 100%;
     height: 200px;
   }

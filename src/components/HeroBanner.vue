@@ -15,12 +15,16 @@
       <slot name="center"></slot>
     </div>
 
-    <!-- link -->
-    <RouterLink
-      class="hero-banner_link text-decoration-none"
-      :to="props.linkSrc"
-      >{{ props.linkText }}</RouterLink
-    >
+    <div class="d-flex justify-center w-100">
+      <slot name="before-link"></slot>
+      <!-- link -->
+      <RouterLink
+        class="hero-banner_link text-decoration-none mx-2"
+        :to="props.linkSrc"
+        >{{ props.linkText }}</RouterLink
+      >
+      <slot name="after-link"></slot>
+    </div>
   </VSheet>
 </template>
 

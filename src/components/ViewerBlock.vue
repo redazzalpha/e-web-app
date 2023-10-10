@@ -9,7 +9,7 @@
       :score="product.score"
       btn-text="Découvrir"
       :btn-text-color="colors.textBase"
-      :btn-bg-color="colors.bgGroup"
+      :btn-bg-color="colors.bgProductCarBtn"
       :caption-text="product.label"
       :caption-text-color="colors.textBase"
       :caption-bg-color="colors.bgCaptionCard"

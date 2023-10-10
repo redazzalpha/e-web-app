@@ -1,6 +1,12 @@
 <template>
   <!-- app bar -->
-  <v-app-bar class="app-bar">
+  <VAppBar
+    class="app-bar"
+    scroll-behavior="fade-image inverted"
+    scroll-threshold="200"
+    image="https://wallpapers.com/images/hd/purple-gases-4k-space-sc7po1xbafepqnyb.jpg"
+    elevation="0"
+  >
     <!-- title -->
     <v-app-bar-title class="app-bar_logo">
       <RouterLink class="text-decoration-none" :to="props.linkSrc">
@@ -10,7 +16,7 @@
 
     <!-- drawer icon -->
     <VAppBarNavIcon class="app-bar_drawer-icon" @click="drawer = !drawer" />
-  </v-app-bar>
+  </VAppBar>
 
   <!-- navigation drawer -->
   <VNavigationDrawer v-model="drawer" location="bottom" temporary>

@@ -10,9 +10,7 @@ import { colors } from "@/utils/colors";
 @import "@/styles/fonts";
 
 * {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+  box-sizing: border-box !important;
 }
 body {
   overflow-x: hidden;

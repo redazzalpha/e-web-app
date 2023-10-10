@@ -46,5 +46,8 @@ const props = defineProps<Props>();
   &:deep(.v-field) {
     background-color: v-bind("props.bgColor");
   }
+  &:deep(.v-label) {
+    color: v-bind("props.labelTextColor");
+  }
 }
 </style>
