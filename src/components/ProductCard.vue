@@ -1,5 +1,9 @@
 <template>
   <figure class="product-card elevation-15">
+    <!-- curtain is used for avoid image
+        drag and drop that cause bad behaviour
+    -->
+    <div class="product-card_img-curtain"></div>
     <VImg
       class="product-card_img"
       :src="props.imgSrc"
@@ -66,11 +70,17 @@ const props = withDefaults(defineProps<Props>(), {
   border-radius: 15px;
   width: 300px;
   height: 400px;
-  &_img {
+  position: relative;
+  &_img,
+  &_img-curtain {
     border-radius: 15px 15px 0 0;
-    object-fit: none !important;
     width: 100%;
     height: 200px;
+  }
+  &_img-curtain {
+    position: absolute;
+    z-index: 2;
+    height: 205px;
   }
   &_btn {
     color: v-bind("props.btnTextColor");

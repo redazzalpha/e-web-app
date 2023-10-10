@@ -1,9 +1,7 @@
 <template>
   <VSheet
-    class="hero-banner"
+    class="hero-banner d-flex flex-column justify-center align-center"
     tag="article"
-    :class="classObject"
-    :style="styleObject"
   >
     <!-- title -->
     <div class="hero-banner_title text-center">
@@ -29,8 +27,6 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive } from "vue";
-
 // props
 interface Props {
   img: string;
@@ -54,23 +50,18 @@ const props = withDefaults(defineProps<Props>(), {
   linkSrc: "",
 });
 
-// objects
-const classObject = reactive({
-  "d-flex": true,
-  "flex-column": true,
-  "justify-center": true,
-  "align-center": true,
-});
-const styleObject = reactive({
-  height: "500px",
-  background: `url("${props.img}") no-repeat center`,
-  backgroundSize: "cover",
-  width: "100%",
-});
+/**
+ * this variable is used to rely binding between props.img and backgroud css
+ * property. the css background property's not working like it should with the props binding.
+ */
+const bgHero = `url("${props.img}") no-repeat center`;
 </script>
 
 <style lang="scss" scoped>
 .hero-banner {
+  background: v-bind(bgHero);
+  background-size: cover;
+  height: 500px;
   &_title {
     border-radius: 15px;
     padding: 15px;

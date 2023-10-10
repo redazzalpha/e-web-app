@@ -18,7 +18,6 @@ export const blueDark = '#046aba';
 export const yellow = '#ffff00';
 export const yellowDark = '#dbdb02';
 
-
 // colors
 export const colors =  reactive({
     textBase: black,

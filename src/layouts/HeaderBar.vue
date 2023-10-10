@@ -1,9 +1,9 @@
 <template>
   <Appbar
-    logo-text="EatZone (a.k.a. EZ)"
+    logo-text="EatZone (a.k.a EZ)"
+    :logo-text-color="colors.textAppBar"
     logo-font="merienda, serif, sans-serif"
     :logo-size="32"
-    :logo-color="colors.textAppBar"
     :bg-color="colors.bgAppBar"
     link-src="/"
   />

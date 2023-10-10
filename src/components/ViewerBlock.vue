@@ -36,31 +36,29 @@ interface Props {
 const props = defineProps<Props>();
 
 // handlers
-function activeMouseHandler() {
+function activeMouseHandler(): void {
   if (viewer.value) {
     viewer.value.onmouseenter = onMouseEnter;
     viewer.value.onmouseleave = onMouseLeave;
   }
 }
-function mouseHandlersReset() {
+function mouseLeave() {
   if (viewer.value) {
-    viewer.value.onmousedown = null;
-    viewer.value.onmouseup = null;
     viewer.value.onmousemove = null;
     viewer.value.style.cursor = "grab";
     viewer.value.style.transform = "scale(1)";
   }
 }
-function onMouseEnter(): void {
+async function onMouseEnter(): Promise<void> {
   if (viewer.value) {
     viewer.value.onmousedown = onMouseDown;
     viewer.value.onmouseup = onMouseUp;
   }
 }
 function onMouseLeave(): void {
-  mouseHandlersReset();
+  mouseLeave();
 }
-function onMouseDown(event: MouseEvent) {
+async function onMouseDown(event: MouseEvent): Promise<void> {
   if (viewer.value) {
     viewer.value.onmousemove = onMouseMove;
     startPos = event.screenX;
@@ -68,21 +66,21 @@ function onMouseDown(event: MouseEvent) {
     viewer.value.style.transform = "scale(1.1)";
   }
 }
-function onMouseUp() {
+async function onMouseUp(): Promise<void> {
   if (viewer.value) {
     viewer.value.onmousemove = null;
     viewer.value.style.cursor = "grab";
     viewer.value.style.transform = "scale(1)";
   }
 }
-function onMouseMove(event: MouseEvent) {
-  if (viewer.value) {
+async function onMouseMove(event: MouseEvent): Promise<void> {
+  if (viewer.value && event.screenX > 0) {
     scrollDiff = (startPos - event.screenX) / 30;
     viewer.value?.scrollTo({
       behavior: "instant",
       left: viewer.value?.scrollLeft + scrollDiff,
     });
-  }
+  } else mouseLeave();
 }
 
 // hooks
@@ -100,7 +98,7 @@ onMounted(activeMouseHandler);
   user-select: none;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  transition: transform 0.15s linear;
+  transition: transform 0.1s linear;
   &:hover {
     cursor: grab;
   }

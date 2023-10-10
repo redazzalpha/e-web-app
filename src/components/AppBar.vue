@@ -3,8 +3,8 @@
   <VAppBar
     class="app-bar"
     scroll-behavior="fade-image inverted"
-    scroll-threshold="200"
-    image="https://wallpapers.com/images/hd/purple-gases-4k-space-sc7po1xbafepqnyb.jpg"
+    :scroll-threshold="threshold"
+    :image="AppBarImg"
     elevation="0"
   >
     <!-- title -->
@@ -25,26 +25,29 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { RouterLink } from "vue-router";
 import DrawerMenu from "@/components/DrawerMenu.vue";
+import { colors, white, black } from "@/utils/colors";
+import AppBarImg from "@/assets/app-bar.png";
 
 // variables
 const drawer = ref<boolean>(false);
+const threshold = 80;
 
 // props
 interface Props {
   logoText: string;
+  logoTextColor?: string;
   logoFont?: string;
   logoSize?: number;
-  logoColor?: string;
   bgColor?: string;
   linkSrc?: string;
 }
 const props = withDefaults(defineProps<Props>(), {
+  logoTextColor: "black",
   logoFont: "serif, sans-serif",
   logoSize: 24,
-  logoColor: "black",
   bgColor: "white",
   linkSrc: "",
 });
@@ -68,9 +71,25 @@ const drawerMenuItems = [
     value: "buzz",
   },
 ];
+
+// handlers
+async function onScroll(): Promise<void> {
+  if (window.scrollY >= threshold) {
+    colors.textAppBar = white;
+  } else colors.textAppBar = black;
+}
+
+// hooks
+onMounted(() => {
+  window.onscroll = onScroll;
+});
 </script>
 
 <style lang="scss" scoped>
+@mixin app-bar-transion {
+  color: v-bind("props.logoTextColor");
+  transition: color 2s linear;
+}
 .app-bar {
   background-color: v-bind("props.bgColor") !important;
   &_logo {
@@ -78,11 +97,11 @@ const drawerMenuItems = [
     font-size: v-bind("`${props.logoSize}px`");
     font-style: "italic";
     & a {
-      color: v-bind("props.logoColor");
+      @include app-bar-transion;
     }
   }
   &_drawer-icon {
-    color: v-bind("props.logoColor");
+    @include app-bar-transion;
   }
 }
 </style>

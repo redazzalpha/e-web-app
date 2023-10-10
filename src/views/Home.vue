@@ -6,7 +6,7 @@
     :title-size="32"
     :title-color="colors.textHeroTitle"
     :title-bg-color="colors.bgHeroTitle"
-    link-text="Connectez-vous."
+    link-text="Connectez-vous"
     :link-text-color="colors.textHeroLink"
     link-src="/"
   >
