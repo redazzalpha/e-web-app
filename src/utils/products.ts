@@ -19,7 +19,8 @@ const products: Array<Product> = [
         ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, ",
         img: `${pepperoniImg}`,
         price: 19.99,
-        score: 5
+        score: 5,
+        isNew: false
     },
     {
         label: "Spaghetti Bolognaise",
@@ -28,7 +29,8 @@ const products: Array<Product> = [
         ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, ",
         img: `${spaghettiImg}`,
         price: 14.24,
-        score: 3
+        score: 3,
+        isNew: true
     },
     {
         label: "Bigger Mac",
@@ -37,7 +39,8 @@ const products: Array<Product> = [
         ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, ",
         img: `${BiggerImg}`,
         price: 18.54,
-        score: 6
+        score: 6,
+        isNew: true
     },
     {
         label: "Pizza savoyarde",
@@ -46,7 +49,8 @@ const products: Array<Product> = [
         ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, ",
         img: `${savoyardeImg}`,
         price: 17.89,
-        score: 4
+        score: 4,
+        isNew: false
     },
     {
         label: "Rigatoni au basilic",
@@ -55,7 +59,8 @@ const products: Array<Product> = [
         ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, ",
         img: `${rigatoniImg}`,
         price: 12.05,
-        score: 3
+        score: 3,
+        isNew: false
     },
     {
         label: "Salade Sauveur",
@@ -64,7 +69,8 @@ const products: Array<Product> = [
         ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, ",
         img: `${saladeImg}`,
         price: 10.79,
-        score: 2
+        score: 2,
+        isNew: false
     },
     {
         label: "Dessert collection",
@@ -73,16 +79,18 @@ const products: Array<Product> = [
         ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, ",
         img: `${dessertImg}`,
         price: 28.34,
-        score: 6
+        score: 6,
+        isNew: false
     },
     {
-        label: "Ragout d'agneau mijoté",
+        label: "Ragout à la réunionaise",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. \
         Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec,\
         ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, ",
         img: `${ragoutImg}`,
-        price: 14.18,
-        score: 3
+        price: 3.18,
+        score: 1,
+        isNew: true
     },
     {
         label: "Triple mix collection",
@@ -91,7 +99,8 @@ const products: Array<Product> = [
         ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, ",
         img: `${tripleImg}`,
         price: 27.35,
-        score: 4
+        score: 4,
+        isNew: false
     },
     {
         label: "Nuages de Donuts",
@@ -100,7 +109,8 @@ const products: Array<Product> = [
         ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, ",
         img: `${donutsImg}`,
         price: 17.15,
-        score: 6
+        score: 6,
+        isNew: true
     },
 
 ];

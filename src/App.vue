@@ -3,9 +3,11 @@
     <RouterView />
   </VApp>
 </template>
+
 <script lang="ts" setup>
 import { colors } from "@/utils/colors";
 </script>
+
 <style lang="scss">
 @import "@/styles/fonts";
 
@@ -14,8 +16,5 @@ import { colors } from "@/utils/colors";
 }
 body {
   overflow-x: hidden;
-}
-p {
-  color: v-bind("colors.textBase");
 }
 </style>

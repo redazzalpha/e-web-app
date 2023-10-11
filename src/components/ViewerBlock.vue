@@ -3,17 +3,21 @@
     <ProductCard
       v-for="product in props.products"
       :key="product.label"
+      :image-source="product.img"
       :description="product.description"
-      :img-src="product.img"
       :price="`${product.price}&euro;`"
       :score="product.score"
-      btn-text="Découvrir"
-      :btn-text-color="colors.textBase"
-      :btn-bg-color="colors.bgProductCarBtn"
-      :caption-text="product.label"
-      :caption-text-color="colors.textBase"
-      :caption-bg-color="colors.bgCaptionCard"
-      :stars-color="colors.itemGroup"
+      :is-new="product.isNew"
+      :label-button-tag="labelButtonTag"
+      :label-button-order="labelButtonOrder"
+      :text-caption="product.label"
+      :color-label-button-tag="colors.labelButtonTag"
+      :color-label-button-order="colors.labelButtonOrder"
+      :color-background-button-tag="colors.buttonTag"
+      :color-background-button-order="colors.buttonOrder"
+      :color-background-caption="colors.caption"
+      :color-text-caption="colors.textBase"
+      :color-score="colors.score"
     />
   </div>
 </template>
@@ -24,18 +28,25 @@ import ProductCard from "@/components/ProductCard.vue";
 import { colors } from "@/utils/colors";
 import { Product } from "../utils/types";
 
-// variables
-const viewer = ref<HTMLElement | undefined>(undefined);
+// #region varibles
+const labelButtonOrder = "Commander";
+const labelButtonTag = "Nouveau";
 let scrollDiff = 0;
 let startPos = 0;
+//#endregion
 
-// props
+//#region refs
+const viewer = ref<HTMLElement | undefined>(undefined);
+//#endregion
+
+//#region props
 interface Props {
   products: Array<Product>;
 }
 const props = defineProps<Props>();
+//#endregion
 
-// handlers
+//#region event handler
 function activeMouseHandler(): void {
   if (viewer.value) {
     viewer.value.onmouseenter = onMouseEnter;
@@ -82,9 +93,11 @@ async function onMouseMove(event: MouseEvent): Promise<void> {
     });
   } else mouseLeave();
 }
+//#endregion
 
-// hooks
+//#region hooks
 onMounted(activeMouseHandler);
+//#endregion
 </script>
 
 <style lang="scss" scoped>

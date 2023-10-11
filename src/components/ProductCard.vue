@@ -6,14 +6,14 @@
     <div class="product-card_img-curtain"></div>
     <VImg
       class="product-card_img"
-      :src="props.imgSrc"
+      :src="props.imageSource"
       cover
       draggable="false"
     />
     <figcaption class="product-card_caption">
       <div class="d-flex">
         <span class="flex-grow-1">
-          {{ props.captionText }}
+          {{ props.textCaption }}
         </span>
         <strong>{{ props.price }}</strong>
       </div>
@@ -27,39 +27,65 @@
         {{ props.description }}
       </p>
     </figcaption>
-    <VBtn class="product-card_btn" size="large" elevation="0" rounded="xl">
-      {{ props.btnText }}
+    <!-- tag button -->
+    <VBtn
+      class="product-card_tag-btn"
+      v-if="props.labelButtonTag && props.isNew"
+      elevation="10"
+      rounded="xs"
+      variant="text"
+    >
+      {{ props.labelButtonTag }}
+    </VBtn>
+    <!-- order button -->
+    <VBtn
+      class="product-card_order-btn"
+      v-if="props.labelButtonOrder"
+      size="large"
+      elevation="0"
+      rounded="xl"
+    >
+      {{ props.labelButtonOrder }}
     </VBtn>
   </figure>
 </template>
 
 <script lang="ts" setup>
-// props
+//#region props
 interface Props {
-  imgSrc: string;
+  imageSource: string;
   description?: string;
+  labelButtonTag?: string;
+  labelButtonOrder?: string;
+  textCaption?: string;
   price?: string;
   score?: number;
-  btnText?: string;
-  btnTextColor?: string;
-  btnBgColor?: string;
-  captionText?: string;
-  captionTextColor?: string;
-  captionBgColor?: string;
-  starsColor?: string;
+  colorLabelButtonOrder?: string;
+  colorLabelButtonTag?: string;
+  colorBackgroundButtonOrder?: string;
+  colorBackgroundButtonTag?: string;
+  colorTextCaption?: string;
+  colorBackgroundCaption?: string;
+  colorScore?: string;
+  isNew?: boolean;
 }
 const props = withDefaults(defineProps<Props>(), {
+  labelButtonTag: "",
+  labelButtonOrder: "",
+  textCaption: "",
   description: "",
   price: "",
   score: 0,
-  btnText: "",
-  btnTextColor: "black",
-  btnBgColor: "white",
-  captionText: "",
-  captionTextColor: "black",
-  captionBgColor: "white",
-  starsColor: "yellow",
+  colorLabelButtonTag: "black",
+  colorLabelButtonOrder: "black",
+  colorTextCaption: "black",
+  colorBackgroundButtonTag: "transparent",
+  colorBackgroundButtonOrder: "transparent",
+  colorBackgroundCaption: "transparent",
+  colorScore: "transparent",
+  isNew: false,
 });
+//#endregion
 </script>
 
 <style lang="scss" scoped>
@@ -68,7 +94,7 @@ const props = withDefaults(defineProps<Props>(), {
   flex-direction: column;
   margin: 0 15px;
   border-radius: 15px;
-  width: 300px;
+  min-width: 300px;
   height: 400px;
   position: relative;
   &_img,
@@ -79,22 +105,33 @@ const props = withDefaults(defineProps<Props>(), {
   }
   &_img-curtain {
     position: absolute;
-    z-index: 2;
+    z-index: 1;
     height: 205px;
   }
-  &_btn {
-    color: v-bind("props.btnTextColor");
-    background-color: v-bind("props.btnBgColor");
+  &_tag-btn {
+    position: absolute;
+    top: -10px;
+    right: -15px;
+    color: v-bind("props.colorLabelButtonTag");
+    background-color: v-bind("props.colorBackgroundButtonTag");
+    z-index: 2;
+    font-weight: bold;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 20px;
+  }
+  &_order-btn {
+    color: v-bind("props.colorLabelButtonOrder");
+    background-color: v-bind("props.colorBackgroundButtonOrder");
     margin: 15px;
   }
   &_caption {
     display: flex;
     flex-direction: column;
-    color: v-bind("props.captionTextColor");
-    background-color: v-bind("props.captionBgColor");
+    color: v-bind("props.colorTextCaption");
+    background-color: v-bind("props.colorBackgroundCaption");
     padding: 15px;
     &_stars {
-      color: v-bind("props.starsColor");
+      color: v-bind("props.colorScore");
     }
     &_desc {
       -o-text-overflow: ellipsis;

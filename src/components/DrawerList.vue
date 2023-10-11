@@ -3,9 +3,10 @@
 </template>
 
 <script lang="ts" setup>
-// props
+//#region props
 interface Props {
   items: Array<{ title: string; value: string }>;
 }
 const props = defineProps<Props>();
+//#endregion
 </script>

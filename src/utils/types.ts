@@ -4,4 +4,5 @@ export interface Product {
     img: string;
     price: number;
     score: number;
+    isNew: boolean;
 }

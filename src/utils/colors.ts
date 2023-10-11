@@ -1,11 +1,12 @@
 import {reactive} from 'vue';
 
 // base colors
+export const transparent = 'rgba(0, 0, 0, 0)';
+export const white = '#ffffff';
+export const whiteDark = '#f5f5f5';
 export const black = '#000000';
 export const blackLight = '#404040';
 export const blackThin = 'rgba(0, 0, 0, .8)';
-export const white = '#ffffff';
-export const whiteDark = '#f5f5f5';
 export const orange = '#ffb300';
 export const orangeLight = '#ffc407';
 export const red = '#ff0119';
@@ -21,15 +22,20 @@ export const yellowDark = '#dbdb02';
 // colors
 export const colors =  reactive({
     textBase: black,
+    backgroundBase: white,
     textAppBar: black,
-    textHeroTitle: black,
-    textHeroLink: blue,
-    textSearchBarLabel: black,
-    bgAppBar: '',
-    bgHeroTitle: '',
-    bgSearchBar: white,
-    bgProductCarBtn: orange,
-    bgCaptionCard: '',
-    bgFooter: whiteDark,
-    itemGroup: orange,
+    textHero: black,
+    textLinkHero: blue,
+    labelButtonTag: white,
+    labelButtonOrder: black,
+    labelSearchBar: black,
+    backgroundTitleHero: transparent,
+    appBar: transparent,
+    searchBar: white,
+    footer: whiteDark,
+    buttonTag: red,
+    buttonOrder: orange,
+    buttonLink: yellow,
+    caption: transparent,
+    score: orange,
 });

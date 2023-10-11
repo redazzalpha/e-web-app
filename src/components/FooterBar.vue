@@ -8,7 +8,7 @@
         class="mx-4"
         variant="plain"
         size="x-large"
-        :color="props.btnColor"
+        :color="props.colorButton"
       ></VBtn>
     </div>
 
@@ -32,21 +32,24 @@
 </template>
 
 <script lang="ts" setup>
-// props
+//#region props
 interface Props {
-  bgColor?: string;
-  btnColor?: string;
+  colorButton?: string;
+  colorBackground?: string;
 }
 const props = withDefaults(defineProps<Props>(), {
-  bgColor: "white",
-  btnColor: "black",
+  colorButton: "black",
+  colorBackground: "white",
 });
-// arrays
+//#endregion
+
+//#region arrays
 const icons = ["mdi-facebook", "mdi-twitter", "mdi-linkedin", "mdi-instagram"];
+//#endregion
 </script>
 
 <style lang="scss" scoped>
 .footer-bar {
-  background-color: v-bind("props.bgColor");
+  background-color: v-bind("props.colorBackground");
 }
 </style>

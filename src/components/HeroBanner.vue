@@ -5,7 +5,7 @@
   >
     <!-- title -->
     <div class="hero-banner_title text-center">
-      {{ props.titleText }}
+      {{ textTitle }}
     </div>
 
     <!-- center -->
@@ -18,8 +18,8 @@
       <!-- link -->
       <RouterLink
         class="hero-banner_link text-decoration-none mx-2"
-        :to="props.linkSrc"
-        >{{ props.linkText }}</RouterLink
+        :to="props.sourceLink"
+        >{{ props.textLink }}</RouterLink
       >
       <slot name="after-link"></slot>
     </div>
@@ -27,34 +27,37 @@
 </template>
 
 <script lang="ts" setup>
-// props
+//#region props
 interface Props {
-  img: string;
-  titleText?: string;
-  titleFont?: string;
-  titleSize?: number;
-  titleColor?: string;
-  titleBgColor?: string;
-  linkText?: string;
-  linkTextColor?: string;
-  linkSrc?: string;
+  imageBackground: string;
+  textTitle?: string;
+  textLink?: string;
+  colorTitle?: string;
+  colorBackgroundTitle?: string;
+  colorLink?: string;
+  fontTitle?: string;
+  sizeTilte?: number;
+  sourceLink?: string;
 }
 const props = withDefaults(defineProps<Props>(), {
-  titleText: "",
-  titleFont: "serif, sans-serif",
-  titleSize: 32,
-  titleBgColor: "white",
-  titleBg: "black",
-  linkText: "",
-  linkTextColor: "",
-  linkSrc: "",
+  textTitle: "",
+  textLink: "",
+  colorTitle: "white",
+  colorBackgroundTitle: "black",
+  colorLink: "",
+  fontTitle: "serif, sans-serif",
+  sizeTilte: 32,
+  sourceLink: "",
 });
+//#endregion
 
+//#region special variables
 /**
- * this variable is used to rely binding between props.img and backgroud css
+ * this variable is used to rely binding between props.imageBackground and backgroud css
  * property. the css background property's not working like it should with the props binding.
  */
-const bgHero = `url("${props.img}") no-repeat center`;
+const bgHero = `url("${props.imageBackground}") no-repeat center`;
+//#endregion
 </script>
 
 <style lang="scss" scoped>
@@ -67,13 +70,13 @@ const bgHero = `url("${props.img}") no-repeat center`;
     padding: 15px;
     margin: 15px;
     max-width: 400px;
-    font-family: v-bind("props.titleFont");
-    font-size: v-bind("`${props.titleSize}px`");
-    color: v-bind("props.titleColor");
-    background-color: v-bind("props.titleBgColor");
+    font-family: v-bind("props.fontTitle");
+    font-size: v-bind("`${props.sizeTilte}px`");
+    color: v-bind("props.colorTitle");
+    background-color: v-bind("props.colorBackgroundTitle");
   }
   &_link {
-    color: v-bind("props.linkTextColor");
+    color: v-bind("props.colorLink");
   }
 }
 </style>
