@@ -17,7 +17,7 @@
     </VImg>
     <figcaption class="product-card_caption">
       <div class="d-flex">
-        <p class="flex-grow-1">
+        <p class="product-card_caption_label flex-grow-1 text-no-wrap">
           {{ props.textCaption }}
         </p>
         <strong>{{ props.price }}</strong>
@@ -94,6 +94,15 @@ const props = withDefaults(defineProps<Props>(), {
 </script>
 
 <style lang="scss" scoped>
+//#region mixins
+@mixin ellipsis {
+  -o-text-overflow: ellipsis;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+//#endregion
+
 .product-card {
   display: flex;
   flex-direction: column;
@@ -135,15 +144,15 @@ const props = withDefaults(defineProps<Props>(), {
     color: v-bind("props.colorTextCaption");
     background-color: v-bind("props.colorBackgroundCaption");
     padding: 15px;
+    &_label {
+      @include ellipsis();
+    }
     &_stars {
       color: v-bind("props.colorScore");
     }
     &_desc {
-      -o-text-overflow: ellipsis;
-      -ms-text-overflow: ellipsis;
-      text-overflow: ellipsis;
       max-height: 35px;
-      overflow: hidden;
+      @include ellipsis();
     }
   }
 }
