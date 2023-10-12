@@ -50,6 +50,7 @@ const icons = ["mdi-facebook", "mdi-twitter", "mdi-linkedin", "mdi-instagram"];
 
 <style lang="scss" scoped>
 .footer-bar {
+  font-size: 24px;
   background-color: v-bind("props.colorBackground");
 }
 </style>

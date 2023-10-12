@@ -2,14 +2,16 @@ import { Product } from "./types";
 
 import pepperoniImg from '@/assets/pepperoni.png';
 import spaghettiImg from '@/assets/spaghetti.png';
+import BroachImg from '@/assets/broach.png';
 import BiggerImg from '@/assets/bigger.png';
-import savoyardeImg from '@/assets/savoyarde.png';
-import rigatoniImg from '@/assets/rigatoni.png';
-import saladeImg from '@/assets/salade.png';
-import dessertImg from '@/assets/dessert.png';
-import ragoutImg from '@/assets/ragout.png';
-import tripleImg from '@/assets/triple.png';
-import donutsImg from '@/assets/donuts.png';
+import SavoyardeImg from '@/assets/savoyarde.png';
+import PancakesImg from '@/assets/pancakes.png';
+import RigatoniImg from '@/assets/rigatoni.png';
+import SaladeImg from '@/assets/salade.png';
+import DessertImg from '@/assets/dessert.png';
+import RagoutImg from '@/assets/ragout.png';
+import TripleImg from '@/assets/triple.png';
+import DonutsImg from '@/assets/donuts.png';
 
 const products: Array<Product> = [
     {
@@ -33,6 +35,16 @@ const products: Array<Product> = [
         isNew: true
     },
     {
+        label: "Brochettes de poulet mariné",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. \
+        Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec,\
+        ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, ",
+        img: `${BroachImg}`,
+        price: 12.77,
+        score: 4,
+        isNew: false
+    },
+    {
         label: "Bigger Mac",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. \
         Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec,\
@@ -47,27 +59,37 @@ const products: Array<Product> = [
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. \
         Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec,\
         ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, ",
-        img: `${savoyardeImg}`,
+        img: `${SavoyardeImg}`,
         price: 17.89,
         score: 4,
         isNew: false
+    },
+    {
+        label: "Pancakes aux fruits rouges",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. \
+        Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec,\
+        ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, ",
+        img: `${PancakesImg}`,
+        price: 12.24,
+        score: 3,
+        isNew: true
     },
     {
         label: "Rigatoni au basilic",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. \
         Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec,\
         ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, ",
-        img: `${rigatoniImg}`,
+        img: `${RigatoniImg}`,
         price: 12.05,
         score: 3,
-        isNew: false
+        isNew: true
     },
     {
         label: "Salade Sauveur",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. \
         Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec,\
         ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, ",
-        img: `${saladeImg}`,
+        img: `${SaladeImg}`,
         price: 10.79,
         score: 2,
         isNew: false
@@ -77,7 +99,7 @@ const products: Array<Product> = [
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. \
         Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec,\
         ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, ",
-        img: `${dessertImg}`,
+        img: `${DessertImg}`,
         price: 28.34,
         score: 6,
         isNew: false
@@ -87,7 +109,7 @@ const products: Array<Product> = [
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. \
         Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec,\
         ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, ",
-        img: `${ragoutImg}`,
+        img: `${RagoutImg}`,
         price: 3.18,
         score: 1,
         isNew: true
@@ -97,7 +119,7 @@ const products: Array<Product> = [
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. \
         Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec,\
         ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, ",
-        img: `${tripleImg}`,
+        img: `${TripleImg}`,
         price: 27.35,
         score: 4,
         isNew: false
@@ -107,7 +129,7 @@ const products: Array<Product> = [
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. \
         Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec,\
         ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, ",
-        img: `${donutsImg}`,
+        img: `${DonutsImg}`,
         price: 17.15,
         score: 6,
         isNew: true

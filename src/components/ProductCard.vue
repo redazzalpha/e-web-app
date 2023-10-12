@@ -4,17 +4,22 @@
         drag and drop that cause bad behaviour
     -->
     <div class="product-card_img-curtain"></div>
-    <VImg
-      class="product-card_img"
-      :src="props.imageSource"
-      cover
-      draggable="false"
-    />
+    <VImg class="product-card_img" :src="props.imageSource" cover>
+      <!-- loader image -->
+      <template v-slot:placeholder>
+        <div class="d-flex align-center justify-center fill-height">
+          <v-progress-circular
+            color="grey-lighten-4"
+            indeterminate
+          ></v-progress-circular>
+        </div>
+      </template>
+    </VImg>
     <figcaption class="product-card_caption">
       <div class="d-flex">
-        <span class="flex-grow-1">
+        <p class="flex-grow-1">
           {{ props.textCaption }}
-        </span>
+        </p>
         <strong>{{ props.price }}</strong>
       </div>
       <div class="product-card_caption_stars">
@@ -115,8 +120,8 @@ const props = withDefaults(defineProps<Props>(), {
     color: v-bind("props.colorLabelButtonTag");
     background-color: v-bind("props.colorBackgroundButtonTag");
     z-index: 2;
-    font-weight: bold;
-    font-family: Georgia, "Times New Roman", Times, serif;
+    font-weight: 900;
+    font-family: "Kaushan Script", cursive;
     font-size: 20px;
   }
   &_order-btn {

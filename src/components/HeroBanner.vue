@@ -3,8 +3,29 @@
     class="hero-banner d-flex flex-column justify-center align-center"
     tag="article"
   >
+    <VImg class="hero-banner_background" :src="imageBackground" cover>
+      <!-- loader image -->
+      <template v-slot:placeholder>
+        <div class="d-flex align-center justify-center fill-height">
+          <v-progress-circular
+            color="grey-lighten-4"
+            indeterminate
+          ></v-progress-circular>
+        </div>
+      </template>
+      <!-- this part of code has been muted cause is not in use for now -->
+      <!-- image sources -->
+      <!-- <template v-slot:sources>
+        <source :srcset="HeroImgSmall" media="(max-width:425px)" />
+      </template> -->
+    </VImg>
+
     <!-- title -->
-    <div class="hero-banner_title text-center">
+    <div
+      class="hero-banner_title text-center"
+      v-if="!hideTitleOnXs"
+      style="position: absolute; left: 63px; top: 140px"
+    >
       {{ textTitle }}
     </div>
 
@@ -13,7 +34,7 @@
       <slot name="center"></slot>
     </div>
 
-    <div class="d-flex justify-center w-100">
+    <div class="d-flex justify-center w-100" style="z-index: 1">
       <slot name="before-link"></slot>
       <!-- link -->
       <RouterLink
@@ -27,6 +48,7 @@
 </template>
 
 <script lang="ts" setup>
+// import HeroImgSmall from "@/assets/food.png";
 //#region props
 interface Props {
   imageBackground: string;
@@ -36,8 +58,9 @@ interface Props {
   colorBackgroundTitle?: string;
   colorLink?: string;
   fontTitle?: string;
-  sizeTilte?: number;
+  sizeTitle?: number;
   sourceLink?: string;
+  hideTitleOnXs?: boolean;
 }
 const props = withDefaults(defineProps<Props>(), {
   textTitle: "",
@@ -46,8 +69,9 @@ const props = withDefaults(defineProps<Props>(), {
   colorBackgroundTitle: "black",
   colorLink: "",
   fontTitle: "serif, sans-serif",
-  sizeTilte: 32,
+  sizeTitle: 32,
   sourceLink: "",
+  hideTitleOnXs: false,
 });
 //#endregion
 
@@ -62,18 +86,25 @@ const bgHero = `url("${props.imageBackground}") no-repeat center`;
 
 <style lang="scss" scoped>
 .hero-banner {
-  background: v-bind(bgHero);
-  background-size: cover;
   height: 500px;
+  position: relative;
+  &_background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: v-bind(bgHero);
+    background-size: cover;
+    width: 100%;
+    height: 500px;
+  }
   &_title {
     border-radius: 15px;
-    padding: 15px;
-    margin: 15px;
-    max-width: 400px;
+    max-width: 600px;
     font-family: v-bind("props.fontTitle");
-    font-size: v-bind("`${props.sizeTilte}px`");
+    font-size: v-bind("`${props.sizeTitle}px`");
     color: v-bind("props.colorTitle");
     background-color: v-bind("props.colorBackgroundTitle");
+    z-index: 1;
   }
   &_link {
     color: v-bind("props.colorLink");

@@ -4,9 +4,7 @@
   </VApp>
 </template>
 
-<script lang="ts" setup>
-import { colors } from "@/utils/colors";
-</script>
+<script lang="ts" setup></script>
 
 <style lang="scss">
 @import "@/styles/fonts";
@@ -16,5 +14,9 @@ import { colors } from "@/utils/colors";
 }
 body {
   overflow-x: hidden;
+}
+p {
+  font-family: SF Pro Display, SF Pro Icons, AOS Icons, Helvetica Neue,
+    Helvetica, Arial, sans-serif;
 }
 </style>
