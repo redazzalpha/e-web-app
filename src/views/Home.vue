@@ -39,18 +39,19 @@
     <ViewerBlock :products="products" />
 
     <v-carousel
-      cycle
+      class="carousel rounded"
       hide-delimiter-background
       hide-delimiters
       :show-arrows="false"
       height="500"
-      class="px-sm-15"
+      cycle
     >
       <v-carousel-item
+        class="carousel_item"
         v-for="slideshow in slideshows"
         :key="slideshow"
         :src="slideshow"
-        :cover="true"
+        cover
       >
         <!-- loader image -->
         <template v-slot:placeholder>
@@ -76,8 +77,6 @@ import { colors } from "@/utils/colors";
 import { slideshows } from "@/utils/slideshows";
 import vuetify from "@/plugins/vuetify";
 
-console.log(vuetify.display.mobile.value);
-
 //#region variables
 const titleHero = "Découvrez nos plats et recettes";
 const titleArticle = "Les plus populaires";
@@ -96,10 +95,19 @@ const iconSearchBar = "mdi-magnify";
 
 .title-xs {
   font-family: v-bind("fontHero");
-  font-size: v-bind("`${fontSizeHero - 8}px`");
+  font-size: v-bind("`${fontSizeHero - 22}px`");
 }
 .title {
   font-family: $font-family-logo !important;
   font-size: 38px;
+}
+.carousel {
+  width: 70%;
+  width: v-bind("`${$vuetify.display.mobile? 100 : 70}%`");
+  margin: auto;
+  &_item {
+    border: solid blue 3px;
+    border-radius: 15px !important;
+  }
 }
 </style>

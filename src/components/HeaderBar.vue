@@ -76,7 +76,7 @@ onMounted(() => {
 //#region mixins
 @mixin app-bar-transion {
   color: v-bind("props.colorLogo");
-  transition: color 2s linear;
+  transition: color 1.5s linear;
 }
 //#endregion
 
