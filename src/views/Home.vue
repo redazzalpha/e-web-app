@@ -10,6 +10,10 @@
     :color-link="colors.textLinkHero"
     :source-link="sourceHeroLink"
     :hide-title-on-xs="$vuetify.display.mobile"
+    height="500"
+    position="absolute"
+    :top="140"
+    :left="63"
   >
     <!-- search bar -->
     <template v-slot:center>
@@ -27,22 +31,32 @@
     <template v-slot:before-link> <p>Déjà un compte ?</p> </template>
   </HeroBanner>
 
-  <!-- title xs-->
-  <div class="title-xs text-center mt-10" v-if="$vuetify.display.mobile">
+  <!-- main title xs-->
+  <div
+    class="main-title-xs text-h4 text-center mt-10"
+    v-if="$vuetify.display.mobile"
+  >
     {{ titleHero }}
   </div>
 
   <article>
-    <h1 class="title text-center text-h3 font-weight-bold mt-10">
+    <!-- article title -->
+    <h1
+      class="article_title text-center text-h5 text-lg-h4 font-weight-bold mt-10"
+    >
       {{ titleArticle }}
     </h1>
+
+    <!-- viewer block-->
     <ViewerBlock :products="products" />
 
+    <!-- slide show -->
     <v-carousel
       class="carousel rounded"
       hide-delimiter-background
       hide-delimiters
       :show-arrows="false"
+      :touch="false"
       height="500"
       cycle
     >
@@ -75,7 +89,6 @@ import HeroImg from "@/assets/food.png";
 import products from "../utils/products";
 import { colors } from "@/utils/colors";
 import { slideshows } from "@/utils/slideshows";
-import vuetify from "@/plugins/vuetify";
 
 //#region variables
 const titleHero = "Découvrez nos plats et recettes";
@@ -93,21 +106,16 @@ const iconSearchBar = "mdi-magnify";
 <style lang="scss" scoped>
 @import "@/styles/variables";
 
-.title-xs {
-  font-family: v-bind("fontHero");
-  font-size: v-bind("`${fontSizeHero - 22}px`");
+.main-title-xs {
+  font-family: v-bind("fontHero") !important;
+  /* font-size: v-bind("`${fontSizeHero - 10}px`"); */
 }
-.title {
+.article_title {
   font-family: $font-family-logo !important;
-  font-size: 38px;
 }
 .carousel {
-  width: 70%;
   width: v-bind("`${$vuetify.display.mobile? 100 : 70}%`");
   margin: auto;
-  &_item {
-    border: solid blue 3px;
-    border-radius: 15px !important;
-  }
+  transition: width 1s linear;
 }
 </style>

@@ -3,6 +3,7 @@
   <LayoutCenter />
   <LayoutBottom />
   <LayoutDrawer :drawer="drawer" @click-outside="toogleDrawer" />
+  <ScrollTopButton />
 </template>
 
 <script lang="ts" setup>
@@ -10,6 +11,7 @@ import LayoutTop from "@/layouts/LayoutTop.vue";
 import LayoutCenter from "@/layouts/LayoutCenter.vue";
 import LayoutBottom from "@/layouts/LayoutBottom.vue";
 import LayoutDrawer from "@/layouts/LayoutDrawer.vue";
+import ScrollTopButton from "@/components/ScrollTopButton.vue";
 import { ref } from "vue";
 
 //#region refs

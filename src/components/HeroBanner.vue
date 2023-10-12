@@ -21,11 +21,7 @@
     </VImg>
 
     <!-- title -->
-    <div
-      class="hero-banner_title text-center"
-      v-if="!hideTitleOnXs"
-      style="position: absolute; left: 63px; top: 140px"
-    >
+    <div class="hero-banner_title text-center" v-if="!hideTitleOnXs">
       {{ textTitle }}
     </div>
 
@@ -61,6 +57,9 @@ interface Props {
   sizeTitle?: number;
   sourceLink?: string;
   hideTitleOnXs?: boolean;
+  position?: string;
+  top?: number;
+  left?: number;
 }
 const props = withDefaults(defineProps<Props>(), {
   textTitle: "",
@@ -72,6 +71,9 @@ const props = withDefaults(defineProps<Props>(), {
   sizeTitle: 32,
   sourceLink: "",
   hideTitleOnXs: false,
+  position: "none",
+  top: 0,
+  left: 0,
 });
 //#endregion
 
@@ -86,7 +88,6 @@ const bgHero = `url("${props.imageBackground}") no-repeat center`;
 
 <style lang="scss" scoped>
 .hero-banner {
-  height: 500px;
   position: relative;
   &_background {
     position: absolute;
@@ -98,12 +99,15 @@ const bgHero = `url("${props.imageBackground}") no-repeat center`;
     height: 500px;
   }
   &_title {
-    border-radius: 15px;
-    max-width: 600px;
+    position: v-bind("props.position");
+    top: v-bind("`${props.top}px`");
+    left: v-bind("`${props.left}px`");
     font-family: v-bind("props.fontTitle");
     font-size: v-bind("`${props.sizeTitle}px`");
     color: v-bind("props.colorTitle");
     background-color: v-bind("props.colorBackgroundTitle");
+    border-radius: 15px;
+    max-width: 600px;
     z-index: 1;
   }
   &_link {

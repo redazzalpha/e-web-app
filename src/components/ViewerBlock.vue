@@ -26,7 +26,7 @@
 import { ref, onMounted } from "vue";
 import ProductCard from "@/components/ProductCard.vue";
 import { colors } from "@/utils/colors";
-import { Product } from "../utils/types";
+import { Product } from "@/utils/types";
 
 // #region varibles
 const labelButtonOrder = "Commander";
