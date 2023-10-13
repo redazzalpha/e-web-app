@@ -22,13 +22,18 @@
         </p>
         <strong>{{ props.price }}</strong>
       </div>
-      <div class="product-card_caption_stars">
-        <template v-for="count in 6" :key="count">
-          <VIcon v-if="props.score >= count">mdi-star</VIcon>
-          <VIcon v-else>mdi-star-outline</VIcon>
-        </template>
+      <div class="product-card_caption_score">
+        <VHover>
+          <template v-for="count in 6" :key="count">
+            <VBtn
+              :icon="props.score >= count ? 'mdi-star' : 'mdi-star-outline'"
+              variant="plain"
+              size="x-small"
+            />
+          </template>
+        </VHover>
       </div>
-      <p class="product-card_caption_desc text-no-wrap mt-5">
+      <p class="product-card_caption_desc text-no-wrap">
         {{ props.description }}
       </p>
     </figcaption>
@@ -147,11 +152,10 @@ const props = withDefaults(defineProps<Props>(), {
     &_label {
       @include ellipsis();
     }
-    &_stars {
+    &_score {
       color: v-bind("props.colorScore");
     }
     &_desc {
-      max-height: 35px;
       @include ellipsis();
     }
   }

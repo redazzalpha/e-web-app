@@ -47,11 +47,12 @@
 
     <!-- see all most populars button -->
     <VBtn
-      variant="text"
+      variant="plain"
       to="/"
       class="text-orange text-h6 mb-10 ml-15"
       width="320"
-      >voir touts les plus populaires >
+      >voir touts les plus populaires
+      <template v-slot:append><VIcon>mdi-chevron-right</VIcon></template>
     </VBtn>
 
     <!-- slide show -->
@@ -96,11 +97,12 @@
 
     <!-- see all most starters button -->
     <VBtn
-      variant="text"
+      variant="plain"
       to="/"
       class="text-orange text-h6 mb-10 ml-15"
       width="320"
-      >voir toutes les entrées >
+      >voir toutes les entrées
+      <template v-slot:append><VIcon>mdi-chevron-right</VIcon></template>
     </VBtn>
 
     <!-- slide show -->
@@ -145,11 +147,12 @@
 
     <!-- see all most main courses button -->
     <VBtn
-      variant="text"
+      variant="plain"
       to="/"
       class="text-orange text-h6 mb-10 ml-15"
       width="320"
-      >voir touts les plats >
+      >voir touts les plats
+      <template v-slot:append><VIcon>mdi-chevron-right</VIcon></template>
     </VBtn>
 
     <!-- slide show -->
@@ -194,11 +197,12 @@
 
     <!-- see all deserts button -->
     <VBtn
-      variant="text"
+      variant="plain"
       to="/"
       class="text-orange text-h6 mb-10 ml-15"
       width="320"
-      >voir touts les desserts >
+      >voir touts les desserts
+      <template v-slot:append><VIcon>mdi-chevron-right</VIcon></template>
     </VBtn>
 
     <!-- slide show -->

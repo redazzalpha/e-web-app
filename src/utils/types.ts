@@ -6,3 +6,9 @@ export interface Product {
     score: number;
     isNew: boolean;
 }
+export interface DrawerListItem {
+    label: string;
+    icon: string;
+    href: string;
+}
+

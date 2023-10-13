@@ -29,7 +29,7 @@ import { colors } from "@/utils/colors";
 import { Product } from "@/utils/types";
 
 // #region varibles
-const labelButtonOrder = "Commander";
+const labelButtonOrder = "Ajouter au panier";
 const labelButtonTag = "Nouveau";
 let scrollDiff = 0;
 let startPos = 0;
