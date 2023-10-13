@@ -5,7 +5,7 @@
     :style="position"
     size="x-large"
     icon="mdi-chevron-up"
-    color="red"
+    :color="props.color"
     v-scroll="onScroll"
     @click="onClick"
   >
@@ -37,6 +37,19 @@ const position = ref<Position>({
 });
 //#endregion
 
+//#region props
+interface Props {
+  icon?: string;
+  background?: string;
+  color?: string;
+}
+const props = withDefaults(defineProps<Props>(), {
+  icon: "mdi-chevron",
+  background: "",
+  color: "",
+});
+//#endregion
+
 //#region event handlers
 function onScroll() {
   if (window.scrollY >= scrollOffset) position.value.right = `${rightIn}px`;
@@ -54,7 +67,7 @@ function onClick() {
 <style lang="scss" scoped>
 .scroll-top-btn {
   position: fixed;
-  background: linear-gradient(black 40%, blue);
+  background: v-bind("props.background");
   transition: right v-bind("`${transitionTime}s`") linear;
 }
 </style>

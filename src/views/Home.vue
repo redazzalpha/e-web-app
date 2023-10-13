@@ -6,14 +6,14 @@
     :size-title="fontSizeHero"
     :color-title="colors.textHero"
     :color-background-title="colors.backgroundTitleHero"
+    :hide-title-on-xs="$vuetify.display.mobile"
+    position-title="absolute"
+    :top-title="140"
+    :left-title="63"
     :text-link="textHeroLink"
     :color-link="colors.textLinkHero"
     :source-link="sourceHeroLink"
-    :hide-title-on-xs="$vuetify.display.mobile"
     height="500"
-    position="absolute"
-    :top="140"
-    :left="63"
   >
     <!-- search bar -->
     <template v-slot:center>

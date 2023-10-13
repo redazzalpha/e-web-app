@@ -1,6 +1,7 @@
 <template>
   <VSheet
     class="hero-banner d-flex flex-column justify-center align-center"
+    :class="$attrs.class"
     tag="article"
   >
     <VImg class="hero-banner_background" :src="imageBackground" cover>
@@ -57,9 +58,9 @@ interface Props {
   sizeTitle?: number;
   sourceLink?: string;
   hideTitleOnXs?: boolean;
-  position?: string;
-  top?: number;
-  left?: number;
+  positionTitle?: string;
+  topTitle?: number;
+  leftTitle?: number;
 }
 const props = withDefaults(defineProps<Props>(), {
   textTitle: "",
@@ -71,9 +72,9 @@ const props = withDefaults(defineProps<Props>(), {
   sizeTitle: 32,
   sourceLink: "",
   hideTitleOnXs: false,
-  position: "none",
-  top: 0,
-  left: 0,
+  positionTitle: "none",
+  topTitle: 0,
+  leftTitle: 0,
 });
 //#endregion
 
@@ -96,12 +97,11 @@ const bgHero = `url("${props.imageBackground}") no-repeat center`;
     background: v-bind(bgHero);
     background-size: cover;
     width: 100%;
-    height: 500px;
   }
   &_title {
-    position: v-bind("props.position");
-    top: v-bind("`${props.top}px`");
-    left: v-bind("`${props.left}px`");
+    position: v-bind("props.positionTitle");
+    top: v-bind("`${props.topTitle}px`");
+    left: v-bind("`${props.leftTitle}px`");
     font-family: v-bind("props.fontTitle");
     font-size: v-bind("`${props.sizeTitle}px`");
     color: v-bind("props.colorTitle");
