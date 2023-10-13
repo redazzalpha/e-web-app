@@ -15,7 +15,7 @@ export const grey = '#817f7d72';
 export const greyLight = '#b0bec5';
 export const blue = '#448AFF';
 export const blueLight ='#80D8FF';
-export const blueDark = '#046aba';
+export const blueDark = '#0c87e8';
 export const yellow = '#ffff00';
 export const yellowDark = '#dbdb02';
 

@@ -5,7 +5,7 @@
   <LayoutDrawer :drawer="drawer" @click-outside="toogleDrawer" />
   <ScrollTopButton
     color="red"
-    background="radial-gradient(black, #046aba 85% )"
+    background="radial-gradient(black, #0c87e8 85% )"
   />
 </template>
 
