@@ -3,7 +3,10 @@
   <LayoutCenter />
   <LayoutBottom />
   <LayoutDrawer :drawer="drawer" @click-outside="toogleDrawer" />
-  <ScrollTopButton color="red" background="radial-gradient(black, blue 85% )" />
+  <ScrollTopButton
+    color="red"
+    background="radial-gradient(black, #046aba 85% )"
+  />
 </template>
 
 <script lang="ts" setup>
