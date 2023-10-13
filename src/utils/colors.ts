@@ -2,11 +2,12 @@ import {reactive} from 'vue';
 
 // base colors
 export const transparent = 'rgba(0, 0, 0, 0)';
+export const dark = '#3a3b3c';
+export const blackThin = 'rgba(0, 0, 0, .8)';
 export const white = '#ffffff';
 export const whiteDark = '#f5f5f5';
 export const black = '#000000';
 export const blackLight = '#404040';
-export const blackThin = 'rgba(0, 0, 0, .8)';
 export const orange = '#ffb300';
 export const orangeLight = '#ffc407';
 export const red = '#ff0119';
@@ -29,9 +30,10 @@ export const colors =  reactive({
     labelButtonTag: white,
     labelButtonOrder: black,
     labelSearchBar: black,
-    backgroundTitleHero: transparent  ,
+    backgroundTitleHero: transparent,
     appBar: transparent,
     searchBar: white,
+    drawer: dark,
     footer: blackThin,
     buttonTag: red,
     buttonOrder: orange,

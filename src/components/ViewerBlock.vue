@@ -105,7 +105,7 @@ onMounted(activeMouseHandler);
   display: flex;
   overflow-x: scroll;
   width: 100%;
-  padding: 50px;
+  padding: 0 50px 50px;
   margin: auto;
   user-select: none;
   scrollbar-width: none;

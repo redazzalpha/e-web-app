@@ -36,14 +36,23 @@
     {{ titleHero }}
   </h1>
 
+  <!-- section most populars -->
   <section class="most-populars">
-    <!-- section title -->
     <h2 class="section_title text-h5 text-lg-h4">
       {{ titlePopulars }}
     </h2>
 
     <!-- viewer block-->
     <ViewerBlock :products="products" />
+
+    <!-- see all most populars button -->
+    <VBtn
+      variant="text"
+      to="/"
+      class="text-orange text-h6 mb-10 ml-15"
+      width="320"
+      >voir touts les plus populaires >
+    </VBtn>
 
     <!-- slide show -->
     <v-carousel
@@ -75,6 +84,7 @@
     </v-carousel>
   </section>
 
+  <!-- section starters -->
   <section class="starters">
     <!-- section title -->
     <h2 class="section_title text-h5 text-lg-h4">
@@ -84,6 +94,15 @@
     <!-- viewer block-->
     <ViewerBlock :products="products" />
 
+    <!-- see all most starters button -->
+    <VBtn
+      variant="text"
+      to="/"
+      class="text-orange text-h6 mb-10 ml-15"
+      width="320"
+      >voir toutes les entrées >
+    </VBtn>
+
     <!-- slide show -->
     <v-carousel
       class="carousel rounded"
@@ -114,6 +133,7 @@
     </v-carousel>
   </section>
 
+  <!-- section main courses -->
   <section class="main-courses">
     <!-- section title -->
     <h2 class="section_title text-h5 text-lg-h4">
@@ -123,6 +143,15 @@
     <!-- viewer block-->
     <ViewerBlock :products="products" />
 
+    <!-- see all most main courses button -->
+    <VBtn
+      variant="text"
+      to="/"
+      class="text-orange text-h6 mb-10 ml-15"
+      width="320"
+      >voir touts les plats >
+    </VBtn>
+
     <!-- slide show -->
     <v-carousel
       class="carousel rounded"
@@ -153,6 +182,7 @@
     </v-carousel>
   </section>
 
+  <!-- section deserts -->
   <section class="deserts">
     <!-- section title -->
     <h2 class="section_title text-h5 text-lg-h4">
@@ -161,6 +191,15 @@
 
     <!-- viewer block-->
     <ViewerBlock :products="products" />
+
+    <!-- see all deserts button -->
+    <VBtn
+      variant="text"
+      to="/"
+      class="text-orange text-h6 mb-10 ml-15"
+      width="320"
+      >voir touts les desserts >
+    </VBtn>
 
     <!-- slide show -->
     <v-carousel

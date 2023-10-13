@@ -21,6 +21,9 @@ body {
     text-align: center;
     margin: 40px;
   }
+  a {
+    text-decoration: none;
+  }
 
   p {
     font-family: SF Pro Display, SF Pro Icons, AOS Icons, Helvetica Neue,
