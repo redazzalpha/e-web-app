@@ -1,6 +1,6 @@
 <template>
   <VFooter
-    class="footer-bar d-flex flex-column text-white text-center text-h6 mt-10 pa-0 pa-sm-5"
+    class="footer-bar d-flex flex-column text-white text-center text-h6 mt-16 pa-0 pa-sm-5"
   >
     <section class="footer-bar_map">
       <h2 class="footer-bar_map_title mb-5 text-left text-h5 text-lg-h4">

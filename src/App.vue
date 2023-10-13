@@ -19,7 +19,7 @@ body {
     font-family: $font-family-logo !important;
     font-weight: bold;
     text-align: center;
-    margin: 40px;
+    margin: 40px 40px 0 40px;
   }
   a {
     text-decoration: none;
