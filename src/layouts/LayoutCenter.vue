@@ -1,6 +1,8 @@
 <template>
   <v-main class="pt-0">
-    <RouterView />
+    <article>
+      <RouterView />
+    </article>
   </v-main>
 </template>
 <script lang="ts" setup></script>

@@ -3,7 +3,7 @@
   <LayoutCenter />
   <LayoutBottom />
   <LayoutDrawer :drawer="drawer" @click-outside="toogleDrawer" />
-  <ScrollTopButton color="red" background="radial-gradient(blue, black 85% )" />
+  <ScrollTopButton color="red" background="radial-gradient(black, blue 85% )" />
 </template>
 
 <script lang="ts" setup>
@@ -24,3 +24,8 @@ function toogleDrawer() {
 }
 //#endregion
 </script>
+
+<style lang="scss">
+@import "@/styles/fonts";
+@import "@/styles/variables";
+</style>

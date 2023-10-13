@@ -104,9 +104,8 @@ onMounted(activeMouseHandler);
 .viewer-block {
   display: flex;
   overflow-x: scroll;
-  padding: 50px;
-  width: 1500px;
   width: 100%;
+  padding: 50px;
   margin: auto;
   user-select: none;
   scrollbar-width: none;

@@ -1,7 +1,7 @@
 <template>
   <VNavigationDrawer
     :model-value="props.drawer"
-    location="bottom"
+    :location="$vuetify.display.xs ? 'bottom' : 'left'"
     temporary
     @update:modelValue="emit('clickOutside')"
   >

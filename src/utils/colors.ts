@@ -32,10 +32,10 @@ export const colors =  reactive({
     backgroundTitleHero: transparent  ,
     appBar: transparent,
     searchBar: white,
-    footer: whiteDark,
+    footer: blackThin,
     buttonTag: red,
     buttonOrder: orange,
-    buttonLink: yellow,
+    buttonLink: orange,
     caption: white,
     score: orange,
 });

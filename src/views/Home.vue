@@ -1,5 +1,6 @@
 <template>
   <HeroBanner
+    tag="article"
     :image-background="HeroImg"
     :text-title="titleHero"
     :font-title="fontHero"
@@ -13,7 +14,6 @@
     :text-link="textHeroLink"
     :color-link="colors.textLinkHero"
     :source-link="sourceHeroLink"
-    height="500"
   >
     <!-- search bar -->
     <template v-slot:center>
@@ -32,20 +32,15 @@
   </HeroBanner>
 
   <!-- main title xs-->
-  <div
-    class="main-title-xs text-h4 text-center mt-10"
-    v-if="$vuetify.display.mobile"
-  >
+  <h1 class="main-title-xs text-h4" v-if="$vuetify.display.mobile">
     {{ titleHero }}
-  </div>
+  </h1>
 
-  <article>
-    <!-- article title -->
-    <h1
-      class="article_title text-center text-h5 text-lg-h4 font-weight-bold mt-10"
-    >
-      {{ titleArticle }}
-    </h1>
+  <section class="most-populars">
+    <!-- section title -->
+    <h2 class="section_title text-h5 text-lg-h4">
+      {{ titlePopulars }}
+    </h2>
 
     <!-- viewer block-->
     <ViewerBlock :products="products" />
@@ -78,7 +73,124 @@
         </template>
       </v-carousel-item>
     </v-carousel>
-  </article>
+  </section>
+
+  <section class="starters">
+    <!-- section title -->
+    <h2 class="section_title text-h5 text-lg-h4">
+      {{ titleStarters }}
+    </h2>
+
+    <!-- viewer block-->
+    <ViewerBlock :products="products" />
+
+    <!-- slide show -->
+    <v-carousel
+      class="carousel rounded"
+      hide-delimiter-background
+      hide-delimiters
+      :show-arrows="false"
+      :touch="false"
+      height="500"
+      cycle
+    >
+      <v-carousel-item
+        class="carousel_item"
+        v-for="slideshow in slideshows"
+        :key="slideshow"
+        :src="slideshow"
+        cover
+      >
+        <!-- loader image -->
+        <template v-slot:placeholder>
+          <div class="d-flex align-center justify-center fill-height">
+            <v-progress-circular
+              color="grey-lighten-4"
+              indeterminate
+            ></v-progress-circular>
+          </div>
+        </template>
+      </v-carousel-item>
+    </v-carousel>
+  </section>
+
+  <section class="main-courses">
+    <!-- section title -->
+    <h2 class="section_title text-h5 text-lg-h4">
+      {{ titleMainCourses }}
+    </h2>
+
+    <!-- viewer block-->
+    <ViewerBlock :products="products" />
+
+    <!-- slide show -->
+    <v-carousel
+      class="carousel rounded"
+      hide-delimiter-background
+      hide-delimiters
+      :show-arrows="false"
+      :touch="false"
+      height="500"
+      cycle
+    >
+      <v-carousel-item
+        class="carousel_item"
+        v-for="slideshow in slideshows"
+        :key="slideshow"
+        :src="slideshow"
+        cover
+      >
+        <!-- loader image -->
+        <template v-slot:placeholder>
+          <div class="d-flex align-center justify-center fill-height">
+            <v-progress-circular
+              color="grey-lighten-4"
+              indeterminate
+            ></v-progress-circular>
+          </div>
+        </template>
+      </v-carousel-item>
+    </v-carousel>
+  </section>
+
+  <section class="deserts">
+    <!-- section title -->
+    <h2 class="section_title text-h5 text-lg-h4">
+      {{ titleDeserts }}
+    </h2>
+
+    <!-- viewer block-->
+    <ViewerBlock :products="products" />
+
+    <!-- slide show -->
+    <v-carousel
+      class="carousel rounded"
+      hide-delimiter-background
+      hide-delimiters
+      :show-arrows="false"
+      :touch="false"
+      height="500"
+      cycle
+    >
+      <v-carousel-item
+        class="carousel_item"
+        v-for="slideshow in slideshows"
+        :key="slideshow"
+        :src="slideshow"
+        cover
+      >
+        <!-- loader image -->
+        <template v-slot:placeholder>
+          <div class="d-flex align-center justify-center fill-height">
+            <v-progress-circular
+              color="grey-lighten-4"
+              indeterminate
+            ></v-progress-circular>
+          </div>
+        </template>
+      </v-carousel-item>
+    </v-carousel>
+  </section>
 </template>
 
 <script lang="ts" setup>
@@ -92,26 +204,24 @@ import { slideshows } from "@/utils/slideshows";
 
 //#region variables
 const titleHero = "Découvrez nos plats et recettes";
-const titleArticle = "Les plus populaires";
-const fontHero = "merienda, serif, sans-serif";
+const titlePopulars = "Les plus populaires";
+const titleStarters = "Les entrées";
+const titleMainCourses = "Les plats";
+const titleDeserts = "Les desserts";
 const textHeroLink = "Connectez-vous";
-const sourceHeroLink = "/";
-const fontSizeHero = 48;
 const labelSearchBar = "rechercher un plat";
+const fontHero = "merienda, serif, sans-serif";
+const fontSizeHero = 48;
+const sourceHeroLink = "/";
 const sizeSearchBar = 320;
 const iconSearchBar = "mdi-magnify";
 //#endregion
 </script>
 
 <style lang="scss" scoped>
-@import "@/styles/variables";
-
 .main-title-xs {
   font-family: v-bind("fontHero") !important;
   /* font-size: v-bind("`${fontSizeHero - 10}px`"); */
-}
-.article_title {
-  font-family: $font-family-logo !important;
 }
 .carousel {
   width: v-bind("`${$vuetify.display.mobile? 100 : 70}%`");

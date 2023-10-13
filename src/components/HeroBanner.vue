@@ -1,8 +1,7 @@
 <template>
   <VSheet
     class="hero-banner d-flex flex-column justify-center align-center"
-    :class="$attrs.class"
-    tag="article"
+    :height="props.height"
   >
     <VImg class="hero-banner_background" :src="imageBackground" cover>
       <!-- loader image -->
@@ -61,6 +60,7 @@ interface Props {
   positionTitle?: string;
   topTitle?: number;
   leftTitle?: number;
+  height?: number;
 }
 const props = withDefaults(defineProps<Props>(), {
   textTitle: "",
@@ -75,6 +75,7 @@ const props = withDefaults(defineProps<Props>(), {
   positionTitle: "none",
   topTitle: 0,
   leftTitle: 0,
+  height: 500,
 });
 //#endregion
 
@@ -97,6 +98,7 @@ const bgHero = `url("${props.imageBackground}") no-repeat center`;
     background: v-bind(bgHero);
     background-size: cover;
     width: 100%;
+    height: 100%;
   }
   &_title {
     position: v-bind("props.positionTitle");
