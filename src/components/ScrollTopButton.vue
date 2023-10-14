@@ -23,11 +23,11 @@ interface Position {
 //#endregion
 
 //#region variables
-const scrollOffset: number = 400;
-const bottom: number = 10;
-const rightIn: number = 10;
-const rightOut: number = -300;
-const transitionTime: number = 0.3;
+const scrollOffset = 400;
+const bottom = 10;
+const rightIn = 10;
+const rightOut = -300;
+const transitionTime = 0.3;
 //#endregion
 
 //#region refs
@@ -51,11 +51,11 @@ const props = withDefaults(defineProps<Props>(), {
 //#endregion
 
 //#region event handlers
-function onScroll() {
+async function onScroll(): Promise<void> {
   if (window.scrollY >= scrollOffset) position.value.right = `${rightIn}px`;
   else position.value.right = `${rightOut}px`;
 }
-function onClick() {
+function onClick(): void {
   window.scrollTo({
     behavior: "smooth",
     top: 0,

@@ -13,11 +13,6 @@
           ></v-progress-circular>
         </div>
       </template>
-      <!-- this part of code has been muted cause is not in use for now -->
-      <!-- image sources -->
-      <!-- <template v-slot:sources>
-        <source :srcset="HeroImgSmall" media="(max-width:425px)" />
-      </template> -->
     </VImg>
 
     <!-- title -->
@@ -45,7 +40,6 @@
 </template>
 
 <script lang="ts" setup>
-// import HeroImgSmall from "@/assets/food.png";
 //#region props
 interface Props {
   imageBackground: string;

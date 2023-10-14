@@ -1,7 +1,7 @@
 <template>
   <HeroBanner
     tag="article"
-    :image-background="HeroImg"
+    :image-background="Hrefs.heroImg"
     :text-title="titleHero"
     :font-title="fontHero"
     :size-title="fontSizeHero"
@@ -47,8 +47,8 @@
 
     <!-- see all most populars button -->
     <VBtn
+      :to="Hrefs.populars"
       variant="plain"
-      to="/"
       class="text-orange text-h6 mb-10 ml-15"
       width="320"
       >voir touts les plus populaires
@@ -97,8 +97,8 @@
 
     <!-- see all most starters button -->
     <VBtn
+      :to="Hrefs.starters"
       variant="plain"
-      to="/"
       class="text-orange text-h6 mb-10 ml-15"
       width="320"
       >voir toutes les entrées
@@ -147,8 +147,8 @@
 
     <!-- see all most main courses button -->
     <VBtn
+      :to="Hrefs.mainCourses"
       variant="plain"
-      to="/"
       class="text-orange text-h6 mb-10 ml-15"
       width="320"
       >voir touts les plats
@@ -197,8 +197,8 @@
 
     <!-- see all deserts button -->
     <VBtn
+      :to="Hrefs.deserts"
       variant="plain"
-      to="/"
       class="text-orange text-h6 mb-10 ml-15"
       width="320"
       >voir touts les desserts
@@ -240,10 +240,10 @@
 import HeroBanner from "@/components/HeroBanner.vue";
 import SearchBar from "@/components/SearchBar.vue";
 import ViewerBlock from "@/components/ViewerBlock.vue";
-import HeroImg from "@/assets/food.png";
 import products from "../utils/products";
 import { colors } from "@/utils/colors";
 import { slideshows } from "@/utils/slideshows";
+import * as Hrefs from "@/utils/sources";
 
 //#region variables
 const titleHero = "Découvrez nos plats et recettes";

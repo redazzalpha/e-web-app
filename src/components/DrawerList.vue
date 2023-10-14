@@ -7,7 +7,7 @@
         :prepend-icon="item.icon"
         :to="item.href"
         rounded="xl"
-        active-class="active"
+        active-class="active-item"
       />
       <!-- <VDivider /> -->
     </template>
@@ -29,7 +29,7 @@ const props = withDefaults(defineProps<Props>(), {
 </script>
 
 <style lang="scss" scoped>
-.active {
+.active-item {
   color: v-bind("props.activeColor");
 }
 </style>

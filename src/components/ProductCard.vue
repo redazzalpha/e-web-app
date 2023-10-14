@@ -78,6 +78,8 @@ interface Props {
   colorBackgroundCaption?: string;
   colorScore?: string;
   isNew?: boolean;
+  width?: number;
+  height?: number;
 }
 const props = withDefaults(defineProps<Props>(), {
   labelButtonTag: "",
@@ -94,6 +96,8 @@ const props = withDefaults(defineProps<Props>(), {
   colorBackgroundCaption: "transparent",
   colorScore: "transparent",
   isNew: false,
+  width: 300,
+  height: 400,
 });
 //#endregion
 </script>
@@ -113,8 +117,8 @@ const props = withDefaults(defineProps<Props>(), {
   flex-direction: column;
   margin: 0 15px;
   border-radius: 15px;
-  min-width: 300px;
-  height: 400px;
+  width: v-bind("`${props.width}px`");
+  height: v-bind("`${props.height}px`");
   position: relative;
   &_img,
   &_img-curtain {

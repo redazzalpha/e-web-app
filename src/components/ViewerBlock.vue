@@ -53,7 +53,7 @@ function activeMouseHandler(): void {
     viewer.value.onmouseleave = onMouseLeave;
   }
 }
-function mouseLeave() {
+function mouseLeave(): void {
   if (viewer.value) {
     viewer.value.onmousemove = null;
     viewer.value.style.cursor = "grab";

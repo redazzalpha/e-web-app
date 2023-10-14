@@ -66,7 +66,7 @@ async function onScroll(): Promise<void> {
 //#endregion
 
 //#region hooks
-onMounted(() => {
+onMounted((): void => {
   window.onscroll = onScroll;
 });
 //#endregion
