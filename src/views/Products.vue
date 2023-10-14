@@ -1,8 +1,8 @@
 <template>
-  <h2 class="text-h5 text-lg-h4">Product page</h2>
+  <h2 class="text-h5 text-lg-h4 my-16">{{ translatedTitle }}</h2>
 
   <VContainer grid-list-xs>
-    <VRow class="">
+    <VRow>
       <VCol
         v-for="product in filteredProducts"
         :key="product.label"
@@ -34,23 +34,46 @@
 import { computed } from "vue";
 import { Product } from "@/utils/types";
 import products from "@/utils/products";
-import router from "@/router";
 import ProductCard from "@/components/ProductCard.vue";
 import { colors } from "@/utils/colors";
+import router from "@/router";
 
 //#region variables
 const labelButtonOrder = "Ajouter au panier";
 const labelButtonTag = "Nouveau";
 //#endregion
 
+//#region computed
 const filteredProducts = computed<Array<Product>>((): Array<Product> => {
   return products.filter((item: Product): boolean => {
     if (router.currentRoute.value.params.category == "news") return item.isNew;
     else if (router.currentRoute.value.params.category == "populars")
-      return item.popular;
+      return item.isPopular;
     else return item.category == router.currentRoute.value.params.category;
   });
 });
+//#endregion
+
+//#region computed
+const translatedTitle = computed<string>(() => {
+  switch (router.currentRoute.value.params.category) {
+    case "news":
+      return "Les nouveautés";
+    case "populars":
+      return "Les plus populaires";
+    case "starters":
+      return "Les entrées";
+    case "main courses":
+      return "Les plats";
+    case "deserts":
+      return "Les desserts";
+    default:
+      return "Unknown";
+  }
+});
+//#endregion
+
+//#endregion
 </script>
 
 <style lang="scss" scoped></style>

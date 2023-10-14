@@ -6,7 +6,7 @@ export interface Product {
   price: number;
   score: number;
   isNew: boolean;
-  popular: boolean;
+  isPopular: boolean;
 }
 export interface DrawerListItem {
   label: string;

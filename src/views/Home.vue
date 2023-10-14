@@ -264,7 +264,6 @@ const iconSearchBar = "mdi-magnify";
 <style lang="scss" scoped>
 .main-title-xs {
   font-family: v-bind("fontHero") !important;
-  /* font-size: v-bind("`${fontSizeHero - 10}px`"); */
 }
 .carousel {
   width: v-bind("`${$vuetify.display.mobile? 100 : 70}%`");
