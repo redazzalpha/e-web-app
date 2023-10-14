@@ -11,13 +11,13 @@
           <VCol class="v-col-12 v-col-md-6">
             <a
               class="footer-bar_map_link text-white font-italic"
-              :href="MapImg"
+              :href="sources.mapImg"
               target="_self"
               title="Cliquez pour agrandir"
             >
               <figure>
                 <figcaption>Plan d'accès</figcaption>
-                <VImg :src="MapSmallImg" class="rounded-xl" />
+                <VImg :src="sources.mapSmallImg" class="rounded-xl" />
               </figure>
             </a>
           </VCol>
@@ -78,8 +78,7 @@
 </template>
 
 <script lang="ts" setup>
-import MapImg from "@/assets/map.png";
-import MapSmallImg from "@/assets/map-small.png";
+import * as sources from "@/utils/sources";
 
 //#region props
 interface Props {

@@ -1,6 +1,14 @@
 import HeroImg from "@/assets/food.png";
 import MapImg from "@/assets/map.png";
 import MapSmallImg from "@/assets/map-small.png";
+import Slideshow1 from "@/assets/slideshow1.png";
+import Slideshow2 from "@/assets/slideshow2.png";
+import Slideshow3 from "@/assets/slideshow3.png";
+import Slideshow4 from "@/assets/slideshow4.png";
+import Slideshow5 from "@/assets/slideshow5.png";
+import Slideshow6 from "@/assets/slideshow6.png";
+import Slideshow7 from "@/assets/slideshow7.png";
+import Slideshow8 from "@/assets/slideshow8.png";
 
 export const home = "/";
 export const news = "/products/news";
@@ -12,3 +20,11 @@ export const deserts = "/products/deserts";
 export const heroImg: string = HeroImg;
 export const mapImg: string = MapImg;
 export const mapSmallImg: string = MapSmallImg;
+export const slideshowImg1: string = Slideshow1;
+export const slideshowImg2: string = Slideshow2;
+export const slideshowImg3: string = Slideshow3;
+export const slideshowImg4: string = Slideshow4;
+export const slideshowImg5: string = Slideshow5;
+export const slideshowImg6: string = Slideshow6;
+export const slideshowImg7: string = Slideshow7;
+export const slideshowImg8: string = Slideshow8;

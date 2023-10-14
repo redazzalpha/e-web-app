@@ -3,7 +3,7 @@
     class="hero-banner d-flex flex-column justify-center align-center"
     :height="props.height"
   >
-    <VImg class="hero-banner_background" :src="imageBackground" cover>
+    <VImg class="hero-banner_background" :src="props.imageBackground" cover>
       <!-- loader image -->
       <template v-slot:placeholder>
         <div class="d-flex align-center justify-center fill-height">
@@ -17,7 +17,7 @@
 
     <!-- title -->
     <div class="hero-banner_title text-center" v-if="!hideTitleOnXs">
-      {{ textTitle }}
+      {{ props.textTitle }}
     </div>
 
     <!-- center -->

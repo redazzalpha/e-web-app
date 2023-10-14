@@ -1,35 +1,35 @@
 import { DrawerListItem } from "@/utils/types";
-import * as Hrefs from "@/utils/sources";
+import * as sources from "@/utils/sources";
 
 export const drawerListItem: Array<DrawerListItem> = [
   {
     label: "Accueil",
     icon: "mdi-home",
-    href: Hrefs.home,
+    href: sources.home,
   },
   {
     label: "Les nouveautés",
     icon: "mdi-star",
-    href: Hrefs.news,
+    href: sources.news,
   },
   {
     label: "Les plus populaires",
     icon: "mdi-star",
-    href: Hrefs.populars,
+    href: sources.populars,
   },
   {
     label: "Les entrées",
     icon: "mdi-food-fork-drink",
-    href: Hrefs.starters,
+    href: sources.starters,
   },
   {
     label: "Les plats",
     icon: "mdi-food-turkey",
-    href: Hrefs.mainCourses,
+    href: sources.mainCourses,
   },
   {
     label: "Les desserts",
     icon: "mdi-cupcake",
-    href: Hrefs.deserts,
+    href: sources.deserts,
   },
 ];

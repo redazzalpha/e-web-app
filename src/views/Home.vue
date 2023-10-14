@@ -1,7 +1,7 @@
 <template>
   <HeroBanner
     tag="article"
-    :image-background="Hrefs.heroImg"
+    :image-background="sources.heroImg"
     :text-title="titleHero"
     :font-title="fontHero"
     :size-title="fontSizeHero"
@@ -47,7 +47,7 @@
 
     <!-- see all most populars button -->
     <VBtn
-      :to="Hrefs.populars"
+      :to="sources.populars"
       variant="plain"
       class="text-orange text-h6 mb-10 ml-15"
       width="320"
@@ -97,7 +97,7 @@
 
     <!-- see all most starters button -->
     <VBtn
-      :to="Hrefs.starters"
+      :to="sources.starters"
       variant="plain"
       class="text-orange text-h6 mb-10 ml-15"
       width="320"
@@ -147,7 +147,7 @@
 
     <!-- see all most main courses button -->
     <VBtn
-      :to="Hrefs.mainCourses"
+      :to="sources.mainCourses"
       variant="plain"
       class="text-orange text-h6 mb-10 ml-15"
       width="320"
@@ -197,7 +197,7 @@
 
     <!-- see all deserts button -->
     <VBtn
-      :to="Hrefs.deserts"
+      :to="sources.deserts"
       variant="plain"
       class="text-orange text-h6 mb-10 ml-15"
       width="320"
@@ -243,7 +243,7 @@ import ViewerBlock from "@/components/ViewerBlock.vue";
 import products from "../utils/products";
 import { colors } from "@/utils/colors";
 import { slideshows } from "@/utils/slideshows";
-import * as Hrefs from "@/utils/sources";
+import * as sources from "@/utils/sources";
 
 //#region variables
 const titleHero = "Découvrez nos plats et recettes";
