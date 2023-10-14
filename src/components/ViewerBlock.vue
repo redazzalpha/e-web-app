@@ -60,7 +60,7 @@ function mouseLeave(): void {
     viewer.value.style.transform = "scale(1)";
   }
 }
-async function onMouseEnter(): Promise<void> {
+function onMouseEnter(): void {
   if (viewer.value) {
     viewer.value.onmousedown = onMouseDown;
     viewer.value.onmouseup = onMouseUp;
@@ -69,7 +69,7 @@ async function onMouseEnter(): Promise<void> {
 function onMouseLeave(): void {
   mouseLeave();
 }
-async function onMouseDown(event: MouseEvent): Promise<void> {
+function onMouseDown(event: MouseEvent): void {
   if (viewer.value) {
     viewer.value.onmousemove = onMouseMove;
     startPos = event.screenX;
