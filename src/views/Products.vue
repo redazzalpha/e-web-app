@@ -5,26 +5,36 @@
     <VRow>
       <VCol
         v-for="product in filteredProducts"
-        :key="product.label"
+        :key="product.id"
         class="d-flex justify-center"
       >
-        <ProductCard
-          :image-source="product.img"
-          :description="product.description"
-          :price="`${product.price}&euro;`"
-          :score="product.score"
-          :is-new="product.isNew"
-          :label-button-tag="labelButtonTag"
-          :label-button-order="labelButtonOrder"
-          :text-caption="product.label"
-          :color-label-button-tag="colors.labelButtonTag"
-          :color-label-button-order="colors.labelButtonOrder"
-          :color-background-button-tag="colors.buttonTag"
-          :color-background-button-order="colors.buttonOrder"
-          :color-background-caption="colors.caption"
-          :color-text-caption="colors.textBase"
-          :color-score="colors.score"
-        />
+        <VHover>
+          <template v-slot:default="{ isHovering, props }">
+            <RouterLink :to="`${sources.description}/${product.id}`">
+              <ProductCard
+                class="product-card"
+                v-bind="props"
+                :id="product.id"
+                :image-source="product.img"
+                :description="product.description"
+                :price="`${product.price}&euro;`"
+                :score="product.score"
+                :is-new="product.isNew"
+                :label-button-tag="labelButtonTag"
+                :label-button-order="labelButtonOrder"
+                :text-caption="product.label"
+                :color-label-button-tag="colors.labelButtonTag"
+                :color-label-button-order="colors.labelButtonOrder"
+                :color-background-button-tag="colors.buttonTag"
+                :color-background-button-order="colors.buttonOrder"
+                :color-background-caption="colors.caption"
+                :color-text-caption="colors.textBase"
+                :color-score="colors.score"
+                :elevation="isHovering ? 15 : 0"
+              />
+            </RouterLink>
+          </template>
+        </VHover>
       </VCol>
     </VRow>
   </VContainer>
@@ -37,6 +47,7 @@ import products from "@/utils/products";
 import ProductCard from "@/components/ProductCard.vue";
 import { colors } from "@/utils/colors";
 import router from "@/router";
+import * as sources from "@/utils/sources";
 
 //#region variables
 const labelButtonOrder = "Ajouter au panier";
@@ -52,9 +63,6 @@ const filteredProducts = computed<Array<Product>>((): Array<Product> => {
     else return item.category == router.currentRoute.value.params.category;
   });
 });
-//#endregion
-
-//#region computed
 const translatedTitle = computed<string>(() => {
   switch (router.currentRoute.value.params.category) {
     case "news":
@@ -72,8 +80,10 @@ const translatedTitle = computed<string>(() => {
   }
 });
 //#endregion
-
-//#endregion
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.product-card {
+  transition: box-shadow 0.5s linear;
+}
+</style>

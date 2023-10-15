@@ -11,11 +11,13 @@ import Slideshow7 from "@/assets/slideshow7.png";
 import Slideshow8 from "@/assets/slideshow8.png";
 
 export const home = "/";
-export const news = "/products/news";
-export const populars = "/products/populars";
-export const starters = "/products/starters";
-export const mainCourses = "/products/main%20courses";
-export const deserts = "/products/deserts";
+export const product = "/products";
+export const news = `${product}/news`;
+export const populars = `${product}/populars`;
+export const starters = `${product}/starters`;
+export const mainCourses = `${product}/main%20courses`;
+export const deserts = `${product}/deserts`;
+export const description = `${product}/description`;
 
 export const heroImg: string = HeroImg;
 export const mapImg: string = MapImg;

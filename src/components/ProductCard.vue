@@ -1,5 +1,5 @@
 <template>
-  <figure class="product-card elevation-15">
+  <figure class="product-card" :class="`elevation-${props.elevation}`">
     <!-- curtain is used for avoid image
         drag and drop that cause bad behaviour
     -->
@@ -40,6 +40,7 @@
     <!-- tag button -->
     <VBtn
       class="product-card_tag-btn"
+      :to="`${sources.description}/${props.id}`"
       v-if="props.labelButtonTag && props.isNew"
       elevation="10"
       rounded="xs"
@@ -61,8 +62,11 @@
 </template>
 
 <script lang="ts" setup>
+import * as sources from "@/utils/sources";
+
 //#region props
 interface Props {
+  id?: number;
   imageSource: string;
   description?: string;
   labelButtonTag?: string;
@@ -70,6 +74,7 @@ interface Props {
   textCaption?: string;
   price?: string;
   score?: number;
+  colorCard?: string;
   colorLabelButtonOrder?: string;
   colorLabelButtonTag?: string;
   colorBackgroundButtonOrder?: string;
@@ -80,24 +85,28 @@ interface Props {
   isNew?: boolean;
   width?: number;
   height?: number;
+  elevation?: number;
 }
 const props = withDefaults(defineProps<Props>(), {
+  id: 0,
   labelButtonTag: "",
   labelButtonOrder: "",
   textCaption: "",
   description: "",
   price: "",
   score: 0,
+  colorCard: "white",
   colorLabelButtonTag: "black",
   colorLabelButtonOrder: "black",
   colorTextCaption: "black",
   colorBackgroundButtonTag: "transparent",
   colorBackgroundButtonOrder: "transparent",
-  colorBackgroundCaption: "transparent",
+  colorBackgroundCaption: "white",
   colorScore: "transparent",
   isNew: false,
   width: 300,
   height: 400,
+  elevation: 0,
 });
 //#endregion
 </script>
@@ -120,6 +129,7 @@ const props = withDefaults(defineProps<Props>(), {
   width: v-bind("`${props.width}px`");
   height: v-bind("`${props.height}px`");
   position: relative;
+  background-color: v-bind("props.colorCard");
   &_img,
   &_img-curtain {
     border-radius: 15px 15px 0 0;

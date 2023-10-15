@@ -15,6 +15,7 @@ import DonutsImg from "@/assets/donuts.png";
 
 const products: Array<Product> = [
   {
+    id: 1,
     category: "main courses",
     label: "Pizza au pepperoni",
     description:
@@ -28,6 +29,7 @@ const products: Array<Product> = [
     isPopular: true,
   },
   {
+    id: 2,
     category: "main courses",
     label: "Spaghetti Bolognaise",
     description:
@@ -41,6 +43,7 @@ const products: Array<Product> = [
     isPopular: true,
   },
   {
+    id: 3,
     category: "main courses",
     label: "Brochettes de poulet mariné",
     description:
@@ -54,6 +57,7 @@ const products: Array<Product> = [
     isPopular: true,
   },
   {
+    id: 4,
     category: "main courses",
     label: "Bigger Mac",
     description:
@@ -67,6 +71,7 @@ const products: Array<Product> = [
     isPopular: true,
   },
   {
+    id: 5,
     category: "main courses",
     label: "Pizza savoyarde",
     description:
@@ -80,6 +85,7 @@ const products: Array<Product> = [
     isPopular: true,
   },
   {
+    id: 6,
     category: "deserts",
     label: "Pancakes aux fruits rouges",
     description:
@@ -93,6 +99,7 @@ const products: Array<Product> = [
     isPopular: true,
   },
   {
+    id: 7,
     category: "main courses",
     label: "Rigatoni au basilic",
     description:
@@ -106,6 +113,7 @@ const products: Array<Product> = [
     isPopular: true,
   },
   {
+    id: 8,
     category: "starters",
     label: "Salade Sauveur",
     description:
@@ -119,6 +127,7 @@ const products: Array<Product> = [
     isPopular: true,
   },
   {
+    id: 9,
     category: "deserts",
     label: "Dessert collection",
     description:
@@ -132,6 +141,7 @@ const products: Array<Product> = [
     isPopular: true,
   },
   {
+    id: 10,
     category: "main courses",
     label: "Ragout à la réunionaise",
     description:
@@ -145,6 +155,7 @@ const products: Array<Product> = [
     isPopular: true,
   },
   {
+    id: 11,
     category: "main courses",
     label: "Triple mix collection",
     description:
@@ -158,6 +169,7 @@ const products: Array<Product> = [
     isPopular: true,
   },
   {
+    id: 12,
     category: "deserts",
     label: "Nuages de Donuts",
     description:

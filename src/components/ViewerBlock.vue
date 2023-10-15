@@ -2,7 +2,8 @@
   <div class="viewer-block" ref="viewer">
     <ProductCard
       v-for="product in props.products"
-      :key="product.label"
+      :key="product.id"
+      :id="product.id"
       :image-source="product.img"
       :description="product.description"
       :price="`${product.price}&euro;`"
@@ -18,6 +19,7 @@
       :color-background-caption="colors.caption"
       :color-text-caption="colors.textBase"
       :color-score="colors.score"
+      :elevation="15"
     />
   </div>
 </template>
