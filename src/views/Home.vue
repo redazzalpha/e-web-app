@@ -24,6 +24,8 @@
         :color-background="appStore.colors.searchBar"
         :prepend-icon="iconSearchBar"
         :size="sizeSearchBar"
+        :action="search"
+        :input-model="pattern"
       />
     </template>
 
@@ -36,6 +38,55 @@
     {{ titleHero }}
   </h1>
 
+  <!-- section news -->
+  <section class="news">
+    <h2 class="section_title text-h5 text-lg-h4">
+      {{ titleNews }}
+    </h2>
+
+    <!-- viewer block-->
+    <ViewerBlock :products="productNews" />
+
+    <!-- see all most news button -->
+    <VBtn
+      :to="sources.news"
+      variant="plain"
+      class="text-orange text-h6 mb-10 ml-15"
+      width="320"
+      >voir touts les nouveautés
+      <template v-slot:append><VIcon>mdi-chevron-right</VIcon></template>
+    </VBtn>
+
+    <!-- slide show -->
+    <v-carousel
+      class="carousel rounded"
+      hide-delimiter-background
+      hide-delimiters
+      :show-arrows="false"
+      :touch="false"
+      height="500"
+      cycle
+    >
+      <v-carousel-item
+        class="carousel_item"
+        v-for="slideshow in appStore.slideshows"
+        :key="slideshow"
+        :src="slideshow"
+        cover
+      >
+        <!-- loader image -->
+        <template v-slot:placeholder>
+          <div class="d-flex align-center justify-center fill-height">
+            <v-progress-circular
+              color="grey-lighten-4"
+              indeterminate
+            ></v-progress-circular>
+          </div>
+        </template>
+      </v-carousel-item>
+    </v-carousel>
+  </section>
+
   <!-- section most populars -->
   <section class="most-populars">
     <h2 class="section_title text-h5 text-lg-h4">
@@ -43,7 +94,7 @@
     </h2>
 
     <!-- viewer block-->
-    <ViewerBlock :products="appStore.products" />
+    <ViewerBlock :products="productPopulars" />
 
     <!-- see all most populars button -->
     <VBtn
@@ -93,7 +144,7 @@
     </h2>
 
     <!-- viewer block-->
-    <ViewerBlock :products="appStore.products" />
+    <ViewerBlock :products="productStarters" />
 
     <!-- see all most starters button -->
     <VBtn
@@ -143,7 +194,7 @@
     </h2>
 
     <!-- viewer block-->
-    <ViewerBlock :products="appStore.products" />
+    <ViewerBlock :products="productMainCourses" />
 
     <!-- see all most main courses button -->
     <VBtn
@@ -193,7 +244,7 @@
     </h2>
 
     <!-- viewer block-->
-    <ViewerBlock :products="appStore.products" />
+    <ViewerBlock :products="productDeserts" />
 
     <!-- see all deserts button -->
     <VBtn
@@ -242,11 +293,14 @@ import SearchBar from "@/components/SearchBar.vue";
 import ViewerBlock from "@/components/ViewerBlock.vue";
 import * as sources from "@/utils/sources";
 import { useAppStore } from "@/store/app";
+import type { Product } from "@/utils/types";
+import { ref, onBeforeMount } from "vue";
 
 const appStore = useAppStore();
 
 //#region variables
 const titleHero = "Découvrez nos plats et recettes";
+const titleNews = "Les Nouveautés";
 const titlePopulars = "Les plus populaires";
 const titleStarters = "Les entrées";
 const titleMainCourses = "Les plats";
@@ -258,6 +312,40 @@ const fontSizeHero = 48;
 const sourceHeroLink = "/";
 const sizeSearchBar = 320;
 const iconSearchBar = "mdi-magnify";
+let pattern = "";
+//#endregion
+
+//#region refs
+const productNews = ref<Array<Product>>([]);
+const productPopulars = ref<Array<Product>>([]);
+const productStarters = ref<Array<Product>>([]);
+const productMainCourses = ref<Array<Product>>([]);
+const productDeserts = ref<Array<Product>>([]);
+//#endregion
+
+//#region methods
+function updateFilteredProducts(): void {
+  appStore.productFilter = "news";
+  productNews.value = appStore.filteredProducts;
+  appStore.productFilter = "populars";
+  productPopulars.value = appStore.filteredProducts;
+  appStore.productFilter = "starters";
+  productStarters.value = appStore.filteredProducts;
+  appStore.productFilter = "main courses";
+  productMainCourses.value = appStore.filteredProducts;
+  appStore.productFilter = "deserts";
+  productDeserts.value = appStore.filteredProducts;
+}
+//#endregion
+
+//#region event handler
+function search(): void {
+  console.log(`-- value of pattern : ${pattern}`);
+}
+//#endregion
+
+//#region hooks
+onBeforeMount(() => updateFilteredProducts());
 //#endregion
 </script>
 

@@ -210,6 +210,7 @@ export const useAppStore = defineStore("app", {
   }),
   getters: {
     filteredProducts: (state) => {
+      console.log("tttttttttttttt in the store getters");
       if (state.productFilter == "news")
         return state.products.filter((e: Product) => e.isNew);
       else if (state.productFilter == "populars")

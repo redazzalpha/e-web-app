@@ -21,13 +21,18 @@ const routes = [
     children: [
       {
         path: ":category",
-        name: "products",
+        name: "category",
         component: () => import("@/views/Products.vue"),
       },
       {
         path: "description/:id",
         name: "description",
         component: () => import("@/views/Description.vue"),
+      },
+      {
+        path: "search/:pattern",
+        name: "search",
+        component: () => import("@/views/Search.vue"),
       },
     ],
   },

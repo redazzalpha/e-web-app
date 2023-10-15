@@ -31,6 +31,7 @@ export const starters = `${product}/starters`;
 export const mainCourses = `${product}/main%20courses`;
 export const deserts = `${product}/deserts`;
 export const description = `${product}/description`;
+export const search = `${product}/search`;
 //#endregion
 
 //#region img

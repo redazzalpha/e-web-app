@@ -2,7 +2,6 @@
   <VTextField
     class="search-bar"
     variant="solo"
-    v-model="input"
     :label="props.label"
     :color="props.colorLabel"
     rounded
@@ -17,25 +16,26 @@
         tag="button"
         variant="plain"
         :icon="props.prependIcon"
+        @click="props.action"
       />
     </template>
   </VTextField>
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
-
 //#region variables
-const input = ref<string>("");
+// const input = ref<string>("");
 //#endregion
 
 //#region props
 interface Props {
-  label: string;
-  colorLabel: string;
-  colorBackground: string;
-  prependIcon: string;
-  size: number;
+  label?: string;
+  colorLabel?: string;
+  colorBackground?: string;
+  prependIcon?: string;
+  size?: number;
+  action: () => void;
+  inputModel: string;
 }
 const props = withDefaults(defineProps<Props>(), {
   label: "Search here",
