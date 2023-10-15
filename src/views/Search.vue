@@ -1,6 +1,7 @@
 <template>
   <h2 class="text-h5 text-lg-h4 my-16">
-    {{ appStore.translatedProductTitle }}
+    mot-clé : {{ $route.params.pattern }} <br />
+    {{ subtitle }}
   </h2>
   <VContainer grid-list-xs>
     <VRow>
@@ -45,6 +46,7 @@
 import * as sources from "@/utils/sources";
 import ProductCard from "@/components/ProductCard.vue";
 import { useAppStore } from "@/store/app";
+import { computed } from "vue";
 
 const appStore = useAppStore();
 
@@ -52,6 +54,12 @@ const appStore = useAppStore();
 const labelButtonOrder = "Ajouter au panier";
 const labelButtonTag = "Nouveau";
 //#endregion
+
+const subtitle = computed<string>(() => {
+  return appStore.productsFound.length > 1
+    ? "produits trouvés"
+    : "produit trouvé";
+});
 </script>
 
 <style lang="scss" scoped>

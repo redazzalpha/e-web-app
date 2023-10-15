@@ -372,7 +372,7 @@ function search(input: string): void {
       }, timeout);
     } else {
       appStore.productsFound = foundProducts;
-      router.push(sources.search);
+      router.push(`${sources.search}/${input}`);
     }
   }
 }
