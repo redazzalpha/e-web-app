@@ -21,23 +21,37 @@
         :width="imgWidth"
         cover
       ></VImg>
-      <p
+      <div
         class="description_content_text d-flex flex-column d-block ma-5 flex-shrink-1 my-md-auto"
       >
-        <span>
+        <p>
           <strong> Description: </strong>
           {{ product.description }} <br />
           <strong> Prix: </strong>
           {{ product.price }}&euro; <br />
           <strong> Note: </strong>
-          {{ product.score }}/6<br />
+          <span>
+            <template v-for="count in 6" :key="count">
+              <VIcon
+                :icon="product.score >= count ? 'mdi-star' : 'mdi-star-outline'"
+                variant="plain"
+                :color="baseColor.orange"
+              />
+            </template>
+          </span>
+          <br />
           <strong> Category: </strong>
           {{ product.category }} <br />
-          <strong> Produit populaire: </strong>
-          {{ product.isPopular ? "oui" : "non" }} <br />
           <strong> Nouveau produit: </strong>
-          {{ product.isNew ? "oui" : "non" }} <br />
-        </span>
+          <span :class="product.isNew ? 'text-success' : 'text-error'">
+            {{ product.isNew ? "oui" : "non" }}
+          </span>
+          <br />
+          <strong> Produit populaire: </strong>
+          <span :class="product.isPopular ? 'text-success' : 'text-error'">
+            {{ product.isPopular ? "oui" : "non" }} <br />
+          </span>
+        </p>
         <VBtn
           class="description_content_text_btn align-self-center ma-10"
           size="large"
@@ -48,7 +62,7 @@
         >
           Ajouter au panier
         </VBtn>
-      </p>
+      </div>
     </div>
   </div>
 </template>

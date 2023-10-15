@@ -145,7 +145,7 @@ export const useAppStore = defineStore("app", {
         price: 3.18,
         score: 1,
         isNew: true,
-        isPopular: true,
+        isPopular: false,
       },
       {
         id: 11,
