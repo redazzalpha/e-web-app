@@ -26,7 +26,7 @@ body {
     font-family: $font-family-logo !important;
     font-weight: bold;
     text-align: center;
-    margin: 40px 40px 0 40px;
+    margin: 100px 40px 40px 40px !important;
   }
   a {
     text-decoration: none;

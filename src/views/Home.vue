@@ -317,7 +317,7 @@ const titleStarters = "Les entrées";
 const titleMainCourses = "Les plats";
 const titleDeserts = "Les desserts";
 const textHeroLink = "Connectez-vous";
-const labelSearchBar = "rechercher un plat";
+const labelSearchBar = "rechercher par mot-clé";
 const fontHero = "merienda, serif, sans-serif";
 const fontSizeHero = 48;
 const sourceHeroLink = "/";
@@ -354,6 +354,7 @@ function updateFilteredProducts(): void {
 //#region event handler
 function search(input: string): void {
   if (input) {
+    input = input.trim();
     const regex: RegExp = new RegExp(input, "gi");
     const foundProducts: Array<Product> = appStore.products.filter(
       (e: Product) => {

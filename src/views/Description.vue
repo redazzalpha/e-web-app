@@ -10,7 +10,7 @@
     >
       <VIcon>mdi-arrow-left-thick</VIcon>
     </VBtn>
-    <h2 class="description_title text-h5 text-lg-h4 ma-10">
+    <h2 class="description_title text-h5 text-lg-h4">
       {{ product.label }}
     </h2>
     <div
@@ -101,6 +101,9 @@ const imgWidth = computed(() => {
   border-radius: 10px;
   background-color: v-bind("baseColor.whiteDark");
   margin-top: 100px;
+  .description_title {
+    margin-top: 40px !important;
+  }
   .description_back-button {
     position: absolute;
     top: 0;
