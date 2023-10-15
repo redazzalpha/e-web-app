@@ -25,8 +25,11 @@
 <script lang="ts" setup>
 import { onMounted } from "vue";
 import { RouterLink } from "vue-router";
-import { colors, white, black } from "@/utils/colors";
 import AppBarImg from "@/assets/app-bar.png";
+import { baseColor } from "@/utils/colors";
+import { useAppStore } from "@/store/app";
+
+const appStore = useAppStore();
 
 //#region variables
 const threshold = 80;
@@ -60,8 +63,8 @@ const emit = defineEmits<Emits>();
 //#region event handlers
 async function onScroll(): Promise<void> {
   if (window.scrollY >= threshold) {
-    colors.textAppBar = white;
-  } else colors.textAppBar = black;
+    appStore.colors.textAppBar = baseColor.white;
+  } else appStore.colors.textAppBar = baseColor.black;
 }
 //#endregion
 

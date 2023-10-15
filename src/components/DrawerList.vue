@@ -15,7 +15,7 @@
 </template>
 
 <script lang="ts" setup>
-import { DrawerListItem } from "@/utils/types";
+import type { DrawerListItem } from "@/utils/types";
 
 //#region props
 interface Props {

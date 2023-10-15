@@ -12,13 +12,13 @@
       :label-button-tag="labelButtonTag"
       :label-button-order="labelButtonOrder"
       :text-caption="product.label"
-      :color-label-button-tag="colors.labelButtonTag"
-      :color-label-button-order="colors.labelButtonOrder"
-      :color-background-button-tag="colors.buttonTag"
-      :color-background-button-order="colors.buttonOrder"
-      :color-background-caption="colors.caption"
-      :color-text-caption="colors.textBase"
-      :color-score="colors.score"
+      :color-label-button-tag="appStore.colors.labelButtonTag"
+      :color-label-button-order="appStore.colors.labelButtonOrder"
+      :color-background-button-tag="appStore.colors.buttonTag"
+      :color-background-button-order="appStore.colors.buttonOrder"
+      :color-background-caption="appStore.colors.caption"
+      :color-text-caption="appStore.colors.textBase"
+      :color-score="appStore.colors.score"
       :elevation="15"
     />
   </div>
@@ -27,8 +27,10 @@
 <script lang="ts" setup>
 import { ref, onMounted } from "vue";
 import ProductCard from "@/components/ProductCard.vue";
-import { colors } from "@/utils/colors";
-import { Product } from "@/utils/types";
+import type { Product } from "@/utils/types";
+import { useAppStore } from "@/store/app";
+
+const appStore = useAppStore();
 
 // #region varibles
 const labelButtonOrder = "Ajouter au panier";

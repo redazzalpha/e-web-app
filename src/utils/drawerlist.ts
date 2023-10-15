@@ -1,4 +1,4 @@
-import { DrawerListItem } from "@/utils/types";
+import type { DrawerListItem } from "@/utils/types";
 import * as sources from "@/utils/sources";
 
 export const drawerListItem: Array<DrawerListItem> = [

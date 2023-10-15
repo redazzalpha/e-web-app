@@ -5,14 +5,14 @@
     :text-title="titleHero"
     :font-title="fontHero"
     :size-title="fontSizeHero"
-    :color-title="colors.textHero"
-    :color-background-title="colors.backgroundTitleHero"
+    :color-title="appStore.colors.textHero"
+    :color-background-title="appStore.colors.backgroundTitleHero"
     :hide-title-on-xs="$vuetify.display.mobile"
     position-title="absolute"
     :top-title="140"
     :left-title="63"
     :text-link="textHeroLink"
-    :color-link="colors.textLinkHero"
+    :color-link="appStore.colors.textLinkHero"
     :source-link="sourceHeroLink"
   >
     <!-- search bar -->
@@ -20,8 +20,8 @@
       <SearchBar
         class="mt-10 mb-5"
         :label="labelSearchBar"
-        :color-label="colors.labelSearchBar"
-        :color-background="colors.searchBar"
+        :color-label="appStore.colors.labelSearchBar"
+        :color-background="appStore.colors.searchBar"
         :prepend-icon="iconSearchBar"
         :size="sizeSearchBar"
       />
@@ -43,7 +43,7 @@
     </h2>
 
     <!-- viewer block-->
-    <ViewerBlock :products="products" />
+    <ViewerBlock :products="appStore.products" />
 
     <!-- see all most populars button -->
     <VBtn
@@ -67,7 +67,7 @@
     >
       <v-carousel-item
         class="carousel_item"
-        v-for="slideshow in slideshows"
+        v-for="slideshow in appStore.slideshows"
         :key="slideshow"
         :src="slideshow"
         cover
@@ -93,7 +93,7 @@
     </h2>
 
     <!-- viewer block-->
-    <ViewerBlock :products="products" />
+    <ViewerBlock :products="appStore.products" />
 
     <!-- see all most starters button -->
     <VBtn
@@ -117,7 +117,7 @@
     >
       <v-carousel-item
         class="carousel_item"
-        v-for="slideshow in slideshows"
+        v-for="slideshow in appStore.slideshows"
         :key="slideshow"
         :src="slideshow"
         cover
@@ -143,7 +143,7 @@
     </h2>
 
     <!-- viewer block-->
-    <ViewerBlock :products="products" />
+    <ViewerBlock :products="appStore.products" />
 
     <!-- see all most main courses button -->
     <VBtn
@@ -167,7 +167,7 @@
     >
       <v-carousel-item
         class="carousel_item"
-        v-for="slideshow in slideshows"
+        v-for="slideshow in appStore.slideshows"
         :key="slideshow"
         :src="slideshow"
         cover
@@ -193,7 +193,7 @@
     </h2>
 
     <!-- viewer block-->
-    <ViewerBlock :products="products" />
+    <ViewerBlock :products="appStore.products" />
 
     <!-- see all deserts button -->
     <VBtn
@@ -217,7 +217,7 @@
     >
       <v-carousel-item
         class="carousel_item"
-        v-for="slideshow in slideshows"
+        v-for="slideshow in appStore.slideshows"
         :key="slideshow"
         :src="slideshow"
         cover
@@ -240,10 +240,10 @@
 import HeroBanner from "@/components/HeroBanner.vue";
 import SearchBar from "@/components/SearchBar.vue";
 import ViewerBlock from "@/components/ViewerBlock.vue";
-import products from "../utils/products";
-import { colors } from "@/utils/colors";
-import { slideshows } from "@/utils/slideshows";
 import * as sources from "@/utils/sources";
+import { useAppStore } from "@/store/app";
+
+const appStore = useAppStore();
 
 //#region variables
 const titleHero = "Découvrez nos plats et recettes";

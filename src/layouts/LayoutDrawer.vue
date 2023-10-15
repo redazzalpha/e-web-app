@@ -4,7 +4,7 @@
     :location="$vuetify.display.xs ? 'right' : 'left'"
     temporary
     @update:modelValue="emit('clickOutside')"
-    :color="colors.drawer"
+    :color="appStore.colors.drawer"
   >
     <DrawerList :items="drawerListItem" />
   </VNavigationDrawer>
@@ -12,8 +12,10 @@
 
 <script lang="ts" setup>
 import DrawerList from "@/components/DrawerList.vue";
-import { colors } from "@/utils/colors";
 import { drawerListItem } from "@/utils/drawerlist";
+import { useAppStore } from "@/store/app";
+
+const appStore = useAppStore();
 
 //#region props
 interface Props {

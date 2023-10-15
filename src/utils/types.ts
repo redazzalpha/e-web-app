@@ -1,3 +1,11 @@
+export type Filter =
+  | "all"
+  | "news"
+  | "populars"
+  | "starters"
+  | "main courses"
+  | "deserts";
+
 export interface Product {
   id: number;
   category: string;
@@ -33,4 +41,10 @@ export interface SysColor {
   buttonLink: string;
   caption: string;
   score: string;
+}
+export interface State {
+  products: Array<Product>;
+  productFilter: Filter;
+  slideshows: Array<string>;
+  colors: SysColor;
 }

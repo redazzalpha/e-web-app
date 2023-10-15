@@ -1,10 +1,11 @@
 <template>
-  <h2 class="text-h5 text-lg-h4 my-16">{{ translatedTitle }}</h2>
-
+  <h2 class="text-h5 text-lg-h4 my-16">
+    {{ appStore.translatedProductTitle }}
+  </h2>
   <VContainer grid-list-xs>
     <VRow>
       <VCol
-        v-for="product in filteredProducts"
+        v-for="product in appStore.filteredProducts"
         :key="product.id"
         class="d-flex justify-center"
       >
@@ -23,13 +24,13 @@
                 :label-button-tag="labelButtonTag"
                 :label-button-order="labelButtonOrder"
                 :text-caption="product.label"
-                :color-label-button-tag="colors.labelButtonTag"
-                :color-label-button-order="colors.labelButtonOrder"
-                :color-background-button-tag="colors.buttonTag"
-                :color-background-button-order="colors.buttonOrder"
-                :color-background-caption="colors.caption"
-                :color-text-caption="colors.textBase"
-                :color-score="colors.score"
+                :color-label-button-tag="appStore.colors.labelButtonTag"
+                :color-label-button-order="appStore.colors.labelButtonOrder"
+                :color-background-button-tag="appStore.colors.buttonTag"
+                :color-background-button-order="appStore.colors.buttonOrder"
+                :color-background-caption="appStore.colors.caption"
+                :color-text-caption="appStore.colors.textBase"
+                :color-score="appStore.colors.score"
                 :elevation="isHovering ? 15 : 0"
               />
             </RouterLink>
@@ -41,44 +42,33 @@
 </template>
 
 <script lang="ts" setup>
-import { computed } from "vue";
-import { Product } from "@/utils/types";
-import products from "@/utils/products";
+import { watch, onMounted } from "vue";
 import ProductCard from "@/components/ProductCard.vue";
-import { colors } from "@/utils/colors";
 import router from "@/router";
 import * as sources from "@/utils/sources";
+import { useAppStore } from "@/store/app";
+import { Filter } from "../utils/types";
+
+const appStore = useAppStore();
 
 //#region variables
 const labelButtonOrder = "Ajouter au panier";
 const labelButtonTag = "Nouveau";
 //#endregion
 
-//#region computed
-const filteredProducts = computed<Array<Product>>((): Array<Product> => {
-  return products.filter((item: Product): boolean => {
-    if (router.currentRoute.value.params.category == "news") return item.isNew;
-    else if (router.currentRoute.value.params.category == "populars")
-      return item.isPopular;
-    else return item.category == router.currentRoute.value.params.category;
-  });
+// #region hooks
+onMounted(() => {
+  appStore.productFilter = router.currentRoute.value.params.category as Filter;
 });
-const translatedTitle = computed<string>(() => {
-  switch (router.currentRoute.value.params.category) {
-    case "news":
-      return "Les nouveautés";
-    case "populars":
-      return "Les plus populaires";
-    case "starters":
-      return "Les entrées";
-    case "main courses":
-      return "Les plats";
-    case "deserts":
-      return "Les desserts";
-    default:
-      return "Unknown";
+//#endregion
+
+//#region watchers
+watch(
+  () => router.currentRoute.value.params,
+  (to) => {
+    appStore.productFilter = to.category as Filter;
   }
-});
+);
 //#endregion
 </script>
 
