@@ -12,6 +12,7 @@
         class="description_content_img ma-5 flex-grow-0"
         :src="product.img"
         :width="imgWidth"
+        cover
       ></VImg>
       <p class="description_content_text d-block ma-5 flex-shrink-1 my-md-auto">
         <strong> Description: </strong>
@@ -67,6 +68,7 @@ const imgWidth = computed(() => {
     &_img {
       border-radius: 10px;
       margin: auto;
+      max-height: 300px;
     }
     &_text {
       max-width: 900px;
