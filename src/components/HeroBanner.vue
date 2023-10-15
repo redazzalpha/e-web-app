@@ -73,14 +73,6 @@ const props = withDefaults(defineProps<Props>(), {
   height: 500,
 });
 //#endregion
-
-//#region special variables
-/**
- * this variable is used to rely binding between props.imageBackground and backgroud css
- * property. the css background property's not working like it should with the props binding.
- */
-const bgHero = `url("${props.imageBackground}") no-repeat center`;
-//#endregion
 </script>
 
 <style lang="scss" scoped>
@@ -90,8 +82,6 @@ const bgHero = `url("${props.imageBackground}") no-repeat center`;
     position: absolute;
     top: 0;
     left: 0;
-    background: v-bind(bgHero);
-    background-size: cover;
     width: 100%;
     height: 100%;
   }

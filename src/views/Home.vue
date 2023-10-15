@@ -24,8 +24,8 @@
         :color-background="appStore.colors.searchBar"
         :prepend-icon="iconSearchBar"
         :size="sizeSearchBar"
-        :action="search"
-        :input-model="pattern"
+        :on-search="search"
+        :hint="hintSearchBar"
       />
     </template>
 
@@ -284,6 +284,16 @@
         </template>
       </v-carousel-item>
     </v-carousel>
+
+    <v-snackbar v-model="snackbar" :timeout="timeout">
+      {{ hintSearchBar }}
+
+      <template v-slot:actions>
+        <v-btn color="blue" variant="text" @click="snackbar = false">
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>
   </section>
 </template>
 
@@ -295,6 +305,7 @@ import * as sources from "@/utils/sources";
 import { useAppStore } from "@/store/app";
 import type { Product } from "@/utils/types";
 import { ref, onBeforeMount } from "vue";
+import router from "../router/index";
 
 const appStore = useAppStore();
 
@@ -312,10 +323,12 @@ const fontSizeHero = 48;
 const sourceHeroLink = "/";
 const sizeSearchBar = 320;
 const iconSearchBar = "mdi-magnify";
-let pattern = "";
+const timeout = 2000;
 //#endregion
 
 //#region refs
+const hintSearchBar = ref<string>("");
+const snackbar = ref<boolean>(false);
 const productNews = ref<Array<Product>>([]);
 const productPopulars = ref<Array<Product>>([]);
 const productStarters = ref<Array<Product>>([]);
@@ -339,8 +352,29 @@ function updateFilteredProducts(): void {
 //#endregion
 
 //#region event handler
-function search(): void {
-  console.log(`-- value of pattern : ${pattern}`);
+function search(input: string): void {
+  if (input) {
+    const regex: RegExp = new RegExp(input, "gi");
+    const foundProducts: Array<Product> = appStore.products.filter(
+      (e: Product) => {
+        const match = e.keyWords.filter((keyword: string) =>
+          keyword.match(regex)
+        );
+        if (match.length) return e;
+      }
+    );
+
+    if (foundProducts.length < 1) {
+      snackbar.value = true;
+      hintSearchBar.value = "Aucune correspondance trouvée";
+      setTimeout(() => {
+        hintSearchBar.value = "";
+      }, timeout);
+    } else {
+      appStore.productsFound = foundProducts;
+      router.push(sources.search);
+    }
+  }
 }
 //#endregion
 

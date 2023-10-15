@@ -5,8 +5,9 @@
     :label="props.label"
     :color="props.colorLabel"
     rounded
-    hide-details
     clearable
+    v-model="input"
+    @keydown.enter="onSearch(input)"
   >
     <!-- search button -->
     <template v-slot:append-inner>
@@ -16,15 +17,17 @@
         tag="button"
         variant="plain"
         :icon="props.prependIcon"
-        @click="props.action"
+        @click="props.onSearch(input)"
       />
     </template>
   </VTextField>
 </template>
 
 <script lang="ts" setup>
+import { ref } from "vue";
+
 //#region variables
-// const input = ref<string>("");
+const input = ref<string>("");
 //#endregion
 
 //#region props
@@ -34,8 +37,7 @@ interface Props {
   colorBackground?: string;
   prependIcon?: string;
   size?: number;
-  action: () => void;
-  inputModel: string;
+  onSearch: (input: string) => void;
 }
 const props = withDefaults(defineProps<Props>(), {
   label: "Search here",

@@ -20,6 +20,15 @@ export const useAppStore = defineStore("app", {
         score: 5,
         isNew: false,
         isPopular: true,
+        keyWords: [
+          "plats",
+          "Pizza au pepperoni",
+          "populaires",
+          "fromage",
+          "parmesan",
+          "pain",
+          "...",
+        ],
       },
       {
         id: 2,
@@ -34,6 +43,17 @@ export const useAppStore = defineStore("app", {
         score: 3,
         isNew: true,
         isPopular: true,
+        keyWords: [
+          "plats",
+          "Spaghetti Bolognaise",
+          "nouveautés",
+          "news",
+          "populaires",
+          "pates",
+          "pâtes",
+          "pasta",
+          "...",
+        ],
       },
       {
         id: 3,
@@ -48,6 +68,14 @@ export const useAppStore = defineStore("app", {
         score: 4,
         isNew: false,
         isPopular: true,
+        keyWords: [
+          "plats",
+          "Brochettes de poulet mariné",
+          "populaires",
+          "viandes",
+          "grillades",
+          "...",
+        ],
       },
       {
         id: 4,
@@ -62,6 +90,19 @@ export const useAppStore = defineStore("app", {
         score: 6,
         isNew: true,
         isPopular: true,
+        keyWords: [
+          "plats",
+          "Bigger mac",
+          "nouveautés",
+          "news",
+          "populaires",
+          "burger",
+          "hamburger",
+          "steack",
+          "viandes",
+          "pain",
+          "...",
+        ],
       },
       {
         id: 5,
@@ -76,6 +117,15 @@ export const useAppStore = defineStore("app", {
         score: 4,
         isNew: false,
         isPopular: true,
+        keyWords: [
+          "plats",
+          "Pizza savoyarde",
+          "populaires",
+          "fromage",
+          "parmesan",
+          "pain",
+          "...",
+        ],
       },
       {
         id: 6,
@@ -90,6 +140,18 @@ export const useAppStore = defineStore("app", {
         score: 3,
         isNew: true,
         isPopular: true,
+        keyWords: [
+          "desserts",
+          "Pancakes aux fruits rouges",
+          "nouveautés",
+          "news",
+          "populaires",
+          "sucre",
+          "sirop",
+          "gateau",
+          "farine",
+          "...",
+        ],
       },
       {
         id: 7,
@@ -104,6 +166,17 @@ export const useAppStore = defineStore("app", {
         score: 3,
         isNew: true,
         isPopular: true,
+        keyWords: [
+          "plats",
+          "Rigatoni au basilic",
+          "nouveautés",
+          "news",
+          "populaires",
+          "pates",
+          "pâtes",
+          "pasta",
+          "...",
+        ],
       },
       {
         id: 8,
@@ -118,6 +191,14 @@ export const useAppStore = defineStore("app", {
         score: 2,
         isNew: false,
         isPopular: true,
+        keyWords: [
+          "entrées",
+          "Salade Sauveur",
+          "populaires",
+          "salade verte",
+          "légumes",
+          "...",
+        ],
       },
       {
         id: 9,
@@ -132,6 +213,16 @@ export const useAppStore = defineStore("app", {
         score: 6,
         isNew: false,
         isPopular: true,
+        keyWords: [
+          "desserts",
+          "Dessert collection",
+          "populaires",
+          "sucre",
+          "sirop",
+          "gateau",
+          "farine",
+          "...",
+        ],
       },
       {
         id: 10,
@@ -146,6 +237,16 @@ export const useAppStore = defineStore("app", {
         score: 1,
         isNew: true,
         isPopular: false,
+        keyWords: [
+          "plats",
+          "Ragout à la réunionaise",
+          "nouveautés",
+          "news",
+          "sauces",
+          "réunion",
+          "viandes",
+          "...",
+        ],
       },
       {
         id: 11,
@@ -160,6 +261,17 @@ export const useAppStore = defineStore("app", {
         score: 4,
         isNew: false,
         isPopular: true,
+        keyWords: [
+          "plats",
+          "Triple mix collection",
+          "populaires",
+          "burger",
+          "hamburger",
+          "steack",
+          "viandes",
+          "pain",
+          "...",
+        ],
       },
       {
         id: 12,
@@ -174,8 +286,21 @@ export const useAppStore = defineStore("app", {
         score: 6,
         isNew: true,
         isPopular: true,
+        keyWords: [
+          "desserts",
+          "Nuages de Donuts",
+          "nouveautés",
+          "news",
+          "populaires",
+          "sucre",
+          "sirop",
+          "gateau",
+          "farine",
+          "...",
+        ],
       },
     ],
+    productsFound: [],
     productFilter: "all",
     slideshows: [
       sources.slideshowImg1,
@@ -210,7 +335,6 @@ export const useAppStore = defineStore("app", {
   }),
   getters: {
     filteredProducts: (state) => {
-      console.log("tttttttttttttt in the store getters");
       if (state.productFilter == "news")
         return state.products.filter((e: Product) => e.isNew);
       else if (state.productFilter == "populars")

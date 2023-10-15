@@ -16,6 +16,7 @@ export interface Product {
   score: number;
   isNew: boolean;
   isPopular: boolean;
+  keyWords: Array<string>;
 }
 export interface DrawerListItem {
   label: string;
@@ -44,6 +45,7 @@ export interface SysColor {
 }
 export interface State {
   products: Array<Product>;
+  productsFound: Array<Product>;
   productFilter: Filter;
   slideshows: Array<string>;
   colors: SysColor;
