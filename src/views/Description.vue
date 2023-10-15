@@ -5,6 +5,7 @@
     <VBtn
       class="description_back-button text-h4 pa-0"
       variant="plain"
+      :ripple="false"
       @click="$router.back"
     >
       <VIcon>mdi-arrow-left-thick</VIcon>
