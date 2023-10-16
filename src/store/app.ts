@@ -240,6 +240,7 @@ export const useAppStore = defineStore("app", {
         keyWords: [
           "plats",
           "Ragout à la réunionaise",
+          "Ragoût à la réunionaise",
           "nouveautés",
           "news",
           "sauces",

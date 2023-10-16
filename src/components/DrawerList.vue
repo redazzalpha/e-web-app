@@ -1,14 +1,39 @@
 <template>
   <VList>
     <template v-for="item in props.items" :key="item.label">
-      <VListItem
-        class="my-5"
-        :title="item.label"
-        :prepend-icon="item.icon"
-        :to="item.href"
-        rounded="xl"
-        active-class="active-item"
-      />
+      <template v-if="!item.children.length">
+        <VListItem
+          class="my-5"
+          :title="item.label"
+          :prepend-icon="item.icon"
+          :to="item.href"
+          rounded="xl"
+          active-class="active-item"
+        />
+      </template>
+      <template v-else>
+        <VListGroup :value="item.label">
+          <template v-slot:activator="{ props }">
+            <VListItem
+              v-bind="props"
+              class="my-5"
+              :title="item.label"
+              :prepend-icon="item.icon"
+              rounded="xl"
+              active-class="active-item"
+            />
+          </template>
+          <template v-for="(child, index) in item.children" :key="index">
+            <VListItem
+              :title="child.label"
+              :prepend-icon="child.icon"
+              :to="child.href"
+              rounded="xl"
+              active-class="active-item"
+            />
+          </template>
+        </VListGroup>
+      </template>
       <!-- <VDivider /> -->
     </template>
   </VList>

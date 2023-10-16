@@ -22,6 +22,7 @@ export interface DrawerListItem {
   label: string;
   icon: string;
   href: string;
+  children: Array<DrawerListItem>;
 }
 export interface SysColor {
   textBase: string;

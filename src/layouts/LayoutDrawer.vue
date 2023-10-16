@@ -5,6 +5,7 @@
     temporary
     @update:modelValue="emit('clickOutside')"
     :color="appStore.colors.drawer"
+    width="300"
   >
     <DrawerList :items="drawerListItem" />
   </VNavigationDrawer>
