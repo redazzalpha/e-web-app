@@ -17,7 +17,7 @@
     </VImg>
     <figcaption class="product-card_caption">
       <div class="d-flex">
-        <p class="product-card_caption_label flex-grow-1">
+        <p class="product-card_caption_label flex-grow-1 text-no-wrap">
           {{ props.product.label }}
         </p>
         <strong>{{ props.product.price }}€</strong>
@@ -35,7 +35,7 @@
           </template>
         </VHover>
       </div>
-      <p class="product-card_caption_desc">
+      <p class="product-card_caption_desc text-no-wrap">
         {{ props.product.description }}
       </p>
     </figcaption>
@@ -110,7 +110,6 @@ const props = withDefaults(defineProps<Props>(), {
 <style lang="scss" scoped>
 //#region mixins
 @mixin ellipsis() {
-  text-wrap: nowrap;
   -o-text-overflow: ellipsis;
   -ms-text-overflow: ellipsis;
   text-overflow: ellipsis;

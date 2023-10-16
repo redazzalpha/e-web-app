@@ -73,7 +73,6 @@ const props = defineProps<Props>();
   -ms-text-overflow: ellipsis;
   text-overflow: ellipsis;
   overflow: hidden;
-  width: 100px;
 }
 //#endregion
 
@@ -88,8 +87,6 @@ const props = defineProps<Props>();
     top: 0;
     right: 0;
     color: red;
-  }
-  &_title {
   }
   &_content {
     &_img {
