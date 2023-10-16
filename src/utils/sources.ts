@@ -25,6 +25,8 @@ import SlideshowImg8 from "@/assets/slideshow8.png";
 // #region paths
 export const home = "/";
 export const product = "/products";
+export const cart = "/cart";
+export const order = "/order";
 export const news = `${product}/news`;
 export const populars = `${product}/populars`;
 export const starters = `${product}/starters`;

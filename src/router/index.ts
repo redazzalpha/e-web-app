@@ -37,6 +37,30 @@ const routes = [
     ],
   },
   {
+    path: "/cart",
+    name: "layoutCart",
+    component: () => import("@/layouts/VLCart.vue"),
+    children: [
+      {
+        path: "",
+        name: "cart",
+        component: () => import("@/views/Cart.vue"),
+      },
+    ],
+  },
+  {
+    path: "/order",
+    name: "layoutOrder",
+    component: () => import("@/layouts/VLOrder.vue"),
+    children: [
+      {
+        path: "",
+        name: "order",
+        component: () => import("@/views/Order.vue"),
+      },
+    ],
+  },
+  {
     path: "/:notFound(.*)",
     name: "NotFound",
     redirect: "/",

@@ -10,6 +10,7 @@
     <!-- logo -->
     <v-app-bar-title class="app-bar_logo order-0 order-sm-1">
       <RouterLink :to="props.linkSource">
+        <!-- <RouterLink :to="props.linkSource"> -->
         {{ props.textLogo }}
       </RouterLink>
     </v-app-bar-title>

@@ -106,7 +106,7 @@ const imgWidth = computed(() => {
   }
   .description_back-button {
     position: absolute;
-    top: 0;
+    top: 5px;
     left: 0;
   }
   .description_content {

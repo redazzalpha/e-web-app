@@ -1,5 +1,5 @@
 <template>
-  <h2 class="text-h5 text-lg-h4 my-16">
+  <h2 class="text-h5 text-lg-h4">
     mot-clé : {{ $route.params.pattern }} <br />
     {{ subtitle }}
   </h2>

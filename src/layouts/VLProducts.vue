@@ -22,8 +22,3 @@ function toogleDrawer(): void {
 }
 //#endregion
 </script>
-
-<style lang="scss">
-@import "@/styles/fonts";
-@import "@/styles/variables";
-</style>

@@ -1,5 +1,5 @@
 <template>
-  <h2 class="text-h5 text-lg-h4 my-16">
+  <h2 class="text-h5 text-lg-h4">
     {{ appStore.translatedProductTitle }}
   </h2>
   <VContainer grid-list-xs>
