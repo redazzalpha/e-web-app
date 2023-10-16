@@ -50,4 +50,5 @@ export interface State {
   productFilter: Filter;
   slideshows: Array<string>;
   colors: SysColor;
+  cart: Array<Product>;
 }

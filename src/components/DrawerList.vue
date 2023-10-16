@@ -9,7 +9,18 @@
           :to="item.href"
           rounded="xl"
           active-class="active-item"
-        />
+        >
+          <template v-slot:append v-if="item.label == 'Mon panier'">
+            <VBadge
+              v-show="appStore.cart.length"
+              :dot="isDot"
+              :content="appStore.cart.length"
+              color="red"
+              :max="99"
+              inline
+            />
+          </template>
+        </VListItem>
       </template>
       <template v-else>
         <VListGroup :value="item.label">
@@ -40,7 +51,15 @@
 </template>
 
 <script lang="ts" setup>
+import { ref } from "vue";
 import type { DrawerListItem } from "@/utils/types";
+import { useAppStore } from "@/store/app";
+
+const appStore = useAppStore();
+
+//#region variables
+const isDot = ref<boolean>(false);
+//#endregion
 
 //#region props
 interface Props {

@@ -46,13 +46,13 @@ export const drawerListItem: Array<DrawerListItem> = [
     ],
   },
   {
-    label: "Voir mon panier",
+    label: "Mon panier",
     icon: "mdi-cart",
     href: sources.cart,
     children: [],
   },
   {
-    label: "Voir ma commande",
+    label: "Ma commande",
     icon: "mdi-file-sign",
     href: sources.order,
     children: [],

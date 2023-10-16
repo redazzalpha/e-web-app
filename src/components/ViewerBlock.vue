@@ -3,15 +3,9 @@
     <ProductCard
       v-for="product in props.products"
       :key="product.id"
-      :id="product.id"
-      :image-source="product.img"
-      :description="product.description"
-      :price="`${product.price}&euro;`"
-      :score="product.score"
-      :is-new="product.isNew"
+      :product="product"
       :label-button-tag="labelButtonTag"
       :label-button-order="labelButtonOrder"
-      :text-caption="product.label"
       :color-label-button-tag="appStore.colors.labelButtonTag"
       :color-label-button-order="appStore.colors.labelButtonOrder"
       :color-background-button-tag="appStore.colors.buttonTag"
@@ -20,6 +14,7 @@
       :color-text-caption="appStore.colors.textBase"
       :color-score="appStore.colors.score"
       :elevation="15"
+      :on-order-click="appStore.addToCart"
     />
   </div>
 </template>

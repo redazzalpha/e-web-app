@@ -7,7 +7,7 @@
     icon="mdi-chevron-up"
     :color="props.color"
     v-scroll="onScroll"
-    @click="onClick"
+    @click="props.onClick"
   >
   </v-btn>
 </template>
@@ -42,11 +42,18 @@ interface Props {
   icon?: string;
   background?: string;
   color?: string;
+  onClick?: () => void;
 }
 const props = withDefaults(defineProps<Props>(), {
   icon: "mdi-chevron",
   background: "",
   color: "",
+  onClick: () => {
+    window.scrollTo({
+      behavior: "smooth",
+      top: 0,
+    });
+  },
 });
 //#endregion
 
@@ -54,12 +61,6 @@ const props = withDefaults(defineProps<Props>(), {
 async function onScroll(): Promise<void> {
   if (window.scrollY >= scrollOffset) position.value.right = `${rightIn}px`;
   else position.value.right = `${rightOut}px`;
-}
-function onClick(): void {
-  window.scrollTo({
-    behavior: "smooth",
-    top: 0,
-  });
 }
 //#endregion
 </script>

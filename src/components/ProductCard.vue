@@ -4,7 +4,7 @@
         drag and drop that cause bad behaviour
     -->
     <div class="product-card_img-curtain"></div>
-    <VImg class="product-card_img" :src="props.imageSource" cover>
+    <VImg class="product-card_img" :src="props.product.img" cover>
       <!-- loader image -->
       <template v-slot:placeholder>
         <div class="d-flex align-center justify-center fill-height">
@@ -17,31 +17,33 @@
     </VImg>
     <figcaption class="product-card_caption">
       <div class="d-flex">
-        <p class="product-card_caption_label flex-grow-1 text-no-wrap">
-          {{ props.textCaption }}
+        <p class="product-card_caption_label flex-grow-1">
+          {{ props.product.label }}
         </p>
-        <strong>{{ props.price }}</strong>
+        <strong>{{ props.product.price }}€</strong>
       </div>
       <div class="product-card_caption_score">
         <VHover>
           <template v-for="count in 6" :key="count">
             <VBtn
-              :icon="props.score >= count ? 'mdi-star' : 'mdi-star-outline'"
+              :icon="
+                props.product.score >= count ? 'mdi-star' : 'mdi-star-outline'
+              "
               variant="plain"
               size="x-small"
             />
           </template>
         </VHover>
       </div>
-      <p class="product-card_caption_desc text-no-wrap">
-        {{ props.description }}
+      <p class="product-card_caption_desc">
+        {{ props.product.description }}
       </p>
     </figcaption>
     <!-- tag button -->
     <VBtn
       class="product-card_tag-btn"
-      :to="`${sources.description}/${props.id}`"
-      v-if="props.labelButtonTag && props.isNew"
+      :to="`${sources.description}/${props.product.id}`"
+      v-if="props.labelButtonTag && props.product.isNew"
       elevation="10"
       rounded="xs"
       variant="text"
@@ -55,6 +57,7 @@
       size="large"
       elevation="0"
       rounded="xl"
+      @click.prevent="props.onOrderClick(props.product)"
     >
       {{ props.labelButtonOrder }}
       <VIcon class="mx-2">{{ props.iconOrderButton }}</VIcon>
@@ -64,17 +67,13 @@
 
 <script lang="ts" setup>
 import * as sources from "@/utils/sources";
+import { Product } from "../utils/types";
 
 //#region props
 interface Props {
-  id?: number;
-  imageSource: string;
-  description?: string;
+  product: Product;
   labelButtonTag?: string;
   labelButtonOrder?: string;
-  textCaption?: string;
-  price?: string;
-  score?: number;
   colorCard?: string;
   colorLabelButtonOrder?: string;
   colorLabelButtonTag?: string;
@@ -83,20 +82,15 @@ interface Props {
   colorTextCaption?: string;
   colorBackgroundCaption?: string;
   colorScore?: string;
-  isNew?: boolean;
   width?: number;
   height?: number;
   elevation?: number;
   iconOrderButton?: string;
+  onOrderClick: (product: Product) => void;
 }
 const props = withDefaults(defineProps<Props>(), {
-  id: 0,
   labelButtonTag: "",
   labelButtonOrder: "",
-  textCaption: "",
-  description: "",
-  price: "",
-  score: 0,
   colorCard: "white",
   colorLabelButtonTag: "black",
   colorLabelButtonOrder: "black",
@@ -105,7 +99,6 @@ const props = withDefaults(defineProps<Props>(), {
   colorBackgroundButtonOrder: "transparent",
   colorBackgroundCaption: "white",
   colorScore: "transparent",
-  isNew: false,
   width: 300,
   height: 400,
   elevation: 0,
@@ -116,7 +109,8 @@ const props = withDefaults(defineProps<Props>(), {
 
 <style lang="scss" scoped>
 //#region mixins
-@mixin ellipsis {
+@mixin ellipsis() {
+  text-wrap: nowrap;
   -o-text-overflow: ellipsis;
   -ms-text-overflow: ellipsis;
   text-overflow: ellipsis;

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="description_container d-flex flex-column elevation-10 mx-5 mx-md-10 pb-md-10"
+    class="description_container d-flex flex-column elevation-10 mx-5 mx-md-auto"
   >
     <VBtn
       class="description_back-button text-h4 pa-0"
@@ -60,6 +60,7 @@
           width="320"
           variant="elevated"
           :color="baseColor.orange"
+          @click.prevent="appStore.addToCart(product)"
         >
           Ajouter au panier
           <VIcon class="mx-2">mdi-cart-plus</VIcon>
@@ -72,14 +73,16 @@
 <script lang="ts" setup>
 import { computed } from "vue";
 import { useAppStore } from "@/store/app";
-import { Product } from "../utils/types";
+import type { Product } from "@/utils/types";
 import router from "@/router";
 import { baseColor } from "@/utils/colors";
 import vuetify from "@/plugins/vuetify";
 
+const appStore = useAppStore();
+
 //#region variables
 const product: Product =
-  useAppStore().products[Number(router.currentRoute.value.params.id) - 1];
+  appStore.products[Number(router.currentRoute.value.params.id) - 1];
 //#endregion
 
 //#region computed
@@ -102,6 +105,7 @@ const imgWidth = computed(() => {
   border-radius: 10px;
   background-color: v-bind("baseColor.whiteDark");
   margin-top: 100px;
+  max-width: 1000px;
   .description_title {
     margin-top: 40px !important;
   }

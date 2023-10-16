@@ -15,15 +15,9 @@
               <ProductCard
                 class="product-card"
                 v-bind="props"
-                :id="product.id"
-                :image-source="product.img"
-                :description="product.description"
-                :price="`${product.price}&euro;`"
-                :score="product.score"
-                :is-new="product.isNew"
+                :product="product"
                 :label-button-tag="labelButtonTag"
                 :label-button-order="labelButtonOrder"
-                :text-caption="product.label"
                 :color-label-button-tag="appStore.colors.labelButtonTag"
                 :color-label-button-order="appStore.colors.labelButtonOrder"
                 :color-background-button-tag="appStore.colors.buttonTag"
@@ -32,6 +26,7 @@
                 :color-text-caption="appStore.colors.textBase"
                 :color-score="appStore.colors.score"
                 :elevation="isHovering ? 15 : 0"
+                :on-order-click="appStore.addToCart"
               />
             </RouterLink>
           </template>

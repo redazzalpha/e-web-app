@@ -1,7 +1,7 @@
 <template>
   <h2 class="text-h5 text-lg-h4">
     mot-clé : {{ $route.params.pattern }} <br />
-    {{ subtitle }}
+    <span v-html="subtitle"></span>
   </h2>
   <VContainer grid-list-xs>
     <VRow>
@@ -16,12 +16,7 @@
               <ProductCard
                 class="product-card"
                 v-bind="props"
-                :id="product.id"
-                :image-source="product.img"
-                :description="product.description"
-                :price="`${product.price}&euro;`"
-                :score="product.score"
-                :is-new="product.isNew"
+                :product="product"
                 :label-button-tag="labelButtonTag"
                 :label-button-order="labelButtonOrder"
                 :text-caption="product.label"
@@ -33,6 +28,7 @@
                 :color-text-caption="appStore.colors.textBase"
                 :color-score="appStore.colors.score"
                 :elevation="isHovering ? 15 : 0"
+                :on-order-click="appStore.addToCart"
               />
             </RouterLink>
           </template>
@@ -55,11 +51,14 @@ const labelButtonOrder = "Ajouter au panier";
 const labelButtonTag = "Nouveau";
 //#endregion
 
-const subtitle = computed<string>(() => {
-  return appStore.productsFound.length > 1
-    ? "produits trouvés"
-    : "produit trouvé";
+//#region computed
+const subtitle = computed<string>((): string => {
+  const size = appStore.productsFound.length;
+  return size > 1
+    ? `${size > 99 ? "99&#5161;" : size} articles trouvés`
+    : `1 article trouvé`;
 });
+//#endregion
 </script>
 
 <style lang="scss" scoped>

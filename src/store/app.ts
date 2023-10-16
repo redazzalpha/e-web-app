@@ -333,6 +333,7 @@ export const useAppStore = defineStore("app", {
       caption: baseColor.white,
       score: baseColor.orange,
     },
+    cart: [],
   }),
   getters: {
     filteredProducts: (state) => {
@@ -361,6 +362,43 @@ export const useAppStore = defineStore("app", {
         default:
           return "Unknown";
       }
+    },
+  },
+  actions: {
+    toTop(scrollingType: ScrollBehavior): void {
+      window.scrollTo({
+        behavior: scrollingType,
+        top: 0,
+      });
+    },
+    checkLocalStorage() {
+      const storage = window.localStorage;
+      const x = "__storage_test__";
+      try {
+        storage.setItem(x, x);
+        storage.removeItem(x);
+        return true;
+      } catch (e) {
+        return (
+          e instanceof DOMException &&
+          // everything except Firefox
+          (e.name === "QuotaExceededError" ||
+            // Firefox
+            e.name === "NS_ERROR_DOM_QUOTA_REACHED") &&
+          // acknowledge QuotaExceededError only if there's something already stored
+          storage.length !== 0
+        );
+      }
+    },
+    addToCart(product: Product) {
+      this.cart.push(product);
+    },
+    removeFromCart(product: Product) {
+      const index = this.cart.indexOf(product);
+      if (index > -1) this.cart.splice(index, 1);
+    },
+    clearCart() {
+      this.cart = [];
     },
   },
   persist: true,

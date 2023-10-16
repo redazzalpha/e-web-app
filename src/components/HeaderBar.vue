@@ -13,27 +13,48 @@
         <!-- <RouterLink :to="props.linkSource"> -->
         {{ props.textLogo }}
       </RouterLink>
+      <VBtn
+        class="app-bar_logo_cart text-body-1 ml-2 rounded-sm"
+        :to="sources.cart"
+        size="small"
+        :ripple="false"
+        variant="plain"
+        style="position: relative"
+      >
+        <VIcon>mdi-cart</VIcon>
+        <VBadge
+          v-show="appStore.cart.length"
+          :dot="isDot"
+          :content="appStore.cart.length"
+          color="red"
+          :max="99"
+          :offset-y="-22"
+        />
+      </VBtn>
     </v-app-bar-title>
 
     <!-- drawer icon -->
     <VAppBarNavIcon
       class="app-bar_drawer-icon"
       @click="emit('onNavIconClick')"
+      :ripple="false"
     />
   </VAppBar>
 </template>
 
 <script lang="ts" setup>
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 import { RouterLink } from "vue-router";
 import AppBarImg from "@/assets/app-bar.png";
 import { baseColor } from "@/utils/colors";
+import * as sources from "@/utils/sources";
 import { useAppStore } from "@/store/app";
 
 const appStore = useAppStore();
 
 //#region variables
 const threshold = 80;
+const isDot = ref<boolean>(false);
 //#endregion
 
 //#region props
@@ -63,9 +84,8 @@ const emit = defineEmits<Emits>();
 
 //#region event handlers
 async function onScroll(): Promise<void> {
-  if (window.scrollY >= threshold) {
-    appStore.colors.textAppBar = baseColor.white;
-  } else appStore.colors.textAppBar = baseColor.black;
+  if (window.scrollY >= threshold) appStore.colors.textAppBar = baseColor.white;
+  else appStore.colors.textAppBar = baseColor.black;
 }
 //#endregion
 
@@ -89,8 +109,14 @@ onMounted((): void => {
   &_logo {
     font-family: v-bind("props.fontLogo");
     font-size: v-bind("`${props.sizeLogo}px`");
-    font-style: "italic";
+    &:deep(.v-toolbar-title__placeholder) {
+      overflow: visible;
+    }
     & a {
+      @include app-bar-transion;
+    }
+    &_cart {
+      color: v-bind("props.colorLogo");
       @include app-bar-transion;
     }
   }
