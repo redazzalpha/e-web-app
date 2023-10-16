@@ -57,6 +57,7 @@
       rounded="xl"
     >
       {{ props.labelButtonOrder }}
+      <VIcon class="mx-2">{{ props.iconOrderButton }}</VIcon>
     </VBtn>
   </figure>
 </template>
@@ -86,6 +87,7 @@ interface Props {
   width?: number;
   height?: number;
   elevation?: number;
+  iconOrderButton?: string;
 }
 const props = withDefaults(defineProps<Props>(), {
   id: 0,
@@ -107,6 +109,7 @@ const props = withDefaults(defineProps<Props>(), {
   width: 300,
   height: 400,
   elevation: 0,
+  iconOrderButton: "mdi-cart-plus",
 });
 //#endregion
 </script>
