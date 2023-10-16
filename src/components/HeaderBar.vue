@@ -13,6 +13,24 @@
         <!-- <RouterLink :to="props.linkSource"> -->
         {{ props.textLogo }}
       </RouterLink>
+      <VBtn
+        class="app-bar_logo_cart text-body-1 ml-2 rounded-sm"
+        :to="sources.cart"
+        size="small"
+        :ripple="false"
+        variant="plain"
+      >
+        <VIcon class="text-h5">mdi-cart</VIcon>
+        <VBadge
+          v-show="appStore.cart.length"
+          :dot="isDot"
+          :content="appStore.cart.length"
+          color="red"
+          :max="99"
+          :offset-y="-15"
+          :offset-x="-10"
+        />
+      </VBtn>
     </v-app-bar-title>
 
     <!-- drawer icon -->
@@ -29,12 +47,14 @@ import { onMounted, ref } from "vue";
 import { RouterLink } from "vue-router";
 import AppBarImg from "@/assets/app-bar.png";
 import { baseColor } from "@/utils/colors";
+import * as sources from "@/utils/sources";
 import { useAppStore } from "@/store/app";
 
 const appStore = useAppStore();
 
 //#region variables
 const threshold = 80;
+const isDot = ref<boolean>(false);
 //#endregion
 
 //#region props
@@ -93,6 +113,10 @@ onMounted((): void => {
       overflow: visible;
     }
     & a {
+      @include app-bar-transion;
+    }
+    &_cart {
+      color: v-bind("props.colorLogo");
       @include app-bar-transion;
     }
   }

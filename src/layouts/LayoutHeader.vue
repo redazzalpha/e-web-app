@@ -17,7 +17,7 @@ import { useAppStore } from "@/store/app";
 const appStore = useAppStore();
 
 //#region variables
-const textHeaderLogo = "EatZone (a.k.a EZ)";
+const textHeaderLogo = "EatZone (EZ)";
 const fontHeaderLogo = "merienda, serif, sans-serif";
 const sizeHeaderLogo = 32;
 const linkHeaderSrc: string = sources.home;
