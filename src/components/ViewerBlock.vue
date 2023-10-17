@@ -5,16 +5,16 @@
       :key="product.id"
       :product="product"
       :label-button-tag="labelButtonTag"
-      :label-button-order="labelButtonOrder"
+      :label-button-action="labelButtonAction"
       :color-label-button-tag="appStore.colors.labelButtonTag"
-      :color-label-button-order="appStore.colors.labelButtonOrder"
+      :color-label-button-action="appStore.colors.labelButtonAction"
       :color-background-button-tag="appStore.colors.buttonTag"
-      :color-background-button-order="appStore.colors.buttonOrder"
+      :color-background-button-action="appStore.colors.buttonOrder"
       :color-background-caption="appStore.colors.caption"
       :color-text-caption="appStore.colors.textBase"
       :color-score="appStore.colors.score"
       :elevation="15"
-      :on-order-click="appStore.addToCart"
+      :on-action-click="goTo"
     />
   </div>
 </template>
@@ -23,13 +23,15 @@
 import { ref, onMounted } from "vue";
 import ProductCard from "@/components/ProductCard.vue";
 import type { Product } from "@/utils/types";
+import * as sources from "@/utils/sources";
 import { useAppStore } from "@/store/app";
+import router from "@/router";
 
 const appStore = useAppStore();
 
 // #region varibles
-const labelButtonOrder = "Ajouter au panier";
 const labelButtonTag = "Nouveau";
+const labelButtonAction = "Découvrir";
 let scrollDiff = 0;
 let startPos = 0;
 //#endregion
@@ -91,6 +93,9 @@ async function onMouseMove(event: MouseEvent): Promise<void> {
       left: viewer.value?.scrollLeft + scrollDiff,
     });
   } else mouseLeave();
+}
+function goTo(product: Product | undefined) {
+  router.push(`${sources.description}/${product?.id}`);
 }
 //#endregion
 

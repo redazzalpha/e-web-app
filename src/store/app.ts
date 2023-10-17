@@ -321,7 +321,7 @@ export const useAppStore = defineStore("app", {
       textHero: baseColor.black,
       textLinkHero: baseColor.blue,
       labelButtonTag: baseColor.white,
-      labelButtonOrder: baseColor.black,
+      labelButtonAction: baseColor.black,
       labelSearchBar: baseColor.black,
       backgroundTitleHero: baseColor.transparent,
       appBar: baseColor.transparent,
@@ -403,7 +403,7 @@ export const useAppStore = defineStore("app", {
     },
     clearCart() {
       this.cart = [];
-      this.toTop("smooth");
+      this.toTop("instant");
     },
     searchByKeyword(keyword: string): void {
       if (keyword) {

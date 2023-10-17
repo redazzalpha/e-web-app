@@ -31,7 +31,7 @@ export interface SysColor {
   textHero: string;
   textLinkHero: string;
   labelButtonTag: string;
-  labelButtonOrder: string;
+  labelButtonAction: string;
   labelSearchBar: string;
   backgroundTitleHero: string;
   appBar: string;

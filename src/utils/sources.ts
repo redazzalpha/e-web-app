@@ -26,14 +26,14 @@ import SlideshowImg8 from "@/assets/slideshow8.png";
 export const home = "/";
 export const product = "/products";
 export const cart = "/cart";
+export const description = `${product}/description`;
+export const search = `${product}/search`;
 export const order = "/order";
 export const news = `${product}/news`;
 export const populars = `${product}/populars`;
 export const starters = `${product}/starters`;
 export const mainCourses = `${product}/main%20courses`;
 export const deserts = `${product}/deserts`;
-export const description = `${product}/description`;
-export const search = `${product}/search`;
 //#endregion
 
 //#region img

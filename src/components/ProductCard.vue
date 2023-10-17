@@ -15,6 +15,7 @@
         </div>
       </template>
     </VImg>
+
     <figcaption class="product-card_caption">
       <div class="d-flex">
         <p class="product-card_caption_label flex-grow-1 text-no-wrap">
@@ -39,45 +40,45 @@
         {{ props.product.description }}
       </p>
     </figcaption>
+
     <!-- tag button -->
-    <VBtn
-      class="product-card_tag-btn"
-      :to="`${sources.description}/${props.product.id}`"
+    <VCard
+      class="product-card_tag-btn py-1 px-5"
       v-if="props.labelButtonTag && props.product.isNew"
       elevation="10"
       rounded="xs"
       variant="text"
     >
       {{ props.labelButtonTag }}
-    </VBtn>
-    <!-- order button -->
+    </VCard>
+
+    <!-- action button -->
     <VBtn
-      class="product-card_order-btn"
-      v-if="props.labelButtonOrder"
+      class="product-card_action-btn"
+      v-if="props.labelButtonAction"
       size="large"
       elevation="0"
       rounded="xl"
-      @click.prevent.stop="props.onOrderClick(props.product)"
+      @click.prevent.stop="props.onActionClick(product)"
     >
-      {{ props.labelButtonOrder }}
-      <VIcon class="mx-2">{{ props.iconOrderButton }}</VIcon>
+      {{ props.labelButtonAction }}
+      <VIcon class="mx-2">{{ props.iconButtonAction }}</VIcon>
     </VBtn>
   </figure>
 </template>
 
 <script lang="ts" setup>
-import * as sources from "@/utils/sources";
 import { Product } from "../utils/types";
 
 //#region props
 interface Props {
   product: Product;
   labelButtonTag?: string;
-  labelButtonOrder?: string;
+  labelButtonAction?: string;
   colorCard?: string;
-  colorLabelButtonOrder?: string;
+  colorLabelButtonAction?: string;
   colorLabelButtonTag?: string;
-  colorBackgroundButtonOrder?: string;
+  colorBackgroundButtonAction?: string;
   colorBackgroundButtonTag?: string;
   colorTextCaption?: string;
   colorBackgroundCaption?: string;
@@ -85,24 +86,24 @@ interface Props {
   width?: number;
   height?: number;
   elevation?: number;
-  iconOrderButton?: string;
-  onOrderClick: (product: Product) => void;
+  iconButtonAction?: string;
+  onActionClick: (product?: Product) => void;
 }
 const props = withDefaults(defineProps<Props>(), {
   labelButtonTag: "",
-  labelButtonOrder: "",
+  labelButtonAction: "",
   colorCard: "white",
   colorLabelButtonTag: "black",
-  colorLabelButtonOrder: "black",
+  colorLabelButtonAction: "black",
   colorTextCaption: "black",
   colorBackgroundButtonTag: "transparent",
-  colorBackgroundButtonOrder: "transparent",
+  colorBackgroundButtonAction: "transparent",
   colorBackgroundCaption: "white",
   colorScore: "transparent",
   width: 300,
   height: 400,
   elevation: 0,
-  iconOrderButton: "mdi-cart-plus",
+  iconButtonAction: "mdi-cart-plus",
 });
 //#endregion
 </script>
@@ -148,9 +149,9 @@ const props = withDefaults(defineProps<Props>(), {
     font-family: "Kaushan Script", cursive;
     font-size: 20px;
   }
-  &_order-btn {
-    color: v-bind("props.colorLabelButtonOrder");
-    background-color: v-bind("props.colorBackgroundButtonOrder");
+  &_action-btn {
+    color: v-bind("props.colorLabelButtonAction");
+    background-color: v-bind("props.colorBackgroundButtonAction");
     margin: 15px;
   }
   &_caption {
