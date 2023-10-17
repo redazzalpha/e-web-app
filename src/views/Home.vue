@@ -24,8 +24,8 @@
         :color-background="appStore.colors.searchBar"
         :prepend-icon="iconSearchBar"
         :size="sizeSearchBar"
-        :on-search="search"
-        :hint="hintSearchBar"
+        :on-search="appStore.searchByKeyword"
+        :hint="appStore.hintSearchBar"
       />
     </template>
 
@@ -66,6 +66,7 @@
       :touch="false"
       height="500"
       cycle
+      interval="3000"
     >
       <v-carousel-item
         class="carousel_item"
@@ -115,6 +116,7 @@
       :touch="false"
       height="500"
       cycle
+      interval="2000"
     >
       <v-carousel-item
         class="carousel_item"
@@ -165,6 +167,7 @@
       :touch="false"
       height="500"
       cycle
+      interval="4000"
     >
       <v-carousel-item
         class="carousel_item"
@@ -215,6 +218,7 @@
       :touch="false"
       height="500"
       cycle
+      interval="5000"
     >
       <v-carousel-item
         class="carousel_item"
@@ -265,6 +269,7 @@
       :touch="false"
       height="500"
       cycle
+      interval="3000"
     >
       <v-carousel-item
         class="carousel_item"
@@ -285,11 +290,11 @@
       </v-carousel-item>
     </v-carousel>
 
-    <v-snackbar v-model="snackbar" :timeout="timeout">
-      {{ hintSearchBar }}
+    <v-snackbar v-model="appStore.snackbar" :timeout="appStore.timeout">
+      {{ appStore.hintSearchBar }}
 
       <template v-slot:actions>
-        <v-btn color="blue" variant="text" @click="snackbar = false">
+        <v-btn color="blue" variant="text" @click="appStore.snackbar = false">
           Close
         </v-btn>
       </template>
@@ -305,7 +310,6 @@ import * as sources from "@/utils/sources";
 import { useAppStore } from "@/store/app";
 import type { Product } from "@/utils/types";
 import { ref, onBeforeMount } from "vue";
-import router from "../router/index";
 
 const appStore = useAppStore();
 
@@ -323,12 +327,9 @@ const fontSizeHero = 48;
 const sourceHeroLink = "/";
 const sizeSearchBar = 320;
 const iconSearchBar = "mdi-magnify";
-const timeout = 2000;
 //#endregion
 
 //#region refs
-const hintSearchBar = ref<string>("");
-const snackbar = ref<boolean>(false);
 const productNews = ref<Array<Product>>([]);
 const productPopulars = ref<Array<Product>>([]);
 const productStarters = ref<Array<Product>>([]);
@@ -348,34 +349,6 @@ function updateFilteredProducts(): void {
   productMainCourses.value = appStore.filteredProducts;
   appStore.productFilter = "deserts";
   productDeserts.value = appStore.filteredProducts;
-}
-//#endregion
-
-//#region event handler
-function search(input: string): void {
-  if (input) {
-    input = input.trim();
-    const regex: RegExp = new RegExp(input, "gi");
-    const foundProducts: Array<Product> = appStore.products.filter(
-      (e: Product) => {
-        const match = e.keyWords.filter((keyword: string) =>
-          keyword.match(regex)
-        );
-        if (match.length) return e;
-      }
-    );
-
-    if (foundProducts.length < 1) {
-      snackbar.value = true;
-      hintSearchBar.value = "Aucune correspondance trouvée";
-      setTimeout(() => {
-        hintSearchBar.value = "";
-      }, timeout);
-    } else {
-      appStore.productsFound = foundProducts;
-      router.push(`${sources.search}/${input}`);
-    }
-  }
 }
 //#endregion
 

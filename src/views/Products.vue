@@ -9,8 +9,8 @@
     :color-background="appStore.colors.searchBar"
     :prepend-icon="iconSearchBar"
     :size="sizeSearchBar"
-    :on-search="search"
-    :hint="hintSearchBar"
+    :on-search="appStore.searchByKeyword"
+    :hint="appStore.hintSearchBar"
   />
 
   <VContainer grid-list-xs>
@@ -45,17 +45,26 @@
       </VCol>
     </VRow>
   </VContainer>
+
+  <v-snackbar v-model="appStore.snackbar" :timeout="appStore.timeout">
+    {{ appStore.hintSearchBar }}
+
+    <template v-slot:actions>
+      <v-btn color="blue" variant="text" @click="appStore.snackbar = false">
+        Close
+      </v-btn>
+    </template>
+  </v-snackbar>
 </template>
 
 <script lang="ts" setup>
-import { watch, onMounted, ref } from "vue";
+import { watch, onMounted } from "vue";
 import ProductCard from "@/components/ProductCard.vue";
 import router from "@/router";
 import * as sources from "@/utils/sources";
 import { useAppStore } from "@/store/app";
 import { Filter } from "../utils/types";
 import SearchBar from "@/components/SearchBar.vue";
-import type { Product } from "@/utils/types";
 
 const appStore = useAppStore();
 
@@ -65,40 +74,6 @@ const labelButtonTag = "Nouveau";
 const labelSearchBar = "rechercher par mot-clé";
 const sizeSearchBar = 320;
 const iconSearchBar = "mdi-magnify";
-const timeout = 2000;
-//#endregion
-
-//#region refs
-const hintSearchBar = ref<string>("");
-const snackbar = ref<boolean>(false);
-//#endregion
-
-//#region event handlers
-function search(input: string): void {
-  if (input) {
-    input = input.trim();
-    const regex: RegExp = new RegExp(input, "gi");
-    const foundProducts: Array<Product> = appStore.products.filter(
-      (e: Product) => {
-        const match = e.keyWords.filter((keyword: string) =>
-          keyword.match(regex)
-        );
-        if (match.length) return e;
-      }
-    );
-
-    if (foundProducts.length < 1) {
-      snackbar.value = true;
-      hintSearchBar.value = "Aucune correspondance trouvée";
-      setTimeout(() => {
-        hintSearchBar.value = "";
-      }, timeout);
-    } else {
-      appStore.productsFound = foundProducts;
-      router.push(`${sources.search}/${input}`);
-    }
-  }
-}
 //#endregion
 
 // #region hooks

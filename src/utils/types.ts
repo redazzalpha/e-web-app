@@ -51,4 +51,7 @@ export interface State {
   slideshows: Array<string>;
   colors: SysColor;
   cart: Array<Product>;
+  hintSearchBar: string;
+  snackbar: boolean;
+  timeout: number;
 }

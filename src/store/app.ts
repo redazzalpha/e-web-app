@@ -3,6 +3,7 @@ import { defineStore } from "pinia";
 import * as sources from "@/utils/sources";
 import type { State, Product } from "@/utils/types";
 import { baseColor } from "@/utils/colors";
+import router from "@/router";
 
 export const useAppStore = defineStore("app", {
   state: (): State => ({
@@ -334,6 +335,9 @@ export const useAppStore = defineStore("app", {
       score: baseColor.orange,
     },
     cart: [],
+    hintSearchBar: "",
+    snackbar: false,
+    timeout: 2000,
   }),
   getters: {
     filteredProducts: (state) => {
@@ -399,6 +403,27 @@ export const useAppStore = defineStore("app", {
     },
     clearCart() {
       this.cart = [];
+    },
+    searchByKeyword(keyword: string): void {
+      if (keyword) {
+        keyword = keyword.trim();
+        const regex: RegExp = new RegExp(keyword, "gi");
+        this.productsFound = this.products.filter((e: Product) => {
+          const match = e.keyWords.filter((keyword: string) =>
+            keyword.match(regex)
+          );
+          if (match.length) return e;
+        });
+      }
+      if (this.productsFound.length < 1) {
+        this.snackbar = true;
+        this.hintSearchBar = "Aucune correspondance trouvée";
+        setTimeout(() => {
+          this.hintSearchBar = "";
+        }, this.timeout);
+      } else {
+        router.push(`${sources.search}/${keyword}`);
+      }
     },
   },
   persist: true,

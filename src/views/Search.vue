@@ -1,6 +1,6 @@
 <template>
   <h2 class="text-h5 text-lg-h4">
-    mot-clé : {{ $route.params.pattern }} <br />
+    mot-clé : {{ $route.params.keyword }} <br />
     <span v-html="subtitle"></span>
   </h2>
   <VContainer grid-list-xs>
