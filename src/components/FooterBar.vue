@@ -8,21 +8,21 @@
       </h2>
       <VContainer>
         <VRow class="justify-center align-center">
-          <VCol class="v-col-12 v-col-md-6">
+          <VCol class="v-col-12 v-col-lg-6">
             <a
               class="footer-bar_map_link text-white font-italic"
               :href="sources.mapImg"
               target="_self"
               title="Cliquez pour agrandir"
             >
-              <figure>
+              <figure class="mx-auto" style="max-width: 500px">
                 <figcaption>Plan d'accès</figcaption>
                 <VImg :src="sources.mapSmallImg" class="rounded-xl" />
               </figure>
             </a>
           </VCol>
           <VCol>
-            <p class="">
+            <p class="mt-8">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non
               risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing
               nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas
