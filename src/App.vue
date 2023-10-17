@@ -23,7 +23,10 @@ body {
   overflow-x: hidden;
   h1,
   h2.text-h5 {
-    font-family: $font-family-logo !important;
+    /* font-family: $font-family-logo !important; */
+    font-family: SF Pro Display, SF Pro Icons, AOS Icons, Helvetica Neue,
+      Helvetica, Arial, sans-serif !important;
+
     font-weight: bold;
     text-align: center;
     margin: 100px 40px 40px 40px !important;

@@ -35,7 +35,9 @@
             </span>
           </VCardText>
           <VCardActions>
-            <VBtn color="error">Annuler</VBtn>
+            <VBtn @click="appStore.clearCart" color="error"
+              >Vider mon panier</VBtn
+            >
             <VBtn color="success">Commander</VBtn>
           </VCardActions>
         </VCard>

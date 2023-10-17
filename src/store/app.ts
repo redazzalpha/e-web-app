@@ -403,6 +403,7 @@ export const useAppStore = defineStore("app", {
     },
     clearCart() {
       this.cart = [];
+      this.toTop("smooth");
     },
     searchByKeyword(keyword: string): void {
       if (keyword) {
