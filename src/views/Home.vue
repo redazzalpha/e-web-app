@@ -389,7 +389,7 @@ onBeforeMount(() => updateFilteredProducts());
   font-family: v-bind("fontHero") !important;
 }
 .carousel {
-  width: v-bind("`${$vuetify.display.mobile? 100 : 70}%`");
+  width: v-bind("`${$vuetify.display.mobile? 90 : 70}%`");
   margin: auto;
   transition: width 1s linear;
 }
