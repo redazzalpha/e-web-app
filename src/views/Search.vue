@@ -3,6 +3,17 @@
     mot-clé : {{ $route.params.keyword }} <br />
     <span v-html="subtitle"></span>
   </h2>
+  <SearchBar
+    class="mt-10 mb-5 mx-auto"
+    :label="labelSearchBar"
+    :color-label="appStore.colors.labelSearchBar"
+    :color-background="appStore.colors.searchBar"
+    :prepend-icon="iconSearchBar"
+    :size="sizeSearchBar"
+    :on-search="appStore.searchByKeyword"
+    :hint="appStore.hintSearchBar"
+  />
+
   <VContainer grid-list-xs>
     <VRow>
       <VCol
@@ -39,16 +50,20 @@
 </template>
 
 <script lang="ts" setup>
+import { computed } from "vue";
 import * as sources from "@/utils/sources";
 import ProductCard from "@/components/ProductCard.vue";
 import { useAppStore } from "@/store/app";
-import { computed } from "vue";
+import SearchBar from "@/components/SearchBar.vue";
 
 const appStore = useAppStore();
 
 //#region variables
 const labelButtonOrder = "Ajouter au panier";
 const labelButtonTag = "Nouveau";
+const labelSearchBar = "rechercher par mot-clé";
+const sizeSearchBar = 320;
+const iconSearchBar = "mdi-magnify";
 //#endregion
 
 //#region computed
