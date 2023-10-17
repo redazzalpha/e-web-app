@@ -57,7 +57,7 @@
       size="large"
       elevation="0"
       rounded="xl"
-      @click.prevent="props.onOrderClick(props.product)"
+      @click.prevent.stop="props.onOrderClick(props.product)"
     >
       {{ props.labelButtonOrder }}
       <VIcon class="mx-2">{{ props.iconOrderButton }}</VIcon>

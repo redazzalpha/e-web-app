@@ -6,7 +6,7 @@
       size="x-small"
       variant="plain"
       title="supprimer"
-      @click="appStore.removeFromCart(props.product)"
+      @click="removeItem(product)"
     ></VBtn>
     <div class="cart-card_content d-flex flex-row flex-sm-row">
       <VImg
@@ -19,13 +19,13 @@
         <span
           class="cart-card_title text-h6 d-flex flex-column flex-md-row text-body-1"
         >
-          <span class="ellipsis flex-grow-1">
+          <span class="ellipsis">
             {{ props.product.label }}
           </span>
-          <span class="mr-10 ml-md-5">
+          <!-- <span class="mr-10 ml-md-5">
             Category:
             {{ product.category }} <br />
-          </span>
+          </span> -->
         </span>
 
         <span class="d-flex flex-column">
@@ -54,6 +54,8 @@
 import { Product } from "@/utils/types";
 import { baseColor } from "@/utils/colors";
 import { useAppStore } from "@/store/app";
+import { computed } from "vue";
+import vuetify from "@/plugins/vuetify";
 
 const appStore = useAppStore();
 
@@ -63,16 +65,37 @@ interface Props {
 }
 const props = defineProps<Props>();
 //#endregion
+
+//#region computed
+const ellipsisWidth = computed<string>(() => {
+  const width: number = vuetify.display.width.value;
+  if (width > 600) return "250px";
+  return `${vuetify.display.width.value - 250}px`;
+});
+//#endregion
+
+//#region emits
+interface Emits {
+  (event: "onRemove", product: Product): void;
+}
+const emit = defineEmits<Emits>();
+//#endregion
+
+//#region event handlers
+function removeItem(product: Product): void {
+  emit("onRemove", product);
+}
+//#endregion
 </script>
 
 <style lang="scss" scoped>
 //#region mixins
 @mixin ellipsis() {
-  text-wrap: nowrap;
   -o-text-overflow: ellipsis;
   -ms-text-overflow: ellipsis;
   text-overflow: ellipsis;
   overflow: hidden;
+  width: v-bind("ellipsisWidth");
 }
 //#endregion
 

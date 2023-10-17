@@ -16,7 +16,7 @@
               :dot="isDot"
               :content="appStore.cart.length"
               color="red"
-              :max="99"
+              :max="20"
               inline
             />
           </template>

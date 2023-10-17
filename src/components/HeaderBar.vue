@@ -26,7 +26,7 @@
           :dot="isDot"
           :content="appStore.cart.length"
           color="red"
-          :max="99"
+          :max="20"
           :offset-y="-15"
           :offset-x="-10"
         />
