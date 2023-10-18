@@ -23,7 +23,6 @@ body {
   overflow-x: hidden;
   h1,
   h2.text-h5 {
-    /* font-family: $font-family-logo !important; */
     font-family: SF Pro Display, SF Pro Icons, AOS Icons, Helvetica Neue,
       Helvetica, Arial, sans-serif !important;
 
@@ -41,3 +40,5 @@ body {
   }
 }
 </style>
+
+<!-- TODO: create function that adds zero on price value to get 2 digit after virgule like i did in cart page on order summary  -->

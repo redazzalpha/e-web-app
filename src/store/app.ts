@@ -338,6 +338,8 @@ export const useAppStore = defineStore("app", {
     hintSearchBar: "",
     snackbar: false,
     timeout: 2000,
+    dialogSlider: true,
+    valueSlider: 1,
   }),
   getters: {
     filteredProducts: (state) => {

@@ -35,6 +35,7 @@
             </span>
           </VCardText>
           <VCardActions>
+            <VSpacer />
             <VBtn @click="appStore.clearCart" color="error"
               >Vider mon panier</VBtn
             >

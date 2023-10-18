@@ -38,6 +38,7 @@
                 :color-score="appStore.colors.score"
                 :elevation="isHovering ? 15 : 0"
                 :on-action-click="appStore.addToCart"
+                icon-button-action="mdi-cart-plus"
               />
             </RouterLink>
           </template>

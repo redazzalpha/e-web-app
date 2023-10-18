@@ -54,4 +54,6 @@ export interface State {
   hintSearchBar: string;
   snackbar: boolean;
   timeout: number;
+  dialogSlider: boolean;
+  valueSlider: number;
 }
