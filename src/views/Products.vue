@@ -28,16 +28,16 @@
                 v-bind="props"
                 :product="product"
                 :label-button-tag="labelButtonTag"
-                :label-button-order="labelButtonOrder"
+                :label-button-action="labelButtonAction"
                 :color-label-button-tag="appStore.colors.labelButtonTag"
-                :color-label-button-order="appStore.colors.labelButtonOrder"
+                :color-label-button-action="appStore.colors.labelButtonAction"
                 :color-background-button-tag="appStore.colors.buttonTag"
-                :color-background-button-order="appStore.colors.buttonOrder"
+                :color-background-button-action="appStore.colors.buttonAction"
                 :color-background-caption="appStore.colors.caption"
                 :color-text-caption="appStore.colors.textBase"
                 :color-score="appStore.colors.score"
                 :elevation="isHovering ? 15 : 0"
-                :on-order-click="appStore.addToCart"
+                :on-action-click="appStore.addToCart"
               />
             </RouterLink>
           </template>
@@ -69,7 +69,7 @@ import SearchBar from "@/components/SearchBar.vue";
 const appStore = useAppStore();
 
 //#region variables
-const labelButtonOrder = "Ajouter au panier";
+const labelButtonAction = "Ajouter au panier";
 const labelButtonTag = "Nouveau";
 const labelSearchBar = "rechercher par mot-clé";
 const sizeSearchBar = 320;

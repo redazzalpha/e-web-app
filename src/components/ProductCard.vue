@@ -62,7 +62,9 @@
       @click.prevent.stop="props.onActionClick(product)"
     >
       {{ props.labelButtonAction }}
-      <VIcon class="mx-2">{{ props.iconButtonAction }}</VIcon>
+      <VIcon v-if="props.iconButtonAction" class="mx-2">{{
+        props.iconButtonAction
+      }}</VIcon>
     </VBtn>
   </figure>
 </template>
@@ -103,7 +105,7 @@ const props = withDefaults(defineProps<Props>(), {
   width: 300,
   height: 400,
   elevation: 0,
-  iconButtonAction: "mdi-cart-plus",
+  iconButtonAction: "",
 });
 //#endregion
 </script>

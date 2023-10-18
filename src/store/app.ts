@@ -329,7 +329,7 @@ export const useAppStore = defineStore("app", {
       drawer: baseColor.dark,
       footer: baseColor.blackThin,
       buttonTag: baseColor.red,
-      buttonOrder: baseColor.orange,
+      buttonAction: baseColor.orange,
       buttonLink: baseColor.orange,
       caption: baseColor.white,
       score: baseColor.orange,
@@ -394,8 +394,8 @@ export const useAppStore = defineStore("app", {
         );
       }
     },
-    addToCart(product: Product) {
-      this.cart.push(product);
+    addToCart(product?: Product) {
+      if (product) this.cart.push(product);
     },
     removeFromCart(product: Product) {
       const index = this.cart.indexOf(product);

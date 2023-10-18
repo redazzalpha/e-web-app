@@ -9,7 +9,7 @@
       :color-label-button-tag="appStore.colors.labelButtonTag"
       :color-label-button-action="appStore.colors.labelButtonAction"
       :color-background-button-tag="appStore.colors.buttonTag"
-      :color-background-button-action="appStore.colors.buttonOrder"
+      :color-background-button-action="appStore.colors.buttonAction"
       :color-background-caption="appStore.colors.caption"
       :color-text-caption="appStore.colors.textBase"
       :color-score="appStore.colors.score"
@@ -94,7 +94,7 @@ async function onMouseMove(event: MouseEvent): Promise<void> {
     });
   } else mouseLeave();
 }
-function goTo(product: Product | undefined) {
+function goTo(product: Product | undefined): void {
   router.push(`${sources.description}/${product?.id}`);
 }
 //#endregion

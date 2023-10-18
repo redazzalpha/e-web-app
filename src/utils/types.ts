@@ -39,7 +39,7 @@ export interface SysColor {
   drawer: string;
   footer: string;
   buttonTag: string;
-  buttonOrder: string;
+  buttonAction: string;
   buttonLink: string;
   caption: string;
   score: string;
