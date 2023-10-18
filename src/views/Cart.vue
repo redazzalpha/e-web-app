@@ -2,7 +2,7 @@
   <h2 class="text-h5 text-lg-h4">Mon panier</h2>
   <template v-if="appStore.cart.length > 0">
     <VContainer grid-list-xs class="cart-container">
-      <VRow class="justify-center">
+      <VRow class="justify-center" no-gutters>
         <VCol
           v-for="product in appStore.cart"
           :key="product.id"
@@ -10,7 +10,7 @@
         >
           <CartCard
             @vue:mounted="writeSummary(product)"
-            class="flex-grow-1"
+            class="flex-grow-1 mx-md-3"
             :product="product"
             @on-remove="onRemoveItem(product)"
           />
