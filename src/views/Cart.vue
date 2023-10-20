@@ -3,13 +3,11 @@
   <template v-if="appStore.cart.length > 0">
     <VContainer grid-list-xs class="cart-container">
       <VRow class="justify-center" no-gutters>
-        <!-- MARK: START LOOP ON CART ARRAY -->
         <VCol
           v-for="productGroup in appStore.cart"
           :key="productGroup.id"
           class="d-flex align-center v-col-12 v-col-md-6"
         >
-          <!-- MARK: USE WRITE SUMMARY  -->
           <CartCard
             @vue:mounted="computeSummary(productGroup)"
             class="flex-grow-1 mx-md-3"
@@ -28,13 +26,11 @@
           <VCardTitle tag="p">Résumé de ma commande</VCardTitle>
 
           <VCardText tag="p" class="text-left">
-            <!-- MARKER: USE SUMMARY -->
             <span class="d-flex flex-column" v-html="summary"></span>
             <VDivider />
             <span class="d-flex">
               <span class="flex-grow-1"> <strong>Total</strong>: </span>
               <span>
-                <!-- MARK: USE TOTAL PRICE -->
                 <strong class="text-error"
                   >{{ formatNumber(totalSummary) }}€</strong
                 >
@@ -77,7 +73,6 @@ let totalSummary = 0;
 //#endregion
 
 //#region methods
-// MARK: WRITE SUMMARY FUNCTION
 function computeSummary(productGroup: ProductGroup) {
   const quantityStr =
     productGroup.quantity > 1 ? `&times; ${productGroup.quantity}` : ``;
