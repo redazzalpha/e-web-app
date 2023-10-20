@@ -60,7 +60,7 @@
           width="320"
           variant="elevated"
           :color="baseColor.orange"
-          @click.prevent="appStore.addToCart(product)"
+          @click.prevent="openDialog"
         >
           Ajouter au panier
           <VIcon class="mx-2">mdi-cart-plus</VIcon>
@@ -68,21 +68,41 @@
       </div>
     </div>
   </div>
+
+  <DialogSlider
+    v-model:dialog="appStore.modelDialog"
+    v-model:slider="appStore.modelSlider"
+    :id="idProduct"
+    :title="titleSlider"
+    :text="textSlider"
+    :price="priceProduct"
+    :max="20"
+    :min="1"
+    @on-validate="addToCart"
+  />
 </template>
 
 <script lang="ts" setup>
-import { computed } from "vue";
-import { useAppStore } from "@/store/app";
-import type { Product } from "@/utils/types";
-import router from "@/router";
-import { baseColor } from "@/utils/colors";
 import vuetify from "@/plugins/vuetify";
+import router from "@/router";
+import { useAppStore } from "@/store/app";
+import { baseColor } from "@/utils/colors";
+import type { Product, ProductGroup } from "@/utils/types";
+import { computed, ref } from "vue";
+import DialogSlider from "./DialogSlider.vue";
 
 const appStore = useAppStore();
 
 //#region variables
 const product: Product =
   appStore.products[Number(router.currentRoute.value.params.id) - 1];
+let priceProduct = 0;
+let idProduct = 0;
+//#endregion
+
+//#region refs
+const titleSlider = ref<string>("");
+const textSlider = ref<string>("");
 //#endregion
 
 //#region computed
@@ -94,6 +114,30 @@ const imgWidth = computed(() => {
     ? "500"
     : "";
 });
+//#endregion
+
+//#region event handlers
+function openDialog() {
+  if (product) {
+    titleSlider.value = "Selectionnez une quantité";
+    textSlider.value = product.label;
+    priceProduct = product.price;
+    idProduct = product.id;
+    appStore.modelDialog = true;
+  }
+}
+function addToCart(id: number, quantity: number, totalPrice: number): void {
+  const productGroup: ProductGroup = {
+    ...appStore.products[id - 1],
+    quantity,
+    totalPrice,
+    id: Date.now(),
+  };
+
+  appStore.addToCart(productGroup);
+  appStore.modelSlider = 1;
+  appStore.modelDialog = false;
+}
 //#endregion
 </script>
 

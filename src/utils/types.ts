@@ -6,6 +6,10 @@ export type Filter =
   | "main courses"
   | "deserts";
 
+export interface ProductGroup extends Product {
+  quantity: number;
+  totalPrice: number;
+}
 export interface Product {
   id: number;
   category: string;
@@ -50,10 +54,10 @@ export interface State {
   productFilter: Filter;
   slideshows: Array<string>;
   colors: SysColor;
-  cart: Array<Product>;
+  cart: Array<ProductGroup>;
   hintSearchBar: string;
   snackbar: boolean;
   timeout: number;
-  dialogSlider: boolean;
-  valueSlider: number;
+  modelDialog: boolean;
+  modelSlider: number;
 }

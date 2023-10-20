@@ -1,18 +1,16 @@
-import HeroImg from "@/assets/food.png";
-import MapImg from "@/assets/map.png";
-import PepperoniImg from "@/assets/pepperoni.png";
-import SpaghettiImg from "@/assets/spaghetti.png";
-import BroachImg from "@/assets/broach.png";
 import BiggerImg from "@/assets/bigger.png";
-import SavoyardeImg from "@/assets/savoyarde.png";
+import BroachImg from "@/assets/broach.png";
+import DessertImg from "@/assets/dessert.png";
+import DonutsImg from "@/assets/donuts.png";
+import HeroImg from "@/assets/food.png";
+import MapSmallImg from "@/assets/map-small.png";
+import MapImg from "@/assets/map.png";
 import PancakesImg from "@/assets/pancakes.png";
+import PepperoniImg from "@/assets/pepperoni.png";
+import RagoutImg from "@/assets/ragout.png";
 import RigatoniImg from "@/assets/rigatoni.png";
 import SaladeImg from "@/assets/salade.png";
-import DessertImg from "@/assets/dessert.png";
-import RagoutImg from "@/assets/ragout.png";
-import TripleImg from "@/assets/triple.png";
-import DonutsImg from "@/assets/donuts.png";
-import MapSmallImg from "@/assets/map-small.png";
+import SavoyardeImg from "@/assets/savoyarde.png";
 import SlideshowImg1 from "@/assets/slideshow1.png";
 import SlideshowImg2 from "@/assets/slideshow2.png";
 import SlideshowImg3 from "@/assets/slideshow3.png";
@@ -21,6 +19,8 @@ import SlideshowImg5 from "@/assets/slideshow5.png";
 import SlideshowImg6 from "@/assets/slideshow6.png";
 import SlideshowImg7 from "@/assets/slideshow7.png";
 import SlideshowImg8 from "@/assets/slideshow8.png";
+import SpaghettiImg from "@/assets/spaghetti.png";
+import TripleImg from "@/assets/triple.png";
 
 // #region paths
 export const home = "/";

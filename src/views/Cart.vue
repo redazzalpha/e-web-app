@@ -4,15 +4,15 @@
     <VContainer grid-list-xs class="cart-container">
       <VRow class="justify-center" no-gutters>
         <VCol
-          v-for="product in appStore.cart"
-          :key="product.id"
+          v-for="productGroup in appStore.cart"
+          :key="productGroup.id"
           class="d-flex align-center v-col-12 v-col-md-6"
         >
           <CartCard
-            @vue:mounted="writeSummary(product)"
+            @vue:mounted="writeSummary(productGroup)"
             class="flex-grow-1 mx-md-3"
-            :product="product"
-            @on-remove="onRemoveItem(product)"
+            :product-group="productGroup"
+            @on-remove="onRemoveItem(productGroup)"
           />
         </VCol>
       </VRow>
@@ -53,11 +53,11 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
 import CartCard from "@/components/CartCard.vue";
 import { useAppStore } from "@/store/app";
+import type { ProductGroup } from "@/utils/types";
+import { ref } from "vue";
 import { VCardTitle } from "vuetify/lib/components/index.mjs";
-import type { Product } from "@/utils/types";
 
 const appStore = useAppStore();
 
@@ -68,10 +68,11 @@ const totalPriceStr = ref<string>("");
 //#endregion
 
 //#region methods
-function writeSummary({ label, price }: Product) {
+function writeSummary({ label, quantity, totalPrice: price }: ProductGroup) {
+  const quantityStr = quantity > 1 ? `&times; ${quantity}` : ``;
   summary.value += `<span class="d-flex">
     <span class="flex-grow-1">
-      - ${label}
+      - ${label} ${quantityStr}
     </span>
     <span>
       <strong>${price}&euro;</strong>
@@ -86,11 +87,11 @@ function writeSummary({ label, price }: Product) {
 //#endregion
 
 //#region event handlers
-function onRemoveItem(product: Product) {
-  appStore.removeFromCart(product);
+function onRemoveItem(productGroup: ProductGroup) {
+  appStore.removeFromCart(productGroup);
   summary.value = "";
   totalPrice.value = 0;
-  appStore.cart.forEach((item: Product) => {
+  appStore.cart.forEach((item: ProductGroup) => {
     writeSummary(item);
   });
 }

@@ -37,7 +37,7 @@
                 :color-text-caption="appStore.colors.textBase"
                 :color-score="appStore.colors.score"
                 :elevation="isHovering ? 15 : 0"
-                :on-action-click="appStore.addToCart"
+                :on-action-click="openDialog"
                 icon-button-action="mdi-cart-plus"
               />
             </RouterLink>
@@ -47,7 +47,19 @@
     </VRow>
   </VContainer>
 
-  <v-snackbar v-model="appStore.snackbar" :timeout="appStore.timeout">
+  <DialogSlider
+    v-model:dialog="appStore.modelDialog"
+    v-model:slider="appStore.modelSlider"
+    :id="idProduct"
+    :title="titleSlider"
+    :text="textSlider"
+    :price="priceProduct"
+    :max="20"
+    :min="1"
+    @on-validate="addToCart"
+  />
+
+  <VSnackbar v-model="appStore.snackbar" :timeout="appStore.timeout">
     {{ appStore.hintSearchBar }}
 
     <template v-slot:actions>
@@ -55,17 +67,18 @@
         Close
       </v-btn>
     </template>
-  </v-snackbar>
+  </VSnackbar>
 </template>
 
 <script lang="ts" setup>
-import { watch, onMounted } from "vue";
+import DialogSlider from "@/components/DialogSlider.vue";
 import ProductCard from "@/components/ProductCard.vue";
-import router from "@/router";
-import * as sources from "@/utils/sources";
-import { useAppStore } from "@/store/app";
-import { Filter } from "../utils/types";
 import SearchBar from "@/components/SearchBar.vue";
+import router from "@/router";
+import { useAppStore } from "@/store/app";
+import * as sources from "@/utils/sources";
+import type { Filter, Product, ProductGroup } from "@/utils/types";
+import { onMounted, ref, watch } from "vue";
 
 const appStore = useAppStore();
 
@@ -75,6 +88,37 @@ const labelButtonTag = "Nouveau";
 const labelSearchBar = "rechercher par mot-clé";
 const sizeSearchBar = 320;
 const iconSearchBar = "mdi-magnify";
+let priceProduct = 0;
+let idProduct = 0;
+//#endregion
+
+//#region refs
+const titleSlider = ref<string>("");
+const textSlider = ref<string>("");
+//#endregion
+
+//#region event handlers
+function openDialog(product: Product | undefined) {
+  if (product) {
+    titleSlider.value = "Selectionnez une quantité";
+    textSlider.value = product.label;
+    priceProduct = product.price;
+    idProduct = product.id;
+    appStore.modelDialog = true;
+  }
+}
+function addToCart(id: number, quantity: number, totalPrice: number): void {
+  const productGroup: ProductGroup = {
+    ...appStore.products[id - 1],
+    quantity,
+    totalPrice,
+    id: Date.now(),
+  };
+
+  appStore.addToCart(productGroup);
+  appStore.modelSlider = 1;
+  appStore.modelDialog = false;
+}
 //#endregion
 
 // #region hooks

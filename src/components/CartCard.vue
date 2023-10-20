@@ -6,12 +6,12 @@
       size="x-small"
       variant="plain"
       title="supprimer"
-      @click="removeItem(product)"
+      @click="removeItem(productGroup)"
     ></VBtn>
     <div class="cart-card_content d-flex flex-row flex-sm-row">
       <VImg
         class="cart-card_content_img flex-grow-0 mr-3"
-        :src="props.product.img"
+        :src="props.productGroup.img"
         cover
       ></VImg>
 
@@ -20,30 +20,34 @@
           class="cart-card_title text-h6 d-flex flex-column flex-md-row text-body-1"
         >
           <span class="ellipsis">
-            {{ props.product.label }}
+            {{ props.productGroup.label }}
+            <span v-if="props.productGroup.quantity > 1">
+              &times; {{ props.productGroup.quantity }}
+            </span>
           </span>
-          <!-- <span class="mr-10 ml-md-5">
-            Category:
-            {{ product.category }} <br />
-          </span> -->
+        </span>
+        <span>
+          Prix:
+          <strong> {{ productGroup.price }}&euro; </strong>
         </span>
 
-        <span class="d-flex flex-column">
-          <span class="flex-grow-1">
-            Prix:
-            {{ product.price }}&euro;
-          </span>
-          <span class="">
-            Note:
-            <template v-for="count in 6" :key="count">
-              <VIcon
-                class="text-body-1"
-                :icon="product.score >= count ? 'mdi-star' : 'mdi-star-outline'"
-                variant="plain"
-                :color="baseColor.orange"
-              />
-            </template>
-          </span>
+        <span>
+          <strong> Total </strong>
+          :
+          <strong class="text-error">
+            {{ productGroup.totalPrice }}&euro;
+          </strong>
+          <!-- Note: -->
+          <!-- <template v-for="count in 6" :key="count">
+            <VIcon
+              class="text-body-1"
+              :icon="
+                productGroup.score >= count ? 'mdi-star' : 'mdi-star-outline'
+              "
+              variant="plain"
+              :color="baseColor.orange"
+            />
+          </template> -->
         </span>
       </div>
     </div>
@@ -51,17 +55,14 @@
 </template>
 
 <script lang="ts" setup>
-import { Product } from "@/utils/types";
-import { baseColor } from "@/utils/colors";
-import { useAppStore } from "@/store/app";
-import { computed } from "vue";
 import vuetify from "@/plugins/vuetify";
-
-const appStore = useAppStore();
+import { baseColor } from "@/utils/colors";
+import { ProductGroup } from "@/utils/types";
+import { computed } from "vue";
 
 //#region props
 interface Props {
-  product: Product;
+  productGroup: ProductGroup;
 }
 const props = defineProps<Props>();
 //#endregion
@@ -76,14 +77,14 @@ const ellipsisWidth = computed<string>(() => {
 
 //#region emits
 interface Emits {
-  (event: "onRemove", product: Product): void;
+  (event: "onRemove", productGroup: ProductGroup): void;
 }
 const emit = defineEmits<Emits>();
 //#endregion
 
 //#region event handlers
-function removeItem(product: Product): void {
-  emit("onRemove", product);
+function removeItem(productGroup: ProductGroup): void {
+  emit("onRemove", productGroup);
 }
 //#endregion
 </script>

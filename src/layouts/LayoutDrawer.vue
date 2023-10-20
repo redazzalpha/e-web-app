@@ -1,4 +1,5 @@
 <template>
+  <!-- TODO: CHECK USE OF MODEL-VALUE HERE CAUSE MAYBE NOT PROPER -->
   <VNavigationDrawer
     :model-value="props.drawer"
     :location="$vuetify.display.xs ? 'right' : 'left'"
@@ -13,8 +14,8 @@
 
 <script lang="ts" setup>
 import DrawerList from "@/components/DrawerList.vue";
-import { drawerListItem } from "@/utils/drawerlist";
 import { useAppStore } from "@/store/app";
+import { drawerListItem } from "@/utils/drawerlist";
 
 const appStore = useAppStore();
 

@@ -1,67 +1,138 @@
 <template>
-  <v-dialog :model-value="props.modelValueDialog" :width="props.width">
-    <v-card :title="props.title">
-      <VCardText class="mb-5">{{ props.text }}</VCardText>
+  <v-dialog
+    :model-value="props.dialog"
+    @update:model-value="emit('update:dialog', $event)"
+    @click:outside="cancel"
+    :width="props.width"
+    @keydown.enter="emit('onValidate', props.id, props.slider, totalPrice)"
+  >
+    <VCard>
+      <VCardTitle class="bg-grey-lighten-2 px-5">
+        {{ props.title }}
+      </VCardTitle>
+
+      <VCardText class="mb-5"
+        >{{ props.text }} &times; {{ props.slider }} <br />
+
+        <VDivider />
+        <div class="d-flex">
+          <span><strong> Total: </strong> </span>
+          <VSpacer />
+          <span>
+            <strong class="text-error"> {{ totalPrice }}€ </strong>
+          </span>
+        </div>
+      </VCardText>
+
       <VSlider
-        class="mx-5"
+        class="mx-auto"
+        :model-value="props.slider"
+        @update:model-value="emit('update:slider', $event)"
         :min="props.min"
         :max="props.max"
         thumb-label="always"
         :step="props.step"
-        :model-value="props.modelValue"
-        @update:model-value="emit('update:modelValue', $event)"
+        :color="appStore.colors.buttonAction"
+        style="width: 320px"
+        hide-details
       >
         <template v-slot:append>
           <v-text-field
+            :model-value="props.slider"
+            @update:model-value="emitAjustedValue(Number($event))"
             hide-details
             single-line
             density="compact"
             type="number"
+            variant="solo"
+            width="10px"
+            class="elevation-0"
+            :max="props.max"
+            :min="props.min"
             style="width: 70px"
-            :model-value="props.modelValue"
-            @update:model-value="emit('update:modelValue', Number($event))"
           ></v-text-field>
         </template>
       </VSlider>
+
       <v-card-actions>
-        <v-spacer></v-spacer>
+        <VSpacer />
         <VBtn color="error" @click="cancel">Annuler</VBtn>
-        <VBtn color="success">Valider</VBtn>
+        <VBtn
+          color="success"
+          @click="emit('onValidate', props.id, props.slider, totalPrice)"
+          >Valider</VBtn
+        >
       </v-card-actions>
-    </v-card>
+    </VCard>
   </v-dialog>
 </template>
+
 <script lang="ts" setup>
+import { useAppStore } from "@/store/app";
+import { computed } from "vue";
+
+const appStore = useAppStore();
+
+//#region computed
+const totalPrice = computed(() => {
+  // BUG: HERE NEED TO USE FUNCTION THAT ADDS ZERO ON TOTAL PRICE VALUE TO GET 2 DIGIT AFTER VIRGULE - (EXAMPLE: SPAGHETTI BOLOGNAISE x 11)
+  return props.price * props.slider;
+});
+//#endregion
+
 //#region props
 interface Props {
-  modelValue: number;
-  modelValueDialog: boolean;
+  id?: number;
+  dialog: boolean;
+  slider: number;
+  price: number;
   title?: string;
   text?: string;
-  width?: number;
   min?: number;
   max?: number;
   step?: number;
+  width?: number;
 }
 const props = withDefaults(defineProps<Props>(), {
+  id: 0,
   title: "",
   text: "",
-  width: 500,
   min: 1,
   max: 100,
   step: 1,
+  width: 500,
 });
 //#endregion
 
 //#region emits
 interface Emits {
-  (event: "update:modelValue", value: number): void;
+  (event: "update:dialog", isOpen: boolean): boolean;
+  (event: "update:slider", value: number): boolean;
+  (event: "onValidate", id: number, quantity: number, price: number): {
+    id: number;
+    quantity: number;
+    price: number;
+  };
 }
 const emit = defineEmits<Emits>();
 //#endregion
 
+//#region function
+function adjustValue(value: number): number {
+  value = Number(value.toFixed(0));
+  if (value > props.max) value = props.max;
+  else if (value < props.min) value = props.min;
+  return value;
+}
+//#endregion
+
 //#region event handlers
-function updateModelSlider(value: number | string) {}
-function cancel() {}
+function cancel(): void {
+  emit("update:dialog", false);
+  emit("update:slider", 1);
+}
+function emitAjustedValue(value: number): void {
+  emit("update:slider", adjustValue(value));
+}
 //#endregion
 </script>

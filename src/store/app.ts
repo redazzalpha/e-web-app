@@ -1,9 +1,9 @@
 // Utilities
-import { defineStore } from "pinia";
-import * as sources from "@/utils/sources";
-import type { State, Product } from "@/utils/types";
-import { baseColor } from "@/utils/colors";
 import router from "@/router";
+import { baseColor } from "@/utils/colors";
+import * as sources from "@/utils/sources";
+import type { Product, ProductGroup, State } from "@/utils/types";
+import { defineStore } from "pinia";
 
 export const useAppStore = defineStore("app", {
   state: (): State => ({
@@ -338,8 +338,8 @@ export const useAppStore = defineStore("app", {
     hintSearchBar: "",
     snackbar: false,
     timeout: 2000,
-    dialogSlider: true,
-    valueSlider: 1,
+    modelDialog: true,
+    modelSlider: 1,
   }),
   getters: {
     filteredProducts: (state) => {
@@ -396,11 +396,12 @@ export const useAppStore = defineStore("app", {
         );
       }
     },
-    addToCart(product?: Product) {
-      if (product) this.cart.push(product);
+    // ERR: CREATE A FUNCTION HERE THAT ADDS MULTIPLE PRODUCTS
+    addToCart(productGroup?: ProductGroup) {
+      if (productGroup) this.cart.push(productGroup);
     },
-    removeFromCart(product: Product) {
-      const index = this.cart.indexOf(product);
+    removeFromCart(productGroup: ProductGroup) {
+      const index = this.cart.indexOf(productGroup);
       if (index > -1) this.cart.splice(index, 1);
     },
     clearCart() {
