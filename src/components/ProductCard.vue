@@ -21,7 +21,7 @@
         <p class="product-card_caption_label flex-grow-1 text-no-wrap">
           {{ props.product.label }}
         </p>
-        <strong>{{ props.product.price }}€</strong>
+        <strong>{{ formatNumber(props.product.price) }}€</strong>
       </div>
       <div class="product-card_caption_score">
         <VHover>
@@ -70,7 +70,7 @@
 </template>
 
 <script lang="ts" setup>
-import { Product } from "../utils/types";
+import type { Product } from "@/utils/types";
 
 //#region props
 interface Props {
@@ -107,6 +107,18 @@ const props = withDefaults(defineProps<Props>(), {
   elevation: 0,
   iconButtonAction: "",
 });
+//#endregion
+
+//#region methods
+function formatNumber(value: number): string {
+  let valueStr = value.toFixed(2);
+  const index = valueStr.indexOf(".");
+  if (index > -1) {
+    const numOfDigits = valueStr.length - index;
+    if (numOfDigits == 1) valueStr += "0";
+  }
+  return valueStr;
+}
 //#endregion
 </script>
 

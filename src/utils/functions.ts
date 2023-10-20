@@ -5,6 +5,5 @@ export function formatNumber(value: number): string {
     const numOfDigits = valueStr.length - index;
     if (numOfDigits == 1) valueStr += "0";
   }
-
   return valueStr;
 }

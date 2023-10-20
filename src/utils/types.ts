@@ -8,7 +8,7 @@ export type Filter =
 
 export interface ProductGroup extends Product {
   quantity: number;
-  totalPrice: number;
+  totalPrice: string;
 }
 export interface Product {
   id: number;

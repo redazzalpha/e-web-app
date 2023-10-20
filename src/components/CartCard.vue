@@ -37,17 +37,6 @@
           <strong class="text-error">
             {{ productGroup.totalPrice }}&euro;
           </strong>
-          <!-- Note: -->
-          <!-- <template v-for="count in 6" :key="count">
-            <VIcon
-              class="text-body-1"
-              :icon="
-                productGroup.score >= count ? 'mdi-star' : 'mdi-star-outline'
-              "
-              variant="plain"
-              :color="baseColor.orange"
-            />
-          </template> -->
         </span>
       </div>
     </div>

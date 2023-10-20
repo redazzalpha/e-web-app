@@ -69,14 +69,14 @@
 
 <script lang="ts" setup>
 import { useAppStore } from "@/store/app";
+import { formatNumber } from "@/utils/functions";
 import { computed } from "vue";
 
 const appStore = useAppStore();
 
 //#region computed
-const totalPrice = computed(() => {
-  // BUG: HERE NEED TO USE FUNCTION THAT ADDS ZERO ON TOTAL PRICE VALUE TO GET 2 DIGIT AFTER VIRGULE - (EXAMPLE: SPAGHETTI BOLOGNAISE x 11)
-  return props.price * props.slider;
+const totalPrice = computed<string>(() => {
+  return formatNumber(props.price * props.slider);
 });
 //#endregion
 
@@ -108,10 +108,10 @@ const props = withDefaults(defineProps<Props>(), {
 interface Emits {
   (event: "update:dialog", isOpen: boolean): boolean;
   (event: "update:slider", value: number): boolean;
-  (event: "onValidate", id: number, quantity: number, price: number): {
+  (event: "onValidate", id: number, quantity: number, totalPrice: string): {
     id: number;
     quantity: number;
-    price: number;
+    totalPrice: string;
   };
 }
 const emit = defineEmits<Emits>();

@@ -97,6 +97,13 @@ const titleSlider = ref<string>("");
 const textSlider = ref<string>("");
 //#endregion
 
+//#region methods
+function closeSlider(): void {
+  appStore.modelSlider = 1;
+  appStore.modelDialog = false;
+}
+//#endregion
+
 //#region event handlers
 function openDialog(product: Product | undefined) {
   if (product) {
@@ -107,17 +114,16 @@ function openDialog(product: Product | undefined) {
     appStore.modelDialog = true;
   }
 }
-function addToCart(id: number, quantity: number, totalPrice: number): void {
+function addToCart(id: number, quantity: number, totalPrice: string): void {
   const productGroup: ProductGroup = {
     ...appStore.products[id - 1],
+    id: Date.now(),
     quantity,
     totalPrice,
-    id: Date.now(),
   };
 
   appStore.addToCart(productGroup);
-  appStore.modelSlider = 1;
-  appStore.modelDialog = false;
+  closeSlider();
 }
 //#endregion
 

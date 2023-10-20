@@ -36,7 +36,7 @@
               <span>
                 <!-- MARK: USE TOTAL PRICE -->
                 <strong class="text-error"
-                  >{{ formatNumber(totalPrice) }}€</strong
+                  >{{ formatNumber(totalSummary) }}€</strong
                 >
               </span>
             </span>
@@ -70,22 +70,28 @@ const appStore = useAppStore();
 
 //#region variables
 const summary = ref<string>("");
-const totalPrice = ref<number>(0);
+let totalSummary = 0;
+//#endregion
+
+//#region computed
 //#endregion
 
 //#region methods
 // MARK: WRITE SUMMARY FUNCTION
-function computeSummary({ label, quantity, totalPrice: price }: ProductGroup) {
-  const quantityStr = quantity > 1 ? `&times; ${quantity}` : ``;
+function computeSummary(productGroup: ProductGroup) {
+  const quantityStr =
+    productGroup.quantity > 1 ? `&times; ${productGroup.quantity}` : ``;
+
   summary.value += `<span class="d-flex">
     <span class="flex-grow-1">
-      - ${label} ${quantityStr}
+      - ${productGroup.label} ${quantityStr}
     </span>
     <span>
-      <strong>${formatNumber(price)}&euro;</strong>
+      <strong>${productGroup.totalPrice}&euro;</strong>
       </span>
   </span>`;
-  totalPrice.value += price;
+
+  totalSummary += Number(productGroup.totalPrice);
 }
 //#endregion
 
@@ -93,10 +99,8 @@ function computeSummary({ label, quantity, totalPrice: price }: ProductGroup) {
 function onRemoveItem(productGroup: ProductGroup) {
   appStore.removeFromCart(productGroup);
   summary.value = "";
-  totalPrice.value = 0;
-  appStore.cart.forEach((item: ProductGroup) => {
-    computeSummary(item);
-  });
+  totalSummary = 0;
+  appStore.cart.forEach((item: ProductGroup) => computeSummary(item));
 }
 //#endregion
 </script>

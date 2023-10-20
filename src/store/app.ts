@@ -17,7 +17,8 @@ export const useAppStore = defineStore("app", {
             Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec,\
             ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, ",
         img: `${sources.pepperoniImg}`,
-        price: 19.99,
+        price: 20.1,
+        // price: 19.99,
         score: 5,
         isNew: false,
         isPopular: true,
@@ -396,7 +397,6 @@ export const useAppStore = defineStore("app", {
         );
       }
     },
-    // ERR: CREATE A FUNCTION HERE THAT ADDS MULTIPLE PRODUCTS
     addToCart(productGroup?: ProductGroup) {
       if (productGroup) this.cart.push(productGroup);
     },

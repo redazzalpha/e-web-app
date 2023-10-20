@@ -30,7 +30,7 @@
           <strong> Description: </strong>
           {{ product.description }} <br />
           <strong> Prix: </strong>
-          {{ product.price }}&euro; <br />
+          {{ formatNumber(product.price) }}&euro; <br />
           <strong> Note: </strong>
           <span>
             <template v-for="count in 6" :key="count">
@@ -117,6 +117,22 @@ const imgWidth = computed(() => {
 });
 //#endregion
 
+//#region methods
+function formatNumber(value: number): string {
+  let valueStr = value.toFixed(2);
+  const index = valueStr.indexOf(".");
+  if (index > -1) {
+    const numOfDigits = valueStr.length - index;
+    if (numOfDigits == 1) valueStr += "0";
+  }
+  return valueStr;
+}
+function closeSlider(): void {
+  appStore.modelSlider = 1;
+  appStore.modelDialog = false;
+}
+//#endregion
+
 //#region event handlers
 function openDialog() {
   if (product) {
@@ -127,17 +143,16 @@ function openDialog() {
     appStore.modelDialog = true;
   }
 }
-function addToCart(id: number, quantity: number, totalPrice: number): void {
+function addToCart(id: number, quantity: number, totalPrice: string): void {
   const productGroup: ProductGroup = {
     ...appStore.products[id - 1],
+    id: Date.now(),
     quantity,
     totalPrice,
-    id: Date.now(),
   };
 
   appStore.addToCart(productGroup);
-  appStore.modelSlider = 1;
-  appStore.modelDialog = false;
+  closeSlider();
 }
 //#endregion
 </script>
