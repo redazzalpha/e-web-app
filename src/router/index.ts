@@ -72,7 +72,7 @@ const router = createRouter({
   routes,
 });
 
-router.beforeEach(() => {
+router.afterEach(async () => {
   window.scrollTo({
     behavior: "instant",
     top: 0,

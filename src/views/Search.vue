@@ -107,7 +107,7 @@ function openDialog(product: Product | undefined) {
     appStore.modelDialog = true;
   }
 }
-function addToCart(id: number, quantity: number, totalPrice: number): void {
+function addToCart(id: number, quantity: number, totalPrice: string): void {
   const productGroup: ProductGroup = {
     ...appStore.products[id - 1],
     quantity,
