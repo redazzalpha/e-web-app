@@ -11,7 +11,7 @@
         {{ props.title }}
       </VCardTitle>
 
-      <VCardText class="mb-5"
+      <VCardText class="mb-8"
         >{{ props.text }} &times; {{ props.slider }} <br />
 
         <VDivider />
