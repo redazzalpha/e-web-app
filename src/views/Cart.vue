@@ -3,19 +3,22 @@
   <template v-if="appStore.cart.length > 0">
     <VContainer grid-list-xs class="cart-container">
       <VRow class="justify-center" no-gutters>
+        <!-- MARK: START LOOP ON CART ARRAY -->
         <VCol
           v-for="productGroup in appStore.cart"
           :key="productGroup.id"
           class="d-flex align-center v-col-12 v-col-md-6"
         >
+          <!-- MARK: USE WRITE SUMMARY  -->
           <CartCard
-            @vue:mounted="writeSummary(productGroup)"
+            @vue:mounted="computeSummary(productGroup)"
             class="flex-grow-1 mx-md-3"
             :product-group="productGroup"
             @on-remove="onRemoveItem(productGroup)"
           />
         </VCol>
       </VRow>
+
       <VRow>
         <VCard
           class="cart-summary w-100 text-center"
@@ -25,12 +28,16 @@
           <VCardTitle tag="p">Résumé de ma commande</VCardTitle>
 
           <VCardText tag="p" class="text-left">
+            <!-- MARKER: USE SUMMARY -->
             <span class="d-flex flex-column" v-html="summary"></span>
             <VDivider />
             <span class="d-flex">
               <span class="flex-grow-1"> <strong>Total</strong>: </span>
               <span>
-                <strong class="text-error">{{ totalPriceStr }}€</strong>
+                <!-- MARK: USE TOTAL PRICE -->
+                <strong class="text-error"
+                  >{{ formatNumber(totalPrice) }}€</strong
+                >
               </span>
             </span>
           </VCardText>
@@ -55,34 +62,30 @@
 <script lang="ts" setup>
 import CartCard from "@/components/CartCard.vue";
 import { useAppStore } from "@/store/app";
+import { formatNumber } from "@/utils/functions";
 import type { ProductGroup } from "@/utils/types";
 import { ref } from "vue";
-import { VCardTitle } from "vuetify/lib/components/index.mjs";
 
 const appStore = useAppStore();
 
 //#region variables
 const summary = ref<string>("");
 const totalPrice = ref<number>(0);
-const totalPriceStr = ref<string>("");
 //#endregion
 
 //#region methods
-function writeSummary({ label, quantity, totalPrice: price }: ProductGroup) {
+// MARK: WRITE SUMMARY FUNCTION
+function computeSummary({ label, quantity, totalPrice: price }: ProductGroup) {
   const quantityStr = quantity > 1 ? `&times; ${quantity}` : ``;
   summary.value += `<span class="d-flex">
     <span class="flex-grow-1">
       - ${label} ${quantityStr}
     </span>
     <span>
-      <strong>${price}&euro;</strong>
+      <strong>${formatNumber(price)}&euro;</strong>
       </span>
   </span>`;
   totalPrice.value += price;
-  totalPriceStr.value = totalPrice.value.toFixed(2);
-  const index = totalPriceStr.value.indexOf(".");
-  const numOfDigits = totalPriceStr.value.length - index;
-  if (numOfDigits == 1) totalPriceStr.value += "0";
 }
 //#endregion
 
@@ -92,7 +95,7 @@ function onRemoveItem(productGroup: ProductGroup) {
   summary.value = "";
   totalPrice.value = 0;
   appStore.cart.forEach((item: ProductGroup) => {
-    writeSummary(item);
+    computeSummary(item);
   });
 }
 //#endregion
