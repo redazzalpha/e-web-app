@@ -86,6 +86,7 @@ const props = withDefaults(defineProps<Props>(), {
 });
 //#endregion
 
+// ERR: THIS ARRAY MUST PASSED AS PROPS
 //#region arrays
 const icons = ["mdi-facebook", "mdi-twitter", "mdi-linkedin", "mdi-instagram"];
 //#endregion

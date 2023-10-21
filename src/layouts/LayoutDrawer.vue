@@ -1,34 +1,7 @@
 <template>
-  <VNavigationDrawer
-    :model-value="props.drawer"
-    :location="$vuetify.display.xs ? 'right' : 'left'"
-    temporary
-    @update:model-value="emit('update:drawer', $event)"
-    :color="appStore.colors.drawer"
-    width="300"
-  >
-    <DrawerList :items="drawerListItem" />
-  </VNavigationDrawer>
+  <TheDrawer />
 </template>
 
 <script lang="ts" setup>
-import DrawerList from "@/components/DrawerList.vue";
-import { useAppStore } from "@/store/app";
-import { drawerListItem } from "@/utils/drawerlist";
-
-const appStore = useAppStore();
-
-//#region props
-interface Props {
-  drawer: boolean;
-}
-const props = defineProps<Props>();
-//#endregion
-
-//#region emits
-interface Emits {
-  (event: "update:drawer", value: boolean): void;
-}
-const emit = defineEmits<Emits>();
-//#endregion
+import TheDrawer from "@/components/TheDrawer.vue";
 </script>
