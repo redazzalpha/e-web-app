@@ -3,7 +3,7 @@
   <LayoutHeader @on-nav-icon-click="toogleDrawer" />
   <LayoutBody />
   <LayoutFooter />
-  <LayoutDrawer :drawer="drawer" @click-outside="toogleDrawer" />
+  <LayoutDrawer v-model:drawer="drawer" />
 </template>
 
 <script lang="ts" setup>

@@ -4,7 +4,7 @@
     :model-value="props.drawer"
     :location="$vuetify.display.xs ? 'right' : 'left'"
     temporary
-    @update:modelValue="emit('clickOutside')"
+    @update:model-value="emit('update:drawer', $event)"
     :color="appStore.colors.drawer"
     width="300"
   >
@@ -28,7 +28,7 @@ const props = defineProps<Props>();
 
 //#region emits
 interface Emits {
-  (event: "clickOutside"): void;
+  (event: "update:drawer", value: boolean): void;
 }
 const emit = defineEmits<Emits>();
 //#endregion
