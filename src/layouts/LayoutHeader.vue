@@ -11,8 +11,8 @@
 
 <script lang="ts" setup>
 import HeaderBar from "@/components/HeaderBar.vue";
-import * as sources from "@/utils/sources";
 import { useAppStore } from "@/store/app";
+import * as sources from "@/utils/sources";
 
 const appStore = useAppStore();
 

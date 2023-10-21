@@ -1,5 +1,4 @@
 <template>
-  <!-- TODO: CHECK USE OF MODEL-VALUE HERE CAUSE MAYBE NOT PROPER -->
   <VNavigationDrawer
     :model-value="props.drawer"
     :location="$vuetify.display.xs ? 'right' : 'left'"

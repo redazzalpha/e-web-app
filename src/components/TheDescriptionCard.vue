@@ -1,5 +1,4 @@
 <template>
-  <!-- TODO: ADD PROPS TO MAKE THIS COMPONENT REUSABLE -->
   <div
     class="description_container d-flex flex-column elevation-10 mx-5 mx-md-auto"
   >

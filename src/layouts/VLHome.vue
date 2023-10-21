@@ -1,6 +1,5 @@
 <template>
-  <!-- TODO: TRY TO USE COMPONENT V-MODEL BETWEEN => layoutHeader. - layoutDrawer.vue - headerBar.vue  -->
-  <LayoutHeader @on-nav-icon-click="toogleDrawer" />
+  <LayoutHeader @on-nav-icon-click="drawer = !drawer" />
   <LayoutBody />
   <LayoutFooter />
   <LayoutDrawer v-model:drawer="drawer" />
@@ -15,11 +14,5 @@ import { ref } from "vue";
 
 //#region refs
 let drawer = ref<boolean>(false);
-//#endregion
-
-//#region event handlers
-function toogleDrawer(): void {
-  drawer.value = !drawer.value;
-}
 //#endregion
 </script>
