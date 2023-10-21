@@ -31,7 +31,7 @@
                 props.product.score >= count ? 'mdi-star' : 'mdi-star-outline'
               "
               variant="plain"
-              size="x-small"
+              size="md"
             />
           </template>
         </VHover>
