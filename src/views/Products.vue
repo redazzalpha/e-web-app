@@ -97,6 +97,7 @@ const titleSlider = ref<string>("");
 const textSlider = ref<string>("");
 //#endregion
 
+// MARK: MAYBE REPEATED FUNCTION
 //#region methods
 function closeSlider(): void {
   appStore.modelSlider = 1;
@@ -104,6 +105,7 @@ function closeSlider(): void {
 }
 //#endregion
 
+// MARK: MAYBE REPEATED FUNCTION
 //#region event handlers
 function openDialog(product: Product | undefined) {
   if (product) {
@@ -114,6 +116,7 @@ function openDialog(product: Product | undefined) {
     appStore.modelDialog = true;
   }
 }
+// MARK: MAYBE REPEATED FUNCTION
 function addToCart(id: number, quantity: number, totalPrice: string): void {
   const productGroup: ProductGroup = {
     ...appStore.products[id - 1],

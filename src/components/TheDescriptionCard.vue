@@ -1,5 +1,4 @@
 <template>
-  <!-- TODO: ADD PROPS TO MAKE THIS COMPONENT REUSABLE -->
   <div
     class="description_container d-flex flex-column elevation-10 mx-5 mx-md-auto"
   >
@@ -127,6 +126,7 @@ function formatNumber(value: number): string {
   }
   return valueStr;
 }
+// MARK: MAYBE REPEATED FUNCTION
 function closeSlider(): void {
   appStore.modelSlider = 1;
   appStore.modelDialog = false;
@@ -134,6 +134,7 @@ function closeSlider(): void {
 //#endregion
 
 //#region event handlers
+// MARK: MAYBE REPEATED FUNCTION
 function openDialog() {
   if (product) {
     titleSlider.value = "Selectionnez une quantité";
@@ -143,6 +144,7 @@ function openDialog() {
     appStore.modelDialog = true;
   }
 }
+// MARK: MAYBE REPEATED FUNCTION
 function addToCart(id: number, quantity: number, totalPrice: string): void {
   const productGroup: ProductGroup = {
     ...appStore.products[id - 1],

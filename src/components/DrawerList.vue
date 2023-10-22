@@ -51,10 +51,11 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
-import type { DrawerListItem } from "@/utils/types";
 import { useAppStore } from "@/store/app";
+import type { DrawerListItem } from "@/utils/types";
+import { ref } from "vue";
 
+// ERR: APPSTORE SHOULDN'T BE USED IN REUSABLE COMPONENT
 const appStore = useAppStore();
 
 //#region variables

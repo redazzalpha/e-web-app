@@ -1,7 +1,7 @@
 <template>
-  <DescriptionCard />
+  <TheDescriptionCard />
 </template>
 
 <script lang="ts" setup>
-import DescriptionCard from "@/components/DescriptionCard.vue";
+import TheDescriptionCard from "@/components/TheDescriptionCard.vue";
 </script>

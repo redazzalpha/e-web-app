@@ -98,6 +98,7 @@ const subtitle = computed<string>((): string => {
 //#endregion
 
 //#region event handlers
+// MARK: MAYBE REPEATED FUNCTION
 function openDialog(product: Product | undefined) {
   if (product) {
     titleSlider.value = "Selectionnez une quantité";
@@ -107,6 +108,7 @@ function openDialog(product: Product | undefined) {
     appStore.modelDialog = true;
   }
 }
+// MARK: MAYBE REPEATED FUNCTION
 function addToCart(id: number, quantity: number, totalPrice: string): void {
   const productGroup: ProductGroup = {
     ...appStore.products[id - 1],
