@@ -1,6 +1,7 @@
 <template>
   <VNavigationDrawer
-    v-model="appStore.drawer"
+    :model-value="props.drawer"
+    @update:model-value="emit('update:drawer', $event)"
     :location="$vuetify.display.xs ? 'right' : 'left'"
     temporary
     :color="appStore.colors.drawer"
@@ -16,4 +17,18 @@ import { useAppStore } from "@/store/app";
 import { drawerListItem } from "@/utils/drawerlist";
 
 const appStore = useAppStore();
+
+// #region props
+interface Props {
+  drawer: boolean;
+}
+const props = defineProps<Props>();
+// #endregion
+
+// #region emits
+interface Emits {
+  (event: "update:drawer", value: boolean): void;
+}
+const emit = defineEmits<Emits>();
+// #endregion
 </script>

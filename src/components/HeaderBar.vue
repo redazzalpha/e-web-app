@@ -43,12 +43,12 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref } from "vue";
-import { RouterLink } from "vue-router";
 import AppBarImg from "@/assets/app-bar.png";
+import { useAppStore } from "@/store/app";
 import { baseColor } from "@/utils/colors";
 import * as sources from "@/utils/sources";
-import { useAppStore } from "@/store/app";
+import { onMounted, ref } from "vue";
+import { RouterLink } from "vue-router";
 
 const appStore = useAppStore();
 

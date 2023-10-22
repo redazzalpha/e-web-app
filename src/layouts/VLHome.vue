@@ -1,8 +1,8 @@
 <template>
-  <LayoutHeader @on-nav-icon-click="appStore.drawer = !appStore.drawer" />
+  <LayoutHeader @on-nav-icon-click="drawer = !drawer" />
   <LayoutBody />
   <LayoutFooter />
-  <LayoutDrawer />
+  <LayoutDrawer v-model:drawer="drawer" />
 </template>
 
 <script lang="ts" setup>
@@ -10,7 +10,9 @@ import LayoutBody from "@/layouts/LayoutBody.vue";
 import LayoutDrawer from "@/layouts/LayoutDrawer.vue";
 import LayoutFooter from "@/layouts/LayoutFooter.vue";
 import LayoutHeader from "@/layouts/LayoutHeader.vue";
-import { useAppStore } from "@/store/app";
+import { ref } from "vue";
 
-const appStore = useAppStore();
+// #region refs
+const drawer = ref<boolean>(false);
+// #endregion
 </script>
