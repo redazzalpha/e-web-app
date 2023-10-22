@@ -306,10 +306,10 @@
 import HeroBanner from "@/components/HeroBanner.vue";
 import SearchBar from "@/components/SearchBar.vue";
 import ViewerBlock from "@/components/ViewerBlock.vue";
-import * as sources from "@/utils/sources";
 import { useAppStore } from "@/store/app";
+import * as sources from "@/utils/sources";
 import type { Product } from "@/utils/types";
-import { ref, onBeforeMount } from "vue";
+import { onBeforeMount, ref } from "vue";
 
 const appStore = useAppStore();
 
@@ -324,7 +324,7 @@ const textHeroLink = "Connectez-vous";
 const labelSearchBar = "rechercher par mot-clé";
 const fontHero = "merienda, serif, sans-serif";
 const fontSizeHero = 48;
-const sourceHeroLink = "/";
+const sourceHeroLink = sources.access;
 const sizeSearchBar = 320;
 const iconSearchBar = "mdi-magnify";
 //#endregion

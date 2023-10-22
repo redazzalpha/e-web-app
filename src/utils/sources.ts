@@ -26,6 +26,7 @@ import TripleImg from "@/assets/triple.png";
 export const home = "/";
 export const product = "/products";
 export const cart = "/cart";
+export const access = "/access";
 export const description = `${product}/description`;
 export const search = `${product}/search`;
 export const order = "/order";

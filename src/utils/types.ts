@@ -60,4 +60,5 @@ export interface State {
   timeout: number;
   modelDialog: boolean;
   modelSlider: number;
+  drawer: boolean;
 }

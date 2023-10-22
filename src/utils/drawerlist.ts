@@ -1,5 +1,5 @@
-import type { DrawerListItem } from "@/utils/types";
 import * as sources from "@/utils/sources";
+import type { DrawerListItem } from "@/utils/types";
 
 export const drawerListItem: Array<DrawerListItem> = [
   {
@@ -52,9 +52,9 @@ export const drawerListItem: Array<DrawerListItem> = [
     children: [],
   },
   {
-    label: "Ma commande",
+    label: "Registration",
     icon: "mdi-file-sign",
-    href: sources.order,
+    href: sources.access,
     children: [],
   },
 ];

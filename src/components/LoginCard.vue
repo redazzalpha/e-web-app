@@ -1,11 +1,5 @@
 <template>
-  <VCard
-    class="ma-auto pa-12 pb-3"
-    width="450"
-    elevation="5"
-    rounded="lg"
-    color="grey-lighten-4"
-  >
+  <VCard class="login-card bg-grey-lighten-4" rounde="lg">
     <VCardTitle>Connection</VCardTitle>
     <VCardText>
       <VForm ref="form">
@@ -24,19 +18,19 @@
           r
         >
           <template v-slot:details v-if="field.label == 'Mot de passe'">
-            <a
+            <RouterLink
+              :to="sources.home"
               class="text-caption text-decoration-none text-blue"
-              href=""
               rel="noopener noreferrer"
               target="_blank"
             >
-              Mot de passe oublié?</a
+              Mot de passe oublié?</RouterLink
             >
           </template>
         </VTextField>
       </VForm>
       <v-card-text
-        class="text-medium-emphasis text-caption bg-orange-lighten-2"
+        class="text-medium-emphasis text-caption bg-orange-lighten-2 my-5"
       >
         "Attention": Après 3 tentatives de connection échouées votre compte sera
         temporairement vérouillé pendant 3 heures. Si vous devez vous connecter
@@ -60,6 +54,7 @@
 </template>
 
 <script lang="ts" setup>
+import * as sources from "@/utils/sources";
 import { ref, watch } from "vue";
 import type { VForm } from "vuetify/components";
 

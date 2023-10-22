@@ -1,11 +1,5 @@
 <template>
-  <VCard
-    class="ma-auto pa-12 pb-3"
-    max-width="450"
-    elevation="5"
-    rounded="lg"
-    color="grey-lighten-4"
-  >
+  <VCard class="registration bg-grey-lighten-4" rounde="lg">
     <VCardTitle>Création de compte</VCardTitle>
     <VCardText>
       <VForm ref="form">

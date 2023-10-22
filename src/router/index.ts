@@ -49,14 +49,14 @@ const routes = [
     ],
   },
   {
-    path: "/order",
-    name: "layoutOrder",
-    component: () => import("@/layouts/VLOrder.vue"),
+    path: "/access",
+    name: "layoutAccess",
+    component: () => import("@/layouts/VLAccess.vue"),
     children: [
       {
         path: "",
-        name: "order",
-        component: () => import("@/views/Order.vue"),
+        name: "access",
+        component: () => import("@/views/Access.vue"),
       },
     ],
   },
