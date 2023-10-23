@@ -2,7 +2,7 @@
   <VCard
     class="cart-summary text-color-black text-center mx-auto"
     elevation="10"
-    style="background-color: rgba(255, 166, 0, 0.392)"
+    :style="`background-color: rgba(var(--v-theme-color-orange-const), ${backgroundOpacity})`"
     :width="$vuetify.display.mobile ? '100%' : '50%'"
   >
     <VCardTitle tag="p">Résumé de ma commande</VCardTitle>
@@ -30,7 +30,9 @@
 </template>
 
 <script lang="ts" setup>
+import vuetify from "@/plugins/vuetify";
 import { useAppStore } from "@/store/app";
+import { computed } from "vue";
 
 const appStore = useAppStore();
 
@@ -40,6 +42,12 @@ interface Props {
   totalSummary: string;
 }
 const props = defineProps<Props>();
+//#endregion
+
+//#region computed
+const backgroundOpacity = computed<number>(() => {
+  return vuetify.theme.global.name.value == "dark" ? 0.2 : 0.35;
+});
 //#endregion
 </script>
 

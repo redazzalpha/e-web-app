@@ -303,6 +303,7 @@ export const useAppStore = defineStore("app", {
         ],
       },
     ],
+    productCurrent: {},
     productsFound: [],
     productFilter: "all",
     slideshows: [
@@ -345,6 +346,9 @@ export const useAppStore = defineStore("app", {
     switcher: false,
   }),
   getters: {
+    currentItem: (state) => {
+      return state.productCurrent as Product;
+    },
     filteredProducts: (state) => {
       if (state.productFilter == "news")
         return state.products.filter((e: Product) => e.isNew);
@@ -404,7 +408,7 @@ export const useAppStore = defineStore("app", {
     },
     addToCartHandler(id: number, quantity: number, totalPrice: string): void {
       const productGroup: ProductGroup = {
-        ...this.products[id - 1],
+        ...this.currentItem,
         id: Date.now(),
         quantity,
         totalPrice,
@@ -440,6 +444,12 @@ export const useAppStore = defineStore("app", {
         }, this.timeout);
       } else {
         router.push(`${sources.search}/${keyword}`);
+      }
+    },
+    openDialog(product: Product | undefined) {
+      if (product) {
+        this.productCurrent = product;
+        this.modelDialog = true;
       }
     },
     closeSlider(): void {

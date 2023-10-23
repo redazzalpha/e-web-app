@@ -12,14 +12,14 @@
       <VIcon>mdi-arrow-left-thick</VIcon>
     </VBtn>
     <h2 class="description_title text-color-black text-h5 text-lg-h4">
-      {{ product.label }}
+      {{ appStore.currentItem.label }}
     </h2>
     <div
       class="description_content d-flex flex-column flex-md-row justify-center"
     >
       <VImg
         class="description_content_img ma-5 flex-grow-0"
-        :src="product.img"
+        :src="current.img"
         :width="imgWidth"
         cover
       ></VImg>
@@ -28,14 +28,18 @@
       >
         <p class="text-color-black">
           <strong> Description: </strong>
-          {{ product.description }} <br />
+          {{ current.description }} <br />
           <strong> Prix: </strong>
-          {{ formatNumber(product.price) }}&euro; <br />
+          {{ formatNumber(appStore.currentItem.price) }}&euro; <br />
           <strong> Note: </strong>
           <span>
             <template v-for="count in 6" :key="count">
               <VIcon
-                :icon="product.score >= count ? 'mdi-star' : 'mdi-star-outline'"
+                :icon="
+                  appStore.currentItem.score >= count
+                    ? 'mdi-star'
+                    : 'mdi-star-outline'
+                "
                 variant="plain"
                 color="color-orange"
               />
@@ -43,27 +47,27 @@
           </span>
           <br />
           <strong> Category: </strong>
-          {{ product.category }} <br />
+          {{ appStore.currentItem.category }} <br />
           <strong> Nouveau produit: </strong>
           <span
             :class="
-              product.isNew
+              appStore.currentItem.isNew
                 ? 'text-color-success-const'
                 : 'text-color-error-const'
             "
           >
-            {{ product.isNew ? "oui" : "non" }}
+            {{ appStore.currentItem.isNew ? "oui" : "non" }}
           </span>
           <br />
           <strong> Produit populaire: </strong>
           <span
             :class="
-              product.isPopular
+              appStore.currentItem.isPopular
                 ? 'text-color-success-const'
                 : 'text-color-error-const'
             "
           >
-            {{ product.isPopular ? "oui" : "non" }} <br />
+            {{ appStore.currentItem.isPopular ? "oui" : "non" }} <br />
           </span>
         </p>
         <VBtn
@@ -73,7 +77,7 @@
           width="320"
           variant="elevated"
           color="color-orange"
-          @click.prevent="openDialog"
+          @click.prevent="appStore.openDialog(appStore.currentItem)"
         >
           Ajouter au panier
           <VIcon class="mx-2">mdi-cart-plus</VIcon>
@@ -85,10 +89,7 @@
   <DialogSlider
     v-model:dialog="appStore.modelDialog"
     v-model:slider="appStore.modelSlider"
-    :id="idProduct"
-    :title="titleSlider"
-    :text="textSlider"
-    :price="priceProduct"
+    :product="appStore.currentItem"
     :max="20"
     :min="1"
     @on-validate="props.action"
@@ -100,21 +101,12 @@ import vuetify from "@/plugins/vuetify";
 import router from "@/router";
 import { useAppStore } from "@/store/app";
 import type { Product } from "@/utils/types";
-import { computed, ref } from "vue";
+import { computed, onBeforeMount } from "vue";
 import DialogSlider from "./DialogSlider.vue";
 
 const appStore = useAppStore();
 
 //#region variables
-const product: Product =
-  appStore.products[Number(router.currentRoute.value.params.id) - 1];
-let priceProduct = 0;
-let idProduct = 0;
-//#endregion
-
-//#region refs
-const titleSlider = ref<string>("");
-const textSlider = ref<string>("");
 //#endregion
 
 //#region props
@@ -125,6 +117,10 @@ const props = defineProps<Props>();
 //#endregion
 
 //#region computed
+const current = computed<Product>(() => {
+  return appStore.productCurrent as Product;
+});
+
 const imgWidth = computed(() => {
   if (vuetify.display.sm.value) return "300";
   return vuetify.display.md.value ||
@@ -147,16 +143,11 @@ function formatNumber(value: number): string {
 }
 //#endregion
 
-//#region event handlers
-function openDialog() {
-  if (product) {
-    titleSlider.value = "Selectionnez une quantité";
-    textSlider.value = product.label;
-    priceProduct = product.price;
-    idProduct = product.id;
-    appStore.modelDialog = true;
-  }
-}
+//#region  hooks
+onBeforeMount(() => {
+  const index: number = Number(router.currentRoute.value.params.id) - 1;
+  appStore.productCurrent = appStore.products[index];
+});
 //#endregion
 </script>
 

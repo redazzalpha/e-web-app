@@ -4,21 +4,21 @@
       v-show="show"
       class="text-color-black ma-auto mt-16"
       max-width="450"
-      elevation="5"
+      flat
       rounded="lg"
       color="color-white"
     >
       <VTabs v-model="model" color="color-blue">
-        <VTab class="text-none" value="Connection">Connection</VTab>
-        <VTab class="text-none" value="Register">Register</VTab>
+        <VTab class="text-none" value="Connexion">Connexion</VTab>
+        <VTab class="text-none" value="Enregistrement">Inscription</VTab>
       </VTabs>
 
       <VCardText>
         <VWindow v-model="model">
-          <VWindowItem value="Connection">
+          <VWindowItem value="Connexion">
             <CardLogin />
           </VWindowItem>
-          <VWindowItem value="Register">
+          <VWindowItem value="Enregistrement">
             <CardRegister />
           </VWindowItem>
         </VWindow>

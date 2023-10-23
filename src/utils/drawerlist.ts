@@ -52,7 +52,7 @@ export const drawerListItem: Array<DrawerListItem> = [
     children: [],
   },
   {
-    label: "Registration",
+    label: "Connexion",
     icon: "mdi-file-sign",
     href: sources.access,
     children: [],

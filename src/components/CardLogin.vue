@@ -1,6 +1,6 @@
 <template>
   <VCard class="login-card text-color-black bg-color-white" rounde="lg">
-    <VCardTitle>Connection</VCardTitle>
+    <VCardTitle>Connexion</VCardTitle>
     <VCardText>
       <VForm ref="form">
         <VTextField
@@ -30,7 +30,8 @@
         </VTextField>
       </VForm>
       <v-card-text
-        class="text-medium-emphasis text-color-black text-caption bg-color-orange my-5"
+        class="text-medium-emphasis text-color-black text-caption my-5 rounded"
+        :style="`background-color: rgba(var(--v-theme-color-orange), 0.7)`"
       >
         "Attention": Après 3 tentatives de connection échouées votre compte sera
         temporairement vérouillé pendant 3 heures. Si vous devez vous connecter

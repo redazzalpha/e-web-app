@@ -4,15 +4,17 @@
     @update:model-value="emit('update:dialog', $event)"
     @click:outside="cancel"
     :width="props.width"
-    @keydown.enter="emit('onValidate', props.id, props.slider, totalPrice)"
+    @keydown.enter="
+      emit('onValidate', props.product.id, props.slider, totalPrice)
+    "
   >
     <VCard>
       <VCardTitle class="bg-color-white-dark px-5">
-        {{ props.title }}
+        Sélectionnez une quantité
       </VCardTitle>
 
       <VCardText class="mb-8"
-        >{{ props.text }} &times; {{ props.slider }} <br />
+        >{{ props.product.label }} &times; {{ props.slider }} <br />
 
         <VDivider />
         <div class="d-flex">
@@ -59,7 +61,9 @@
         <VBtn color="color-error" @click="cancel">Annuler</VBtn>
         <VBtn
           color="color-success-const"
-          @click="emit('onValidate', props.id, props.slider, totalPrice)"
+          @click="
+            emit('onValidate', props.product.id, props.slider, totalPrice)
+          "
           >Valider</VBtn
         >
       </v-card-actions>
@@ -69,31 +73,26 @@
 
 <script lang="ts" setup>
 import { formatNumber } from "@/utils/functions";
+import { Product } from "@/utils/types";
 import { computed } from "vue";
 
 //#region computed
 const totalPrice = computed<string>(() => {
-  return formatNumber(props.price * props.slider);
+  return formatNumber(props.product.price * props.slider);
 });
 //#endregion
 
 //#region props
 interface Props {
-  id?: number;
+  product: Product;
   dialog: boolean;
   slider: number;
-  price: number;
-  title?: string;
-  text?: string;
   min?: number;
   max?: number;
   step?: number;
   width?: number;
 }
 const props = withDefaults(defineProps<Props>(), {
-  id: 0,
-  title: "",
-  text: "",
   min: 1,
   max: 100,
   step: 1,

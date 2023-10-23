@@ -50,6 +50,7 @@ export interface SysColor {
 }
 export interface State {
   products: Array<Product>;
+  productCurrent: Product | {};
   productsFound: Array<Product>;
   productFilter: Filter;
   slideshows: Array<string>;

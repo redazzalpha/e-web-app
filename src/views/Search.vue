@@ -39,7 +39,7 @@
                 color-text-caption="color-black"
                 color-score="color-orange"
                 :elevation="isHovering ? 15 : 0"
-                :on-action-click="openDialog"
+                :on-action-click="appStore.openDialog"
                 icon-button-action="mdi-cart-plus"
               />
             </RouterLink>
@@ -52,10 +52,7 @@
   <DialogSlider
     v-model:dialog="appStore.modelDialog"
     v-model:slider="appStore.modelSlider"
-    :id="idProduct"
-    :title="titleSlider"
-    :text="textSlider"
-    :price="priceProduct"
+    :product="appStore.currentItem"
     :max="20"
     :min="1"
     @on-validate="appStore.addToCartHandler"
@@ -68,8 +65,7 @@ import DialogSlider from "@/components/DialogSlider.vue";
 import SearchBar from "@/components/SearchBar.vue";
 import { useAppStore } from "@/store/app";
 import * as sources from "@/utils/sources";
-import type { Product } from "@/utils/types";
-import { computed, ref } from "vue";
+import { computed } from "vue";
 
 const appStore = useAppStore();
 
@@ -79,13 +75,6 @@ const labelButtonTag = "Nouveau";
 const labelSearchBar = "rechercher par mot-clé";
 const sizeSearchBar = 320;
 const iconSearchBar = "mdi-magnify";
-let priceProduct = 0;
-let idProduct = 0;
-//#endregion
-
-//#region refs
-const titleSlider = ref<string>("");
-const textSlider = ref<string>("");
 //#endregion
 
 //#region computed
@@ -95,18 +84,6 @@ const subtitle = computed<string>((): string => {
     ? `${size > 99 ? "99&#5161;" : size} articles trouvés`
     : `1 article trouvé`;
 });
-//#endregion
-
-//#region event handlers
-function openDialog(product: Product | undefined) {
-  if (product) {
-    titleSlider.value = "Selectionnez une quantité";
-    textSlider.value = product.label;
-    priceProduct = product.price;
-    idProduct = product.id;
-    appStore.modelDialog = true;
-  }
-}
 //#endregion
 </script>
 
