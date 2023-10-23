@@ -7,7 +7,7 @@
     :color="appStore.colors.drawer"
     width="300"
   >
-    <DrawerList :items="drawerListItem" />
+    <DrawerList :items="drawerListItem" :value-badge="appStore.cart.length" />
   </VNavigationDrawer>
 </template>
 

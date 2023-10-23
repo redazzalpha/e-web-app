@@ -56,7 +56,7 @@
     :price="priceProduct"
     :max="20"
     :min="1"
-    @on-validate="addToCart"
+    @on-validate="appStore.addToCartHandler"
   />
 
   <VSnackbar v-model="appStore.snackbar" :timeout="appStore.timeout">
@@ -77,7 +77,7 @@ import SearchBar from "@/components/SearchBar.vue";
 import router from "@/router";
 import { useAppStore } from "@/store/app";
 import * as sources from "@/utils/sources";
-import type { Filter, Product, ProductGroup } from "@/utils/types";
+import type { Filter, Product } from "@/utils/types";
 import { onMounted, ref, watch } from "vue";
 
 const appStore = useAppStore();
@@ -97,15 +97,6 @@ const titleSlider = ref<string>("");
 const textSlider = ref<string>("");
 //#endregion
 
-// MARK: MAYBE REPEATED FUNCTION
-//#region methods
-function closeSlider(): void {
-  appStore.modelSlider = 1;
-  appStore.modelDialog = false;
-}
-//#endregion
-
-// MARK: MAYBE REPEATED FUNCTION
 //#region event handlers
 function openDialog(product: Product | undefined) {
   if (product) {
@@ -115,18 +106,6 @@ function openDialog(product: Product | undefined) {
     idProduct = product.id;
     appStore.modelDialog = true;
   }
-}
-// MARK: MAYBE REPEATED FUNCTION
-function addToCart(id: number, quantity: number, totalPrice: string): void {
-  const productGroup: ProductGroup = {
-    ...appStore.products[id - 1],
-    id: Date.now(),
-    quantity,
-    totalPrice,
-  };
-
-  appStore.addToCart(productGroup);
-  closeSlider();
 }
 //#endregion
 

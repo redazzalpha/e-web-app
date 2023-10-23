@@ -45,7 +45,7 @@
     </h2>
 
     <!-- viewer block-->
-    <ViewerBlock :products="productNews" />
+    <ViewerBlock :products="productNews" :action="goTo" />
 
     <!-- see all most news button -->
     <VBtn
@@ -95,7 +95,7 @@
     </h2>
 
     <!-- viewer block-->
-    <ViewerBlock :products="productPopulars" />
+    <ViewerBlock :products="productPopulars" :action="goTo" />
 
     <!-- see all most populars button -->
     <VBtn
@@ -146,7 +146,7 @@
     </h2>
 
     <!-- viewer block-->
-    <ViewerBlock :products="productStarters" />
+    <ViewerBlock :products="productStarters" :action="goTo" />
 
     <!-- see all most starters button -->
     <VBtn
@@ -197,7 +197,7 @@
     </h2>
 
     <!-- viewer block-->
-    <ViewerBlock :products="productMainCourses" />
+    <ViewerBlock :products="productMainCourses" :action="goTo" />
 
     <!-- see all most main courses button -->
     <VBtn
@@ -248,7 +248,7 @@
     </h2>
 
     <!-- viewer block-->
-    <ViewerBlock :products="productDeserts" />
+    <ViewerBlock :products="productDeserts" :action="goTo" />
 
     <!-- see all deserts button -->
     <VBtn
@@ -306,6 +306,7 @@
 import HeroBanner from "@/components/HeroBanner.vue";
 import SearchBar from "@/components/SearchBar.vue";
 import ViewerBlock from "@/components/ViewerBlock.vue";
+import router from "@/router";
 import { useAppStore } from "@/store/app";
 import * as sources from "@/utils/sources";
 import type { Product } from "@/utils/types";
@@ -349,6 +350,12 @@ function updateFilteredProducts(): void {
   productMainCourses.value = appStore.filteredProducts;
   appStore.productFilter = "deserts";
   productDeserts.value = appStore.filteredProducts;
+}
+//#endregion
+
+//#region handlers
+function goTo(product: Product | undefined): void {
+  router.push(`${sources.description}/${product?.id}`);
 }
 //#endregion
 

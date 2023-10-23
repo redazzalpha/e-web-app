@@ -58,7 +58,7 @@
     :price="priceProduct"
     :max="20"
     :min="1"
-    @on-validate="addToCart"
+    @on-validate="appStore.addToCartHandler"
   />
 </template>
 
@@ -68,7 +68,7 @@ import ProductCard from "@/components/ProductCard.vue";
 import SearchBar from "@/components/SearchBar.vue";
 import { useAppStore } from "@/store/app";
 import * as sources from "@/utils/sources";
-import type { Product, ProductGroup } from "@/utils/types";
+import type { Product } from "@/utils/types";
 import { computed, ref } from "vue";
 
 const appStore = useAppStore();
@@ -98,7 +98,6 @@ const subtitle = computed<string>((): string => {
 //#endregion
 
 //#region event handlers
-// MARK: MAYBE REPEATED FUNCTION
 function openDialog(product: Product | undefined) {
   if (product) {
     titleSlider.value = "Selectionnez une quantité";
@@ -107,19 +106,6 @@ function openDialog(product: Product | undefined) {
     idProduct = product.id;
     appStore.modelDialog = true;
   }
-}
-// MARK: MAYBE REPEATED FUNCTION
-function addToCart(id: number, quantity: number, totalPrice: string): void {
-  const productGroup: ProductGroup = {
-    ...appStore.products[id - 1],
-    quantity,
-    totalPrice,
-    id: Date.now(),
-  };
-
-  appStore.addToCart(productGroup);
-  appStore.modelSlider = 1;
-  appStore.modelDialog = false;
 }
 //#endregion
 </script>

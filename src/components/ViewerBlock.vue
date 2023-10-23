@@ -14,16 +14,14 @@
       :color-text-caption="appStore.colors.textBase"
       :color-score="appStore.colors.score"
       :elevation="15"
-      :on-action-click="goTo"
+      :on-action-click="props.action"
     />
   </div>
 </template>
 
 <script lang="ts" setup>
 import ProductCard from "@/components/ProductCard.vue";
-import router from "@/router";
 import { useAppStore } from "@/store/app";
-import * as sources from "@/utils/sources";
 import type { Product } from "@/utils/types";
 import { onMounted, ref } from "vue";
 
@@ -43,6 +41,7 @@ const viewer = ref<HTMLElement | undefined>(undefined);
 //#region props
 interface Props {
   products: Array<Product>;
+  action: (product: Product | undefined) => void;
 }
 const props = defineProps<Props>();
 //#endregion
@@ -93,10 +92,6 @@ async function onMouseMove(event: MouseEvent): Promise<void> {
       left: viewer.value?.scrollLeft + scrollDiff,
     });
   } else mouseLeave();
-}
-// ERR: THIS FUNCTION SHOULD HAVE BEEN PASSED BY PROPS AS ACTION PROPS
-function goTo(product: Product | undefined): void {
-  router.push(`${sources.description}/${product?.id}`);
 }
 //#endregion
 

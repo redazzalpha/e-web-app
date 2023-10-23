@@ -78,7 +78,7 @@
     :price="priceProduct"
     :max="20"
     :min="1"
-    @on-validate="addToCart"
+    @on-validate="props.action"
   />
 </template>
 
@@ -87,7 +87,7 @@ import vuetify from "@/plugins/vuetify";
 import router from "@/router";
 import { useAppStore } from "@/store/app";
 import { baseColor } from "@/utils/colors";
-import type { Product, ProductGroup } from "@/utils/types";
+import type { Product } from "@/utils/types";
 import { computed, ref } from "vue";
 import DialogSlider from "./DialogSlider.vue";
 
@@ -103,6 +103,13 @@ let idProduct = 0;
 //#region refs
 const titleSlider = ref<string>("");
 const textSlider = ref<string>("");
+//#endregion
+
+//#region props
+interface Props {
+  action: (id: number, quantity: number, totalPrice: string) => void;
+}
+const props = defineProps<Props>();
 //#endregion
 
 //#region computed
@@ -126,15 +133,9 @@ function formatNumber(value: number): string {
   }
   return valueStr;
 }
-// MARK: MAYBE REPEATED FUNCTION
-function closeSlider(): void {
-  appStore.modelSlider = 1;
-  appStore.modelDialog = false;
-}
 //#endregion
 
 //#region event handlers
-// MARK: MAYBE REPEATED FUNCTION
 function openDialog() {
   if (product) {
     titleSlider.value = "Selectionnez une quantité";
@@ -143,18 +144,6 @@ function openDialog() {
     idProduct = product.id;
     appStore.modelDialog = true;
   }
-}
-// MARK: MAYBE REPEATED FUNCTION
-function addToCart(id: number, quantity: number, totalPrice: string): void {
-  const productGroup: ProductGroup = {
-    ...appStore.products[id - 1],
-    id: Date.now(),
-    quantity,
-    totalPrice,
-  };
-
-  appStore.addToCart(productGroup);
-  closeSlider();
 }
 //#endregion
 </script>

@@ -19,9 +19,10 @@
 
       <VRow>
         <VCard
-          class="cart-summary w-100 text-center"
+          class="cart-summary text-center mx-auto"
           elevation="10"
           style="background-color: rgba(255, 166, 0, 0.392)"
+          :width="$vuetify.display.mobile ? '100%' : '50%'"
         >
           <VCardTitle tag="p">Résumé de ma commande</VCardTitle>
 

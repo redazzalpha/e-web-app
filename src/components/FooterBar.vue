@@ -38,7 +38,7 @@
 
       <VContainer grid-list-xs>
         <VRow>
-          <VCol v-for="icon in icons" :key="icon" class="v-col-3">
+          <VCol v-for="icon in props.links" :key="icon" class="v-col-3">
             <VBtn
               :icon="icon"
               class="text-h5 text-md-h4"
@@ -79,16 +79,13 @@ import * as sources from "@/utils/sources";
 interface Props {
   colorButton?: string;
   colorBackground?: string;
+  links?: Array<string>;
 }
 const props = withDefaults(defineProps<Props>(), {
   colorButton: "black",
   colorBackground: "white",
+  links: undefined,
 });
-//#endregion
-
-// ERR: THIS ARRAY MUST PASSED AS PROPS
-//#region arrays
-const icons = ["mdi-facebook", "mdi-twitter", "mdi-linkedin", "mdi-instagram"];
 //#endregion
 </script>
 

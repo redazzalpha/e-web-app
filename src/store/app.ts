@@ -379,7 +379,7 @@ export const useAppStore = defineStore("app", {
         top: 0,
       });
     },
-    checkLocalStorage() {
+    checkLocalStorage(): boolean {
       const storage = window.localStorage;
       const x = "__storage_test__";
       try {
@@ -398,14 +398,25 @@ export const useAppStore = defineStore("app", {
         );
       }
     },
-    addToCart(productGroup?: ProductGroup) {
+    addToCart(productGroup?: ProductGroup): void {
       if (productGroup) this.cart.push(productGroup);
+    },
+    addToCartHandler(id: number, quantity: number, totalPrice: string): void {
+      const productGroup: ProductGroup = {
+        ...this.products[id - 1],
+        id: Date.now(),
+        quantity,
+        totalPrice,
+      };
+
+      this.addToCart(productGroup);
+      this.closeSlider();
     },
     removeFromCart(productGroup: ProductGroup) {
       const index = this.cart.indexOf(productGroup);
       if (index > -1) this.cart.splice(index, 1);
     },
-    clearCart() {
+    clearCart(): void {
       this.cart = [];
       this.toTop("instant");
     },
@@ -429,6 +440,10 @@ export const useAppStore = defineStore("app", {
       } else {
         router.push(`${sources.search}/${keyword}`);
       }
+    },
+    closeSlider(): void {
+      this.modelSlider = 1;
+      this.modelDialog = false;
     },
   },
   persist: true,

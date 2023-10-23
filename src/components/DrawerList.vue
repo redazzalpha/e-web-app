@@ -12,9 +12,9 @@
         >
           <template v-slot:append v-if="item.label == 'Mon panier'">
             <VBadge
-              v-show="appStore.cart.length"
+              v-show="props.valueBadge"
               :dot="isDot"
-              :content="appStore.cart.length"
+              :content="props.valueBadge"
               color="red"
               :max="20"
               inline
@@ -51,12 +51,8 @@
 </template>
 
 <script lang="ts" setup>
-import { useAppStore } from "@/store/app";
 import type { DrawerListItem } from "@/utils/types";
 import { ref } from "vue";
-
-// ERR: APPSTORE SHOULDN'T BE USED IN REUSABLE COMPONENT
-const appStore = useAppStore();
 
 //#region variables
 const isDot = ref<boolean>(false);
@@ -66,9 +62,11 @@ const isDot = ref<boolean>(false);
 interface Props {
   items: Array<DrawerListItem>;
   activeColor?: string;
+  valueBadge?: number;
 }
 const props = withDefaults(defineProps<Props>(), {
   activeColor: "#ffb300",
+  valueBadge: 0,
 });
 //#endregion
 </script>
