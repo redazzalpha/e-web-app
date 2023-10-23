@@ -151,7 +151,6 @@ function formatNumber(value: number): string {
   width: v-bind("`${props.width}px`");
   height: v-bind("`${props.height}px`");
   position: relative;
-  /* background-color: v-bind("props.colorCard"); */
   &_img,
   &_img-curtain {
     border-radius: 15px 15px 0 0;
@@ -167,29 +166,20 @@ function formatNumber(value: number): string {
     position: absolute;
     top: -10px;
     right: -15px;
-    /* color: v-bind("props.colorLabelButtonTag"); */
-    /* background-color: v-bind("props.colorBackgroundButtonTag"); */
     z-index: 2;
     font-weight: 900;
     font-family: "Kaushan Script", cursive;
     font-size: 20px;
   }
   &_action-btn {
-    /* color: v-bind("props.colorLabelButtonAction"); */
-    /* background-color: v-bind("props.colorBackgroundButtonAction"); */
     margin: 15px;
   }
   &_caption {
     display: flex;
     flex-direction: column;
-    /* color: v-bind("props.colorTextCaption"); */
-    /* background-color: v-bind("props.colorBackgroundCaption"); */
     padding: 15px;
     &_label {
       @include ellipsis();
-    }
-    &_score {
-      /* color: v-bind("props.colorScore"); */
     }
     &_desc {
       @include ellipsis();

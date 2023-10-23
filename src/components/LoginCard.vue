@@ -1,5 +1,5 @@
 <template>
-  <VCard class="login-card bg-grey-lighten-4" rounde="lg">
+  <VCard class="login-card bg-color-black-light" rounde="lg">
     <VCardTitle>Connection</VCardTitle>
     <VCardText>
       <VForm ref="form">
@@ -20,7 +20,7 @@
           <template v-slot:details v-if="field.label == 'Mot de passe'">
             <RouterLink
               :to="sources.home"
-              class="text-caption text-decoration-none text-blue"
+              class="text-caption text-decoration-none text-color-blue"
               rel="noopener noreferrer"
               target="_blank"
             >
@@ -30,7 +30,7 @@
         </VTextField>
       </VForm>
       <v-card-text
-        class="text-medium-emphasis text-caption bg-orange-lighten-2 my-5"
+        class="text-medium-emphasis text-caption bg-color-orange my-5"
       >
         "Attention": Après 3 tentatives de connection échouées votre compte sera
         temporairement vérouillé pendant 3 heures. Si vous devez vous connecter
@@ -101,7 +101,7 @@ const fields = ref<Array<Fields>>([
 const buttons: Array<Buttons> = [
   {
     label: "Se connecter",
-    color: "blue",
+    color: "color-blue",
     onClick: () => {
       (form.value as VForm).reset();
       (form.value as VForm).resetValidation();

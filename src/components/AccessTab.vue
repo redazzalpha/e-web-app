@@ -6,9 +6,9 @@
       max-width="450"
       elevation="5"
       rounded="lg"
-      color="whitesmoke"
+      color="color-white"
     >
-      <VTabs v-model="model" color="blue">
+      <VTabs v-model="model" color="color-blue">
         <VTab class="text-none" value="Connection">Connection</VTab>
         <VTab class="text-none" value="registration">Registration</VTab>
       </VTabs>
