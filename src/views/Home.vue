@@ -12,7 +12,7 @@
     :top-title="140"
     :left-title="63"
     :text-link="textHeroLink"
-    :color-link="appStore.colors.textLinkHero"
+    color-link="color-blue"
     :source-link="sourceHeroLink"
   >
     <!-- search bar -->

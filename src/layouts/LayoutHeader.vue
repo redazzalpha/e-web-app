@@ -1,20 +1,17 @@
 <template>
   <HeaderBar
     :text-logo="textHeaderLogo"
-    :color-logo="appStore.colors.textAppBar"
     :font-logo="fontHeaderLogo"
     :size-logo="sizeHeaderLogo"
-    :color-background="appStore.colors.appBar"
+    color-logo="color-black"
+    color-background="color-transparent"
     :link-source="linkHeaderSrc"
   />
 </template>
 
 <script lang="ts" setup>
 import HeaderBar from "@/components/HeaderBar.vue";
-import { useAppStore } from "@/store/app";
 import * as sources from "@/utils/sources";
-
-const appStore = useAppStore();
 
 //#region variables
 const textHeaderLogo = "EatZone (EZ)";

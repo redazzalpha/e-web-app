@@ -2,6 +2,7 @@
   <!-- app bar -->
   <VAppBar
     class="app-bar"
+    :class="`text-${colorText} bg-${colorBackground}`"
     scroll-behavior="fade-image inverted"
     :scroll-threshold="threshold"
     :image="AppBarImg"
@@ -9,8 +10,7 @@
   >
     <!-- logo -->
     <v-app-bar-title class="app-bar_logo order-0 order-sm-1">
-      <RouterLink :to="props.linkSource">
-        <!-- <RouterLink :to="props.linkSource"> -->
+      <RouterLink :to="props.linkSource" :class="`text-${colorText}`">
         {{ props.textLogo }}
       </RouterLink>
       <VBtn
@@ -45,7 +45,6 @@
 <script lang="ts" setup>
 import AppBarImg from "@/assets/app-bar.png";
 import { useAppStore } from "@/store/app";
-import { baseColor } from "@/utils/colors";
 import * as sources from "@/utils/sources";
 import { onMounted, ref } from "vue";
 import { RouterLink } from "vue-router";
@@ -56,19 +55,24 @@ const appStore = useAppStore();
 const threshold = 80;
 const isDot = ref<boolean>(false);
 //#endregion
+// MARK: ISSUE WITH COLOR PROPS
+//#region refs
+const colorBackground = ref<string>("transparent");
+const colorText = ref<string>("color-white");
+//#endregion
 
 //#region props
 interface Props {
   textLogo: string;
   colorLogo?: string;
-  colorBackground?: string;
+  // colorBackground?: string;
   fontLogo?: string;
   sizeLogo?: number;
   linkSource?: string;
 }
 const props = withDefaults(defineProps<Props>(), {
-  colorLogo: "black",
-  colorBackground: "white",
+  colorLogo: "color-black",
+  // colorBackground: "color-white",
   fontLogo: "serif, sans-serif",
   sizeLogo: 24,
   linkSource: "",
@@ -84,8 +88,8 @@ const emit = defineEmits<Emits>();
 
 //#region event handlers
 async function onScroll(): Promise<void> {
-  if (window.scrollY >= threshold) appStore.colors.textAppBar = baseColor.white;
-  else appStore.colors.textAppBar = baseColor.black;
+  if (window.scrollY >= threshold) colorText.value = "color-white";
+  else colorText.value = "color-black";
 }
 //#endregion
 
@@ -99,13 +103,14 @@ onMounted((): void => {
 <style lang="scss" scoped>
 //#region mixins
 @mixin app-bar-transion {
-  color: v-bind("props.colorLogo");
+  /* FIXME: GOT TO FIX APPBAR TRANSITION COLOR ON CHANGE PAGE THE COLOR IS NOT CORRECTLY RELOADED AND REMAINS WHITE  */
+  /* color: v-bind("props.colorLogo"); */
   transition: color 1.5s linear;
 }
 //#endregion
 
 .app-bar {
-  background-color: v-bind("props.colorBackground") !important;
+  /* background-color: v-bind("props.colorBackground") !important; */
   &_logo {
     font-family: v-bind("props.fontLogo");
     font-size: v-bind("`${props.sizeLogo}px`");
@@ -116,6 +121,7 @@ onMounted((): void => {
       @include app-bar-transion;
     }
     &_cart {
+      /* MARK: ISSUE ON HOW TO BIND CUSTOM COLOR IN THE CSS  */
       color: v-bind("props.colorLogo");
       @include app-bar-transion;
     }

@@ -16,7 +16,11 @@
     </VImg>
 
     <!-- title -->
-    <div class="hero-banner_title text-center" v-if="!hideTitleOnXs">
+    <div
+      class="hero-banner_title text-center"
+      :class="`text-${props.colorTitle} bg-${props.colorBackgroundTitle}`"
+      v-if="!hideTitleOnXs"
+    >
       {{ props.textTitle }}
     </div>
 
@@ -30,9 +34,12 @@
       <!-- before link -->
       <slot name="before-link"></slot>
       <!-- link -->
-      <RouterLink class="hero-banner_link mx-2" :to="props.sourceLink">{{
-        props.textLink
-      }}</RouterLink>
+      <RouterLink
+        class="hero-banner_link mx-2"
+        :class="`text-${props.colorLink}`"
+        :to="props.sourceLink"
+        >{{ props.textLink }}</RouterLink
+      >
       <!-- after link-->
       <slot name="after-link"></slot>
     </div>
@@ -60,9 +67,9 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
   textTitle: "",
   textLink: "",
-  colorTitle: "white",
-  colorBackgroundTitle: "black",
-  colorLink: "",
+  colorTitle: "color-white",
+  colorBackgroundTitle: "color-black",
+  colorLink: "color-blue",
   fontTitle: "serif, sans-serif",
   sizeTitle: 32,
   sourceLink: "",
@@ -91,14 +98,9 @@ const props = withDefaults(defineProps<Props>(), {
     left: v-bind("`${props.leftTitle}px`");
     font-family: v-bind("props.fontTitle");
     font-size: v-bind("`${props.sizeTitle}px`");
-    color: v-bind("props.colorTitle");
-    background-color: v-bind("props.colorBackgroundTitle");
     border-radius: 15px;
     max-width: 600px;
     z-index: 1;
-  }
-  &_link {
-    color: v-bind("props.colorLink");
   }
 }
 </style>
