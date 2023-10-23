@@ -16,10 +16,10 @@
       <VCardText>
         <VWindow v-model="model">
           <VWindowItem value="Connection">
-            <Login />
+            <CardLogin />
           </VWindowItem>
           <VWindowItem value="Register">
-            <Register />
+            <CardRegister />
           </VWindowItem>
         </VWindow>
       </VCardText>
@@ -28,8 +28,8 @@
 </template>
 
 <script lang="ts" setup>
-import Login from "@/components/LoginCard.vue";
-import Register from "@/components/RegisterCard.vue";
+import CardLogin from "@/components/CardLogin.vue";
+import CardRegister from "@/components/CardRegister.vue";
 import { onMounted, ref } from "vue";
 
 const model = ref<string>("");

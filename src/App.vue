@@ -1,7 +1,7 @@
 <template>
   <VApp>
     <RouterView />
-    <ScrollTopButton
+    <ButtonScrollTop
       color="red"
       background="radial-gradient(black, #0c87e8 85% )"
       style="z-index: 2"
@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts" setup>
-import ScrollTopButton from "@/components/ScrollTopButton.vue";
+import ButtonScrollTop from "@/components/ButtonScrollTop.vue";
 </script>
 
 <style lang="scss">

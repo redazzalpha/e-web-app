@@ -24,7 +24,7 @@
         <VHover>
           <template v-slot:default="{ isHovering, props }">
             <RouterLink :to="`${sources.description}/${product.id}`">
-              <ProductCard
+              <CardProduct
                 class="product-card"
                 v-bind="props"
                 :product="product"
@@ -63,8 +63,8 @@
 </template>
 
 <script lang="ts" setup>
+import CardProduct from "@/components/CardProduct.vue";
 import DialogSlider from "@/components/DialogSlider.vue";
-import ProductCard from "@/components/ProductCard.vue";
 import SearchBar from "@/components/SearchBar.vue";
 import { useAppStore } from "@/store/app";
 import * as sources from "@/utils/sources";

@@ -8,7 +8,7 @@
           :key="productGroup.id"
           class="d-flex align-center v-col-12 v-col-md-6"
         >
-          <CartCard
+          <CardCart
             @vue:mounted="computeSummary(productGroup)"
             class="flex-grow-1 mx-md-3"
             :product-group="productGroup"
@@ -17,7 +17,7 @@
         </VCol>
       </VRow>
       <VRow>
-        <SummaryCard
+        <CardSummary
           :summary="summary"
           :total-summary="formatNumber(totalSummary)"
         />
@@ -32,8 +32,8 @@
 </template>
 
 <script lang="ts" setup>
-import CartCard from "@/components/CartCard.vue";
-import SummaryCard from "@/components/SummaryCard.vue";
+import CardCart from "@/components/CardCart.vue";
+import CardSummary from "@/components/CardSummary.vue";
 import { useAppStore } from "@/store/app";
 import { formatNumber } from "@/utils/functions";
 import type { ProductGroup } from "@/utils/types";

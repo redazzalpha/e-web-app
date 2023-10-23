@@ -1,6 +1,6 @@
 <template>
   <div class="viewer-block" ref="viewer">
-    <ProductCard
+    <CardProduct
       v-for="product in props.products"
       :key="product.id"
       :product="product"
@@ -20,7 +20,7 @@
 </template>
 
 <script lang="ts" setup>
-import ProductCard from "@/components/ProductCard.vue";
+import CardProduct from "@/components/CardProduct.vue";
 import type { Product } from "@/utils/types";
 import { onMounted, ref } from "vue";
 
