@@ -1,6 +1,7 @@
 <template>
   <div
     class="description_container d-flex flex-column elevation-10 mx-5 mx-md-auto"
+    :class="`bg-color-white`"
   >
     <VBtn
       class="description_back-button text-h4 pa-0"
@@ -36,7 +37,7 @@
               <VIcon
                 :icon="product.score >= count ? 'mdi-star' : 'mdi-star-outline'"
                 variant="plain"
-                :color="baseColor.orange"
+                color="color-orange"
               />
             </template>
           </span>
@@ -44,12 +45,18 @@
           <strong> Category: </strong>
           {{ product.category }} <br />
           <strong> Nouveau produit: </strong>
-          <span :class="product.isNew ? 'text-success' : 'text-error'">
+          <span
+            :class="product.isNew ? 'text-color-success' : 'text-color-error'"
+          >
             {{ product.isNew ? "oui" : "non" }}
           </span>
           <br />
           <strong> Produit populaire: </strong>
-          <span :class="product.isPopular ? 'text-success' : 'text-error'">
+          <span
+            :class="
+              product.isPopular ? 'text-color-success' : 'text-color-error'
+            "
+          >
             {{ product.isPopular ? "oui" : "non" }} <br />
           </span>
         </p>
@@ -59,7 +66,7 @@
           rounded="xl"
           width="320"
           variant="elevated"
-          :color="baseColor.orange"
+          color="color-orange"
           @click.prevent="openDialog"
         >
           Ajouter au panier
@@ -86,7 +93,6 @@
 import vuetify from "@/plugins/vuetify";
 import router from "@/router";
 import { useAppStore } from "@/store/app";
-import { baseColor } from "@/utils/colors";
 import type { Product } from "@/utils/types";
 import { computed, ref } from "vue";
 import DialogSlider from "./DialogSlider.vue";
@@ -154,7 +160,7 @@ function openDialog() {
   justify-content: center;
   align-content: center;
   border-radius: 10px;
-  background-color: v-bind("baseColor.whiteDark");
+  /* background-color: v-bind("baseColor.whiteDark"); */
   margin-top: 100px;
   max-width: 1000px;
   .description_title {

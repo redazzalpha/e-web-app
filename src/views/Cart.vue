@@ -32,7 +32,7 @@
             <span class="d-flex">
               <span class="flex-grow-1"> <strong>Total</strong>: </span>
               <span>
-                <strong class="text-error"
+                <strong class="text-color-error"
                   >{{ formatNumber(totalSummary) }}€</strong
                 >
               </span>
@@ -40,10 +40,10 @@
           </VCardText>
           <VCardActions>
             <VSpacer />
-            <VBtn @click="appStore.clearCart" color="error"
+            <VBtn @click="appStore.clearCart" color="color-error"
               >Vider mon panier</VBtn
             >
-            <VBtn color="success">Commander</VBtn>
+            <VBtn color="color-success">Commander</VBtn>
           </VCardActions>
         </VCard>
       </VRow>
@@ -68,9 +68,6 @@ const appStore = useAppStore();
 //#region variables
 const summary = ref<string>("");
 let totalSummary = 0;
-//#endregion
-
-//#region computed
 //#endregion
 
 //#region methods
