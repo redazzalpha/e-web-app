@@ -1,6 +1,7 @@
 <template>
   <VFooter
-    class="footer-bar d-flex flex-column text-white text-center text-h6 mt-16 pa-0 pa-sm-5"
+    class="footer-bar d-flex flex-column text-center text-h6 mt-16 pa-0 pa-sm-5"
+    :class="`bg-${props.colorBackground}`"
   >
     <section class="footer-bar_map">
       <h2 class="footer-bar_map_title mb-5 text-left text-h5 text-lg-h4">
@@ -10,7 +11,7 @@
         <VRow class="justify-center align-center">
           <VCol class="v-col-12 v-col-lg-6">
             <a
-              class="footer-bar_map_link text-white font-italic"
+              class="footer-bar_map_link text-color-white font-italic"
               :href="sources.mapImg"
               target="_self"
               title="Cliquez pour agrandir"
@@ -82,8 +83,8 @@ interface Props {
   links?: Array<string>;
 }
 const props = withDefaults(defineProps<Props>(), {
-  colorButton: "black",
-  colorBackground: "white",
+  colorButton: "color-white",
+  colorBackground: "color-black",
   links: undefined,
 });
 //#endregion
@@ -91,7 +92,6 @@ const props = withDefaults(defineProps<Props>(), {
 
 <style lang="scss" scoped>
 .footer-bar {
-  background-color: v-bind("props.colorBackground");
   &_map {
     &_link {
       display: block;
