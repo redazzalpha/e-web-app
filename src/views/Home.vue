@@ -33,6 +33,8 @@
     <template v-slot:before-link> <p>Déjà un compte ?</p> </template>
   </HeroBanner>
 
+  <p class="text-color-red">salut</p>
+
   <!-- main title xs-->
   <h1 class="main-title-xs text-h4" v-if="$vuetify.display.mobile">
     {{ titleHero }}

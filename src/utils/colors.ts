@@ -6,9 +6,7 @@ export const baseColor = {
   whiteDark: "#f5f5f5",
   black: "#000000",
   blackLight: "#404040",
-  orange: "#ffb300",
   orangeLight: "#ffc407",
-  red: "#ff0119",
   redDark: "#b90011",
   grey: "#817f7d72",
   greyLight: "#b0bec5",
@@ -17,4 +15,7 @@ export const baseColor = {
   blueDark: "#0c87e8",
   yellow: "#ffff00",
   yellowDark: "#dbdb02",
+  //
+  orange: "#ffb300",
+  red: "#ff0119",
 };
