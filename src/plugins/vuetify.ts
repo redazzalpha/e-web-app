@@ -20,6 +20,7 @@ export default createVuetify({
           primary: "#1867C0",
           secondary: "#5CBBF6",
           "color-white": "#f5f5f5",
+          "color-white-dark": "#f5f5f5",
           "color-black": "#404040",
           "color-red": "#ff0119",
           "color-orange": "#ffb300",
@@ -28,7 +29,10 @@ export default createVuetify({
       },
       dark: {
         colors: {
+          primary: "#1867C0",
+          secondary: "#5CBBF6",
           "color-white": "#f5f5f5",
+          "color-white-dark": "#f5f5f5",
           "color-black": "#404040",
           "color-red": "#ff0119",
           "color-orange": "#ffb300",
