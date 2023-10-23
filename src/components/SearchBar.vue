@@ -53,12 +53,12 @@ const props = withDefaults(defineProps<Props>(), {
 .search-bar {
   flex-grow: 0;
   width: v-bind("`${props.size}px`");
+  $v: v-bind("props.colorBackground");
 
   /* MARK: ISSUE ON HOW TO BIND CUSTOM COLOR IN THE CSS  */
-  &:deep(.v-field) {
+  /* &:deep(.v-field) {
     background-color: v-bind("props.colorBackground");
-  }
-  /* MARK: ISSUE ON HOW TO BIND CUSTOM COLOR IN THE CSS  */
+  } */
   &:deep(.v-label) {
     color: v-bind("props.colorLabel");
   }

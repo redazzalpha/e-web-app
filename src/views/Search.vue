@@ -1,5 +1,5 @@
 <template>
-  <h2 class="text-h5 text-lg-h4">
+  <h2 class="text-color-black text-h5 text-lg-h4">
     mot-clé : {{ $route.params.keyword }} <br />
     <span v-html="subtitle"></span>
   </h2>
@@ -33,7 +33,7 @@
                 :label-button-action="labelButtonAction"
                 color-label-button-tag="color-white"
                 color-label-button-action="color-black"
-                color-background-button-tag="color-red"
+                color-background-button-tag="color-red-secondary"
                 color-background-button-action="color-orange"
                 color-background-caption="color-white"
                 color-text-caption="color-black"

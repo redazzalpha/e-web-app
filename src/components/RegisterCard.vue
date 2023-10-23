@@ -1,5 +1,5 @@
 <template>
-  <VCard class="registration bg-color-black-light" rounde="lg">
+  <VCard class="registration text-color-black bg-color-white" rounde="lg">
     <VCardTitle>Création de compte</VCardTitle>
     <VCardText>
       <VForm ref="form">
@@ -18,7 +18,7 @@
           r
         ></VTextField>
         <VCheckbox
-          color="color-success"
+          color="color-success-const"
           label="Je suis d'accord avec les termes et conditions du site"
         ></VCheckbox>
       </VForm>
@@ -100,13 +100,13 @@ const fields = ref<Array<Fields>>([
 const buttons: Array<Buttons> = [
   {
     label: "Annuler",
-    color: "color-error",
+    color: "color-error-const",
     onClick: () => {
       (form.value as VForm).reset();
       (form.value as VForm).resetValidation();
     },
   },
-  { label: "Valider", color: "color-success", onClick: undefined },
+  { label: "Valider", color: "color-success-const", onClick: undefined },
 ];
 const rules = [required];
 //#endregion

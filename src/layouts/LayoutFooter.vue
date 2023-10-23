@@ -1,6 +1,6 @@
 <template>
   <FooterBar
-    color-background="color-black"
+    color-background="color-black-const"
     color-button="color-orange"
     :links="icons"
   />

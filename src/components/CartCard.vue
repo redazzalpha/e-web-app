@@ -15,7 +15,9 @@
         cover
       ></VImg>
 
-      <div class="cart-card_content_text d-flex flex-column justify-center">
+      <div
+        class="cart-card_content_text text-color-black d-flex flex-column justify-center"
+      >
         <span
           class="cart-card_title text-h6 d-flex flex-column flex-md-row text-body-1"
         >
@@ -34,7 +36,7 @@
         <span>
           <strong> Total </strong>
           :
-          <strong class="text-color-error">
+          <strong class="text-color-error-const">
             {{ productGroup.totalPrice }}&euro;
           </strong>
         </span>
@@ -97,8 +99,7 @@ function removeItem(productGroup: ProductGroup): void {
     position: absolute;
     top: 0;
     right: 0;
-    /* MARK: ISSUE ON HOW TO BIND CUSTOM COLOR IN THE CSS  */
-    color: red;
+    color: rgb(var(--v-theme-color-red-const));
   }
   &_content {
     &_img {

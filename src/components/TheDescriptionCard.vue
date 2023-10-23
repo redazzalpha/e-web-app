@@ -11,7 +11,7 @@
     >
       <VIcon>mdi-arrow-left-thick</VIcon>
     </VBtn>
-    <h2 class="description_title text-h5 text-lg-h4">
+    <h2 class="description_title text-color-black text-h5 text-lg-h4">
       {{ product.label }}
     </h2>
     <div
@@ -26,7 +26,7 @@
       <div
         class="description_content_text d-flex flex-column d-block ma-5 flex-shrink-1 my-md-auto"
       >
-        <p>
+        <p class="text-color-black">
           <strong> Description: </strong>
           {{ product.description }} <br />
           <strong> Prix: </strong>
@@ -46,7 +46,11 @@
           {{ product.category }} <br />
           <strong> Nouveau produit: </strong>
           <span
-            :class="product.isNew ? 'text-color-success' : 'text-color-error'"
+            :class="
+              product.isNew
+                ? 'text-color-success-const'
+                : 'text-color-error-const'
+            "
           >
             {{ product.isNew ? "oui" : "non" }}
           </span>
@@ -54,14 +58,16 @@
           <strong> Produit populaire: </strong>
           <span
             :class="
-              product.isPopular ? 'text-color-success' : 'text-color-error'
+              product.isPopular
+                ? 'text-color-success-const'
+                : 'text-color-error-const'
             "
           >
             {{ product.isPopular ? "oui" : "non" }} <br />
           </span>
         </p>
         <VBtn
-          class="description_content_text_btn align-self-center ma-10"
+          class="description_content_text_btn text-color-black align-self-center ma-10"
           size="large"
           rounded="xl"
           width="320"

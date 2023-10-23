@@ -103,7 +103,6 @@ watchEffect(async () => {
 
 <style lang="scss" scoped>
 .active-item {
-  /* MARK: ISSUE ON HOW TO BIND CUSTOM COLOR IN THE CSS  */
-  color: v-bind("props.activeColor");
+  color: rgb(var(--v-theme-color-orange));
 }
 </style>

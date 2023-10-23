@@ -19,7 +19,7 @@
 
       <VRow>
         <VCard
-          class="cart-summary text-center mx-auto"
+          class="cart-summary text-color-black text-center mx-auto"
           elevation="10"
           style="background-color: rgba(255, 166, 0, 0.392)"
           :width="$vuetify.display.mobile ? '100%' : '50%'"
@@ -32,7 +32,7 @@
             <span class="d-flex">
               <span class="flex-grow-1"> <strong>Total</strong>: </span>
               <span>
-                <strong class="text-color-error"
+                <strong class="text-color-error-const"
                   >{{ formatNumber(totalSummary) }}€</strong
                 >
               </span>
@@ -40,10 +40,10 @@
           </VCardText>
           <VCardActions>
             <VSpacer />
-            <VBtn @click="appStore.clearCart" color="color-error"
+            <VBtn @click="appStore.clearCart" color="color-error-const"
               >Vider mon panier</VBtn
             >
-            <VBtn color="color-success">Commander</VBtn>
+            <VBtn color="color-success-const">Commander</VBtn>
           </VCardActions>
         </VCard>
       </VRow>

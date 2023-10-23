@@ -19,7 +19,7 @@
           <span><strong> Total: </strong> </span>
           <VSpacer />
           <span>
-            <strong class="text-color-error"> {{ totalPrice }}€ </strong>
+            <strong class="text-color-error-const"> {{ totalPrice }}€ </strong>
           </span>
         </div>
       </VCardText>
@@ -58,7 +58,7 @@
         <VSpacer />
         <VBtn color="color-error" @click="cancel">Annuler</VBtn>
         <VBtn
-          color="color-success"
+          color="color-success-const"
           @click="emit('onValidate', props.id, props.slider, totalPrice)"
           >Valider</VBtn
         >

@@ -5,32 +5,34 @@
     :text-title="titleHero"
     :font-title="fontHero"
     :size-title="fontSizeHero"
-    :color-title="appStore.colors.textHero"
-    :color-background-title="appStore.colors.backgroundTitleHero"
     :hide-title-on-xs="$vuetify.display.mobile"
     position-title="absolute"
     :top-title="140"
     :left-title="63"
     :text-link="textHeroLink"
-    color-link="color-blue"
     :source-link="sourceHeroLink"
+    color-title="color-black-const"
+    color-background-title=""
+    color-link="color-blue"
   >
     <!-- search bar -->
     <template v-slot:center>
       <SearchBar
         class="mt-10 mb-5"
         :label="labelSearchBar"
-        :color-label="appStore.colors.labelSearchBar"
-        :color-background="appStore.colors.searchBar"
         :prepend-icon="iconSearchBar"
         :size="sizeSearchBar"
         :on-search="appStore.searchByKeyword"
         :hint="appStore.hintSearchBar"
+        color-label="color-black"
+        color-background="color-white"
       />
     </template>
 
     <!-- before hero link -->
-    <template v-slot:before-link> <p>Déjà un compte ?</p> </template>
+    <template v-slot:before-link>
+      <p class="text-color-black-const">Déjà un compte ?</p>
+    </template>
   </HeroBanner>
 
   <!-- main title xs-->
@@ -40,7 +42,7 @@
 
   <!-- section news -->
   <section class="news">
-    <h2 class="section_title text-h5 text-lg-h4">
+    <h2 class="section_title text-color-black text-h5 text-lg-h4">
       {{ titleNews }}
     </h2>
 
@@ -90,7 +92,7 @@
 
   <!-- section most populars -->
   <section class="most-populars">
-    <h2 class="section_title text-h5 text-lg-h4">
+    <h2 class="section_title text-color-black text-h5 text-lg-h4">
       {{ titlePopulars }}
     </h2>
 
@@ -141,7 +143,7 @@
   <!-- section starters -->
   <section class="starters">
     <!-- section title -->
-    <h2 class="section_title text-h5 text-lg-h4">
+    <h2 class="section_title text-color-black text-h5 text-lg-h4">
       {{ titleStarters }}
     </h2>
 
@@ -192,7 +194,7 @@
   <!-- section main courses -->
   <section class="main-courses">
     <!-- section title -->
-    <h2 class="section_title text-h5 text-lg-h4">
+    <h2 class="section_title text-color-black text-h5 text-lg-h4">
       {{ titleMainCourses }}
     </h2>
 
@@ -243,7 +245,7 @@
   <!-- section deserts -->
   <section class="deserts">
     <!-- section title -->
-    <h2 class="section_title text-h5 text-lg-h4">
+    <h2 class="section_title text-color-black text-h5 text-lg-h4">
       {{ titleDeserts }}
     </h2>
 

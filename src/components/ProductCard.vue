@@ -109,7 +109,7 @@ const props = withDefaults(defineProps<Props>(), {
   colorLabelButtonTag: "color-white",
   colorLabelButtonAction: "color-black",
   colorTextCaption: "color-black",
-  colorBackgroundButtonTag: "color-red",
+  colorBackgroundButtonTag: "color-red-secondary",
   colorBackgroundButtonAction: "color-orange",
   colorBackgroundCaption: "color-white",
   colorScore: "color-orange",

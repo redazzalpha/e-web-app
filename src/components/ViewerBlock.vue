@@ -8,7 +8,7 @@
       :label-button-action="labelButtonAction"
       color-label-button-tag="color-white"
       color-label-button-action="color-black"
-      color-background-button-tag="color-red"
+      color-background-button-tag="color-red-secondary"
       color-background-button-action="color-orange"
       color-background-caption="color-white"
       color-text-caption="color-black"

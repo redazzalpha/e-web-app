@@ -25,7 +25,7 @@
           v-show="appStore.cart.length"
           :dot="isDot"
           :content="appStore.cart.length"
-          color="red"
+          color="color-red"
           :max="20"
           :offset-y="-15"
           :offset-x="-10"

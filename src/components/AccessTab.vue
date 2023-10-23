@@ -2,7 +2,7 @@
   <v-scale-transition>
     <VCard
       v-show="show"
-      class="ma-auto mt-16"
+      class="text-color-black ma-auto mt-16"
       max-width="450"
       elevation="5"
       rounded="lg"
@@ -10,7 +10,7 @@
     >
       <VTabs v-model="model" color="color-blue">
         <VTab class="text-none" value="Connection">Connection</VTab>
-        <VTab class="text-none" value="registration">Registration</VTab>
+        <VTab class="text-none" value="Register">Register</VTab>
       </VTabs>
 
       <VCardText>
@@ -18,8 +18,8 @@
           <VWindowItem value="Connection">
             <Login />
           </VWindowItem>
-          <VWindowItem value="registration">
-            <Registration />
+          <VWindowItem value="Register">
+            <Register />
           </VWindowItem>
         </VWindow>
       </VCardText>
@@ -29,7 +29,7 @@
 
 <script lang="ts" setup>
 import Login from "@/components/LoginCard.vue";
-import Registration from "@/components/RegistrationCard.vue";
+import Register from "@/components/RegisterCard.vue";
 import { onMounted, ref } from "vue";
 
 const model = ref<string>("");

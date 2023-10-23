@@ -4,7 +4,7 @@
     @update:model-value="emit('update:drawer', $event)"
     :location="$vuetify.display.xs ? 'right' : 'left'"
     temporary
-    color="color-black-light"
+    color="color-black-light-const"
     width="300"
   >
     <DrawerList :items="drawerListItem" :value-badge="appStore.cart.length" />
