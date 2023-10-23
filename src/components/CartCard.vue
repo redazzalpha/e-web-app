@@ -1,5 +1,5 @@
 <template>
-  <div class="cart-card elevation-10 my-5 mx-auto">
+  <div class="cart-card bg-color-white elevation-10 my-5 mx-auto">
     <VBtn
       class="cart-card_delete-btn"
       icon="mdi-close"
@@ -34,7 +34,7 @@
         <span>
           <strong> Total </strong>
           :
-          <strong class="text-error">
+          <strong class="text-color-error">
             {{ productGroup.totalPrice }}&euro;
           </strong>
         </span>
@@ -45,7 +45,6 @@
 
 <script lang="ts" setup>
 import vuetify from "@/plugins/vuetify";
-import { baseColor } from "@/utils/colors";
 import { ProductGroup } from "@/utils/types";
 import { computed } from "vue";
 
@@ -91,7 +90,6 @@ function removeItem(productGroup: ProductGroup): void {
 
 .cart-card {
   position: relative;
-  background-color: v-bind("baseColor.whiteDark");
   border-radius: 10px;
   max-width: 600px;
   max-height: 150px;
@@ -99,6 +97,7 @@ function removeItem(productGroup: ProductGroup): void {
     position: absolute;
     top: 0;
     right: 0;
+    /* MARK: ISSUE ON HOW TO BIND CUSTOM COLOR IN THE CSS  */
     color: red;
   }
   &_content {

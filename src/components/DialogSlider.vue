@@ -7,7 +7,7 @@
     @keydown.enter="emit('onValidate', props.id, props.slider, totalPrice)"
   >
     <VCard>
-      <VCardTitle class="bg-grey-lighten-2 px-5">
+      <VCardTitle class="bg-color-white-dark px-5">
         {{ props.title }}
       </VCardTitle>
 
@@ -19,7 +19,7 @@
           <span><strong> Total: </strong> </span>
           <VSpacer />
           <span>
-            <strong class="text-error"> {{ totalPrice }}€ </strong>
+            <strong class="text-color-error"> {{ totalPrice }}€ </strong>
           </span>
         </div>
       </VCardText>
@@ -32,7 +32,7 @@
         :max="props.max"
         thumb-label="always"
         :step="props.step"
-        :color="appStore.colors.buttonAction"
+        color="color-orange"
         style="width: 320px"
         hide-details
       >
@@ -56,9 +56,9 @@
 
       <v-card-actions>
         <VSpacer />
-        <VBtn color="error" @click="cancel">Annuler</VBtn>
+        <VBtn color="color-error" @click="cancel">Annuler</VBtn>
         <VBtn
-          color="success"
+          color="color-success"
           @click="emit('onValidate', props.id, props.slider, totalPrice)"
           >Valider</VBtn
         >
@@ -68,11 +68,8 @@
 </template>
 
 <script lang="ts" setup>
-import { useAppStore } from "@/store/app";
 import { formatNumber } from "@/utils/functions";
 import { computed } from "vue";
-
-const appStore = useAppStore();
 
 //#region computed
 const totalPrice = computed<string>(() => {

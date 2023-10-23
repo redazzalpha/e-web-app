@@ -61,4 +61,5 @@ export interface State {
   modelDialog: boolean;
   modelSlider: number;
   drawer: boolean;
+  switcher: boolean;
 }

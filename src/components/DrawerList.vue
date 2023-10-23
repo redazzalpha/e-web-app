@@ -15,7 +15,7 @@
               v-show="props.valueBadge"
               :dot="isDot"
               :content="props.valueBadge"
-              color="red"
+              color="color-red"
               :max="20"
               inline
             />
@@ -45,14 +45,39 @@
           </template>
         </VListGroup>
       </template>
-      <!-- <VDivider /> -->
     </template>
+    <VListItem
+      class="my-5"
+      title="Thème"
+      prepend-icon="mdi-theme-light-dark"
+      to=""
+      rounded="xl"
+    >
+      <template v-slot:append>
+        <VSwitch
+          class="mx-5"
+          v-model="appStore.switcher"
+          color="color-orange"
+          true-icon="mdi-weather-night"
+          false-icon="mdi-weather-sunny"
+          style="height: 56px"
+          :label="appStore.switcher ? 'Dark' : 'Light'"
+          icon="mdi-home"
+        >
+        </VSwitch>
+      </template>
+    </VListItem>
   </VList>
 </template>
 
 <script lang="ts" setup>
+import { useAppStore } from "@/store/app";
 import type { DrawerListItem } from "@/utils/types";
-import { ref } from "vue";
+import { ref, watchEffect } from "vue";
+import { useTheme } from "vuetify/lib/framework.mjs";
+
+const appStore = useAppStore();
+const theme = useTheme();
 
 //#region variables
 const isDot = ref<boolean>(false);
@@ -65,14 +90,20 @@ interface Props {
   valueBadge?: number;
 }
 const props = withDefaults(defineProps<Props>(), {
-  activeColor: "#ffb300",
+  activeColor: "color-orange",
   valueBadge: 0,
 });
 //#endregion
+
+watchEffect(async () => {
+  if (appStore.switcher) theme.global.name.value = "dark";
+  else theme.global.name.value = "light";
+});
 </script>
 
 <style lang="scss" scoped>
 .active-item {
+  /* MARK: ISSUE ON HOW TO BIND CUSTOM COLOR IN THE CSS  */
   color: v-bind("props.activeColor");
 }
 </style>

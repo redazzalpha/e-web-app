@@ -54,9 +54,11 @@ const props = withDefaults(defineProps<Props>(), {
   flex-grow: 0;
   width: v-bind("`${props.size}px`");
 
+  /* MARK: ISSUE ON HOW TO BIND CUSTOM COLOR IN THE CSS  */
   &:deep(.v-field) {
     background-color: v-bind("props.colorBackground");
   }
+  /* MARK: ISSUE ON HOW TO BIND CUSTOM COLOR IN THE CSS  */
   &:deep(.v-label) {
     color: v-bind("props.colorLabel");
   }

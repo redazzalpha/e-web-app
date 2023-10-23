@@ -342,6 +342,7 @@ export const useAppStore = defineStore("app", {
     modelDialog: true,
     modelSlider: 1,
     drawer: false,
+    switcher: false,
   }),
   getters: {
     filteredProducts: (state) => {
