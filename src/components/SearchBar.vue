@@ -41,8 +41,8 @@ interface Props {
 }
 const props = withDefaults(defineProps<Props>(), {
   label: "Search here",
-  colorLabel: "black",
-  colorBackground: "orange",
+  colorLabel: "color-black",
+  colorBackground: "color-orange",
   prependIcon: "",
   size: 300,
 });
