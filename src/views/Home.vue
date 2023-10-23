@@ -53,7 +53,7 @@
     <VBtn
       :to="sources.news"
       variant="plain"
-      class="text-orange text-h6 mb-10 ml-15"
+      class="text-color-orange text-h6 mb-10 ml-15"
       width="320"
       >voir touts les nouveautés
       <template v-slot:append><VIcon>mdi-chevron-right</VIcon></template>
@@ -103,7 +103,7 @@
     <VBtn
       :to="sources.populars"
       variant="plain"
-      class="text-orange text-h6 mb-10 ml-15"
+      class="text-color-orange text-h6 mb-10 ml-15"
       width="320"
       >voir touts les plus populaires
       <template v-slot:append><VIcon>mdi-chevron-right</VIcon></template>
@@ -154,7 +154,7 @@
     <VBtn
       :to="sources.starters"
       variant="plain"
-      class="text-orange text-h6 mb-10 ml-15"
+      class="text-color-orange text-h6 mb-10 ml-15"
       width="320"
       >voir toutes les entrées
       <template v-slot:append><VIcon>mdi-chevron-right</VIcon></template>
@@ -205,7 +205,7 @@
     <VBtn
       :to="sources.mainCourses"
       variant="plain"
-      class="text-orange text-h6 mb-10 ml-15"
+      class="text-color-orange text-h6 mb-10 ml-15"
       width="320"
       >voir touts les plats
       <template v-slot:append><VIcon>mdi-chevron-right</VIcon></template>
@@ -256,7 +256,7 @@
     <VBtn
       :to="sources.deserts"
       variant="plain"
-      class="text-orange text-h6 mb-10 ml-15"
+      class="text-color-orange text-h6 mb-10 ml-15"
       width="320"
       >voir touts les desserts
       <template v-slot:append><VIcon>mdi-chevron-right</VIcon></template>

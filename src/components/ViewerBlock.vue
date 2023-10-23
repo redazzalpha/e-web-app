@@ -6,13 +6,13 @@
       :product="product"
       :label-button-tag="labelButtonTag"
       :label-button-action="labelButtonAction"
-      :color-label-button-tag="appStore.colors.labelButtonTag"
-      :color-label-button-action="appStore.colors.labelButtonAction"
-      :color-background-button-tag="appStore.colors.buttonTag"
-      :color-background-button-action="appStore.colors.buttonAction"
-      :color-background-caption="appStore.colors.caption"
-      :color-text-caption="appStore.colors.textBase"
-      :color-score="appStore.colors.score"
+      color-label-button-tag="color-white"
+      color-label-button-action="color-black"
+      color-background-button-tag="color-red"
+      color-background-button-action="color-orange"
+      color-background-caption="color-white"
+      color-text-caption="color-black"
+      color-score="color-orange"
       :elevation="15"
       :on-action-click="props.action"
     />
@@ -21,11 +21,8 @@
 
 <script lang="ts" setup>
 import ProductCard from "@/components/ProductCard.vue";
-import { useAppStore } from "@/store/app";
 import type { Product } from "@/utils/types";
 import { onMounted, ref } from "vue";
-
-const appStore = useAppStore();
 
 // #region varibles
 const labelButtonTag = "Nouveau";

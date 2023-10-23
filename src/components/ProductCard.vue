@@ -1,5 +1,8 @@
 <template>
-  <figure class="product-card" :class="`elevation-${props.elevation}`">
+  <figure
+    class="product-card"
+    :class="`elevation-${props.elevation} bg-${props.colorCard} `"
+  >
     <!-- curtain is used for avoid image
         drag and drop that cause bad behaviour
     -->
@@ -16,14 +19,20 @@
       </template>
     </VImg>
 
-    <figcaption class="product-card_caption">
+    <figcaption
+      class="product-card_caption"
+      :class="`text-${props.colorTextCaption} bg-${props.colorBackgroundCaption}`"
+    >
       <div class="d-flex">
         <p class="product-card_caption_label flex-grow-1 text-no-wrap">
           {{ props.product.label }}
         </p>
         <strong>{{ formatNumber(props.product.price) }}€</strong>
       </div>
-      <div class="product-card_caption_score">
+      <div
+        class="product-card_caption_score"
+        :class="`text-${props.colorScore}`"
+      >
         <VHover>
           <template v-for="count in 6" :key="count">
             <VBtn
@@ -44,6 +53,7 @@
     <!-- tag button -->
     <VCard
       class="product-card_tag-btn py-1 px-5"
+      :class="`text-${props.colorLabelButtonTag} bg-${props.colorBackgroundButtonTag}`"
       v-if="props.labelButtonTag && props.product.isNew"
       elevation="10"
       rounded="xs"
@@ -54,8 +64,9 @@
 
     <!-- action button -->
     <VBtn
-      class="product-card_action-btn"
       v-if="props.labelButtonAction"
+      class="product-card_action-btn"
+      :class="`text-${props.colorLabelButtonAction} bg-${props.colorBackgroundButtonAction}`"
       size="large"
       elevation="0"
       rounded="xl"
@@ -94,14 +105,14 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
   labelButtonTag: "",
   labelButtonAction: "",
-  colorCard: "white",
-  colorLabelButtonTag: "black",
-  colorLabelButtonAction: "black",
-  colorTextCaption: "black",
-  colorBackgroundButtonTag: "transparent",
-  colorBackgroundButtonAction: "transparent",
-  colorBackgroundCaption: "white",
-  colorScore: "transparent",
+  colorCard: "color-white",
+  colorLabelButtonTag: "color-white",
+  colorLabelButtonAction: "color-black",
+  colorTextCaption: "color-black",
+  colorBackgroundButtonTag: "color-red",
+  colorBackgroundButtonAction: "color-orange",
+  colorBackgroundCaption: "color-white",
+  colorScore: "color-orange",
   width: 300,
   height: 400,
   elevation: 0,
@@ -140,7 +151,7 @@ function formatNumber(value: number): string {
   width: v-bind("`${props.width}px`");
   height: v-bind("`${props.height}px`");
   position: relative;
-  background-color: v-bind("props.colorCard");
+  /* background-color: v-bind("props.colorCard"); */
   &_img,
   &_img-curtain {
     border-radius: 15px 15px 0 0;
@@ -156,29 +167,29 @@ function formatNumber(value: number): string {
     position: absolute;
     top: -10px;
     right: -15px;
-    color: v-bind("props.colorLabelButtonTag");
-    background-color: v-bind("props.colorBackgroundButtonTag");
+    /* color: v-bind("props.colorLabelButtonTag"); */
+    /* background-color: v-bind("props.colorBackgroundButtonTag"); */
     z-index: 2;
     font-weight: 900;
     font-family: "Kaushan Script", cursive;
     font-size: 20px;
   }
   &_action-btn {
-    color: v-bind("props.colorLabelButtonAction");
-    background-color: v-bind("props.colorBackgroundButtonAction");
+    /* color: v-bind("props.colorLabelButtonAction"); */
+    /* background-color: v-bind("props.colorBackgroundButtonAction"); */
     margin: 15px;
   }
   &_caption {
     display: flex;
     flex-direction: column;
-    color: v-bind("props.colorTextCaption");
-    background-color: v-bind("props.colorBackgroundCaption");
+    /* color: v-bind("props.colorTextCaption"); */
+    /* background-color: v-bind("props.colorBackgroundCaption"); */
     padding: 15px;
     &_label {
       @include ellipsis();
     }
     &_score {
-      color: v-bind("props.colorScore");
+      /* color: v-bind("props.colorScore"); */
     }
     &_desc {
       @include ellipsis();
