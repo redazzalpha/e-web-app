@@ -1,7 +1,7 @@
 <template>
   <div class="cart-card bg-color-white elevation-10 my-5 mx-auto">
     <VBtn
-      class="cart-card_delete-btn"
+      class="cart-card_delete-btn text-color-red-const"
       icon="mdi-close"
       size="x-small"
       variant="plain"
@@ -99,7 +99,6 @@ function removeItem(productGroup: ProductGroup): void {
     position: absolute;
     top: 0;
     right: 0;
-    color: rgb(var(--v-theme-color-red-const));
   }
   &_content {
     &_img {

@@ -3,8 +3,6 @@
     :text-logo="textHeaderLogo"
     :font-logo="fontHeaderLogo"
     :size-logo="sizeHeaderLogo"
-    color-logo="color-black"
-    color-background="color-transparent"
     :link-source="linkHeaderSrc"
   />
 </template>

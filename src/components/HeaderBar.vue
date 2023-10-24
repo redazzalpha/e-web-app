@@ -1,8 +1,7 @@
 <template>
   <!-- app bar -->
   <VAppBar
-    class="app-bar"
-    :class="`text-${colorText} bg-${colorBackground}`"
+    :class="`app-bar text-${colorText} bg-${colorBackground}`"
     scroll-behavior="fade-image inverted"
     :scroll-threshold="threshold"
     :image="AppBarImg"
@@ -10,7 +9,7 @@
   >
     <!-- logo -->
     <v-app-bar-title class="app-bar_logo order-0 order-sm-1">
-      <RouterLink :to="props.linkSource" :class="`text-${colorText}`">
+      <RouterLink :class="`text-${colorText}`" :to="props.linkSource">
         {{ props.textLogo }}
       </RouterLink>
       <VBtn
@@ -55,24 +54,22 @@ const appStore = useAppStore();
 const threshold = 80;
 const isDot = ref<boolean>(false);
 //#endregion
-// MARK: ISSUE WITH COLOR PROPS
+
 //#region refs
 const colorBackground = ref<string>("transparent");
-const colorText = ref<string>("color-white");
+const colorText = ref<string>("color-black-dark-const");
 //#endregion
 
 //#region props
 interface Props {
   textLogo: string;
-  colorLogo?: string;
-  // colorBackground?: string;
   fontLogo?: string;
   sizeLogo?: number;
   linkSource?: string;
 }
 const props = withDefaults(defineProps<Props>(), {
-  colorLogo: "color-black",
-  // colorBackground: "color-white",
+  colorLogo: "color-white",
+  colorBackground: "color-black",
   fontLogo: "serif, sans-serif",
   sizeLogo: 24,
   linkSource: "",
@@ -88,8 +85,8 @@ const emit = defineEmits<Emits>();
 
 //#region event handlers
 async function onScroll(): Promise<void> {
-  if (window.scrollY >= threshold) colorText.value = "color-white";
-  else colorText.value = "color-black";
+  if (window.scrollY >= threshold) colorText.value = "color-white-light-const";
+  else colorText.value = "color-black-dark-const";
 }
 //#endregion
 
@@ -105,7 +102,7 @@ onMounted((): void => {
 @mixin app-bar-transion {
   /* FIXME: GOT TO FIX APPBAR TRANSITION COLOR ON CHANGE PAGE THE COLOR IS NOT CORRECTLY RELOADED AND REMAINS WHITE  */
   /* color: v-bind("props.colorLogo"); */
-  transition: color 1.5s linear;
+  transition: color 1s linear;
 }
 //#endregion
 

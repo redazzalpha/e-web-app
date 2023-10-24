@@ -11,7 +11,7 @@
     :left-title="63"
     :text-link="textHeroLink"
     :source-link="sourceHeroLink"
-    color-title="color-black-const"
+    color-title="color-black-dark-const"
     color-background-title=""
     color-link="color-blue"
   >

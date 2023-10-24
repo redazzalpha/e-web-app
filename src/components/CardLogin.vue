@@ -59,9 +59,10 @@ import * as sources from "@/utils/sources";
 import { ref, watch } from "vue";
 import type { VForm } from "vuetify/components";
 
+//#region refs
 const form = ref<HTMLElement | null>(null);
-
 const visible = ref<boolean>(false);
+//#endregion
 
 //#region interfaces
 
