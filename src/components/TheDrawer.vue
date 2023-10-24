@@ -2,7 +2,7 @@
   <VNavigationDrawer
     :model-value="props.drawer"
     @update:model-value="emit('update:drawer', $event)"
-    :location="$vuetify.display.xs ? 'right' : 'left'"
+    :location="appStore.navigationSide ? 'right' : 'left'"
     temporary
     color="color-black-light-const"
     width="300"

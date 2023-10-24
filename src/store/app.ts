@@ -344,6 +344,7 @@ export const useAppStore = defineStore("app", {
     modelSlider: 1,
     drawer: false,
     switcher: false,
+    navigationSide: true,
   }),
   getters: {
     currentItem: (state) => {

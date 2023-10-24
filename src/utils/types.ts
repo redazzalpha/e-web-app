@@ -63,4 +63,5 @@ export interface State {
   modelSlider: number;
   drawer: boolean;
   switcher: boolean;
+  navigationSide: boolean;
 }

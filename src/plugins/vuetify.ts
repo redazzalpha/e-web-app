@@ -19,6 +19,7 @@ export default createVuetify({
         colors: {
           primary: "#1867C0",
           secondary: "#5CBBF6",
+          "color-white-const": "#f5f5f5",
           "color-white": "#f5f5f5",
           "color-black": "#404040",
           "color-black-const": "#404040",
@@ -37,8 +38,8 @@ export default createVuetify({
         colors: {
           primary: "#1867C0",
           secondary: "#5CBBF6",
+          "color-white-const": "#f5f5f5",
           "color-white": "#3a3b3c",
-          "color-white-dark": "#f5f5f5",
           "color-black": "#f5f5f5",
           "color-black-const": "#404040",
           "color-black-light-const": "#3a3b3c",
