@@ -28,33 +28,12 @@ export interface DrawerListItem {
   href: string;
   children: Array<DrawerListItem>;
 }
-export interface SysColor {
-  textBase: string;
-  backgroundBase: string;
-  textAppBar: string;
-  textHero: string;
-  textLinkHero: string;
-  labelButtonTag: string;
-  labelButtonAction: string;
-  labelSearchBar: string;
-  backgroundTitleHero: string;
-  appBar: string;
-  searchBar: string;
-  drawer: string;
-  footer: string;
-  buttonTag: string;
-  buttonAction: string;
-  buttonLink: string;
-  caption: string;
-  score: string;
-}
 export interface State {
   products: Array<Product>;
   productCurrent: Product | {};
   productsFound: Array<Product>;
   productFilter: Filter;
   slideshows: Array<string>;
-  colors: SysColor;
   cart: Array<ProductGroup>;
   hintSearchBar: string;
   snackbar: boolean;

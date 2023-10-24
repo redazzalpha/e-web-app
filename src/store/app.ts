@@ -1,6 +1,5 @@
 // Utilities
 import router from "@/router";
-import { baseColor } from "@/utils/colors";
 import * as sources from "@/utils/sources";
 import type { Product, ProductGroup, State } from "@/utils/types";
 import { defineStore } from "pinia";
@@ -316,26 +315,6 @@ export const useAppStore = defineStore("app", {
       sources.slideshowImg7,
       sources.slideshowImg8,
     ],
-    colors: {
-      textBase: baseColor.black,
-      backgroundBase: baseColor.white,
-      textAppBar: baseColor.black,
-      textHero: baseColor.black,
-      textLinkHero: baseColor.blue,
-      labelButtonTag: baseColor.white,
-      labelButtonAction: baseColor.black,
-      labelSearchBar: baseColor.black,
-      backgroundTitleHero: baseColor.transparent,
-      appBar: baseColor.transparent,
-      searchBar: baseColor.white,
-      drawer: baseColor.dark,
-      footer: baseColor.blackThin,
-      buttonTag: baseColor.red,
-      buttonAction: baseColor.orange,
-      buttonLink: baseColor.orange,
-      caption: baseColor.white,
-      score: baseColor.orange,
-    },
     cart: [],
     hintSearchBar: "",
     snackbar: false,
